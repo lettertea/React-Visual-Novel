@@ -1,0 +1,193 @@
+/* only for development */
+.index {
+  text-align: center;
+}
+
+.container {
+  position: absolute;
+  width: 1280px;
+  height: 720px;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+.bg {
+  position: fixed;
+  left: 50%;
+  margin-left: -640px;
+}
+
+@media only screen and (max-width: 1280px) {
+  .container {
+    width: 100%;
+  }
+}
+
+.sprite {
+  position: absolute;
+  bottom: 0;
+  margin: auto;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1;
+}
+
+.text-box {
+  position: absolute;
+  bottom: 10px;
+  margin: auto;
+  left: 50%;
+  z-index: 2;
+  padding: 0px 20px;
+  border-radius: 10px;
+  color: black;
+  transform: translate(-50%, 0);
+  background-image: url("text-box.png");
+  width: 875px;
+  height: 123px;
+}
+
+/* 1094px for smooth transition from 875px to 80% width */
+@media only screen and (max-width: 1094px) {
+  .text-box {
+    width: 80%;
+  }
+}
+
+.text {
+  margin-top: 11px;
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+@media only screen and (max-width: 768px) {
+  .text {
+    font-size: 20px;
+    line-height: 1.8;
+  }
+}
+
+.speaker {
+  position: absolute;
+  bottom: 116px;
+  color: white;
+  text-align: center;
+  background-image: url("speaker.png");
+  padding-top: 4px;
+  margin-left: -30px;
+  width: 290px;
+  height: 49px;
+  font-size: 1.9em;
+  z-index: 3;
+}
+
+/* React CSS Transition Groups animations*/
+
+/* Sprite animations*/
+.sprite-enter {
+  opacity: 0;
+}
+
+.sprite-enter.sprite-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+
+.sprite-leave {
+  opacity: 1;
+}
+
+.sprite-leave.sprite-leave-active {
+  opacity: 0;
+  transition: opacity 100ms ease-in;
+}
+
+/* BG & textbox animations for scenery change */
+.scene-enter {
+  opacity: 0;
+}
+
+.scene-enter.scene-enter-active {
+  opacity: 1;
+  transition: opacity 2000ms ease-in;
+}
+
+.scene-leave {
+  opacity: 1;
+}
+
+.scene-leave.scene-leave-active {
+  opacity: 0;
+  transition: opacity 1700ms ease-in;
+}
+
+/* Menu */
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  transition: 0.5s fade;
+}
+button {
+  position: relative;
+  top: 45%;
+  transform: translateY(-50%);
+  color: #e88c30;
+  transition: 0.75s;
+  background: none;
+  border: 2px solid;
+  font: inherit;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 0.75em 1.5em;
+  font-size: 20px;
+}
+button:hover,
+button:focus {
+  border-color: #e8306e;
+  color: #e8306e;
+}
+
+.btn-group {
+  position: absolute;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+}
+
+.btn-group button {
+  font-size: 26px;
+  width: 60%;
+  margin: 30px auto;
+  border-radius: 25px;
+  background-color: #222;
+  border: none;
+  color: white;
+  padding: 10px 0px;
+  cursor: pointer;
+  display: block;
+}
+
+@media only screen and (max-width: 768px) {
+  .btn-group button {
+    padding: 8px 0px;
+    font-size: 18px;
+    width: 80%;
+  }
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: white;
+  color: #222;
+}
