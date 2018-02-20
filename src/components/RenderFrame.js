@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
-function FrameRender(props) {
+function RenderFrame(props) {
   return (
-    <div>
+    <div onClick={props.setNextFrame}>
       {props.sceneChange ? (
         <div>
           <ReactCSSTransitionGroup
@@ -15,13 +15,12 @@ function FrameRender(props) {
           >
             <img key={props.bg} className="bg" src={props.bg} />
             <img key={props.sprite} className="sprite" src={props.sprite} />
-
             {props.text ? (
               <div className="text-box">
                 {props.speaker ? (
-                  <div className="speaker">{props.speaker}</div>
+                  <div className="speaker"> {props.speaker} </div>
                 ) : null}
-                <div className="text">{props.text}</div>
+                <div className="text"> {props.text} </div>
               </div>
             ) : null}
           </ReactCSSTransitionGroup>
@@ -37,13 +36,12 @@ function FrameRender(props) {
             <img key={props.bg} className="bg" src={props.bg} />
             <img key={props.sprite} className="sprite" src={props.sprite} />
           </ReactCSSTransitionGroup>
-
           {props.text ? (
             <div className="text-box">
               {props.speaker ? (
-                <div className="speaker">{props.speaker}</div>
+                <div className="speaker"> {props.speaker} </div>
               ) : null}
-              <div className="text">{props.text}</div>
+              <div className="text"> {props.text} </div>
             </div>
           ) : null}
         </div>
@@ -52,4 +50,4 @@ function FrameRender(props) {
   );
 }
 
-export default FrameRender;
+export default RenderFrame;

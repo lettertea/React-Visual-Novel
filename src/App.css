@@ -11,7 +11,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  overflow: hidden;
 }
 
 .bg {
@@ -75,7 +74,6 @@
   bottom: 116px;
   color: white;
   text-align: center;
-  background-image: url("speaker.png");
   padding-top: 4px;
   margin-left: -30px;
   width: 290px;
@@ -124,48 +122,20 @@
   transition: opacity 1700ms ease-in;
 }
 
-/* Menu */
+/* choice */
 
-.overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 4;
+.choice-buttons {
   background-color: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
-  transition: 0.5s fade;
-}
-button {
-  position: relative;
-  top: 45%;
-  transform: translateY(-50%);
-  color: #e88c30;
-  transition: 0.75s;
-  background: none;
-  border: 2px solid;
-  font: inherit;
-  line-height: 1;
-  margin: 0.5em;
-  padding: 0.75em 1.5em;
-  font-size: 20px;
-}
-button:hover,
-button:focus {
-  border-color: #e8306e;
-  color: #e8306e;
-}
-
-.btn-group {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   z-index: 4;
   width: 100%;
   height: 100%;
 }
 
-.btn-group button {
+.choice-buttons input {
   font-size: 26px;
   width: 60%;
   margin: 30px auto;
@@ -173,21 +143,72 @@ button:focus {
   background-color: #222;
   border: none;
   color: white;
-  padding: 10px 0px;
+  padding: 12px 0px;
   cursor: pointer;
   display: block;
 }
 
 @media only screen and (max-width: 768px) {
-  .btn-group button {
-    padding: 8px 0px;
-    font-size: 18px;
+  .choice-buttons input {
+    padding: 10px 0px;
+    font-size: 20px;
     width: 80%;
   }
 }
 
 /* Add a background color on hover */
-.btn-group button:hover {
+.choice-buttons input:hover {
   background-color: white;
   color: #222;
+}
+
+.menu-buttons {
+  position: relative;
+  top: 760px;
+  width: 100%;
+  float: left;
+}
+
+.menu-buttons button {
+  background-color: #4caf50; /* Green background */
+  border: 1px solid green; /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */ /* Float the buttons side by side */
+  z-index: 5;
+}
+
+/* Clear floats (clearfix hack) */
+.menu-buttons:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.menu-buttons button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+.menu-buttons span {
+  margin-right: 15px;
+}
+
+/* Add a background color on hover */
+.menu-buttons button:hover {
+  color: white;
+  background-color: #3e8e41;
+}
+
+.shown-button {
+  float: right;
+}
+.hidden button {
+  float: right;
+  background-color: transparent;
+  color: transparent;
+  border: 1px solid transparent;
+}
+
+.inline-block {
+  display: inline-block !important;
 }
