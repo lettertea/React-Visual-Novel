@@ -8,14 +8,38 @@ function MenuButtons(props) {
           <button onClick={props.setPreviousFrame}>Back</button>
         </span>
         <span>
-          <button onClick={props.saveOne}>Save</button>
-          <button onClick={props.loadOne}>
+          <button
+            onClick={() => {
+              if (window.confirm("Are you sure you want to save?"))
+                props.saveOne();
+            }}
+          >
+            Save
+          </button>
+          <button
+            onClick={() => {
+              if (window.confirm("Are you sure you want to load?"))
+                props.loadOne();
+            }}
+          >
             Load: {props.saveOneIndex + 1}
           </button>
         </span>
         <span>
-          <button onClick={props.saveTwo}>Save</button>
-          <button onClick={props.loadTwo}>
+          <button
+            onClick={() => {
+              if (window.confirm("Are you sure you want to save?"))
+                props.saveTwo();
+            }}
+          >
+            Save
+          </button>
+          <button
+            onClick={() => {
+              if (window.confirm("Are you sure you want to load"))
+                props.loadTwo();
+            }}
+          >
             Load: {props.saveTwoIndex + 1}
           </button>
         </span>
