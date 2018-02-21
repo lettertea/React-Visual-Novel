@@ -8,7 +8,7 @@ function MenuButtons(props) {
           <button onClick={props.setPreviousFrame}>Back</button>
         </span>
         <span>
-          <button onClick={handleOnClick}>Save</button>
+          <button onClick={props.saveOne}>Save</button>
           <button onClick={props.loadOne}>
             Load: {props.saveOneIndex + 1}
           </button>
