@@ -1,5 +1,6 @@
 var novelFrames = [
   {
+    speaker: "shizuku",
     bg: "bg/rainy_class.png",
     text: "jf",
     sprite: "sprites/shizuku-laughing.png",

@@ -71,6 +71,7 @@
 }
 
 .speaker {
+  background-image: url("speaker.png");
   position: absolute;
   bottom: 116px;
   color: white;
