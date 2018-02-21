@@ -8,14 +8,16 @@ function MenuButtons(props) {
           <button onClick={props.setPreviousFrame}>Back</button>
         </span>
         <span>
-          <button onClick={props.saveOne}>Save</button>
+          <button onClick={handleOnClick}>Save</button>
           <button onClick={props.loadOne}>
             Load: {props.saveOneIndex + 1}
           </button>
         </span>
         <span>
-          <button>Save</button>
-          <button>Load</button>
+          <button onClick={props.saveTwo}>Save</button>
+          <button onClick={props.loadTwo}>
+            Load: {props.saveTwoIndex + 1}
+          </button>
         </span>
         <button className="shown-button" onClick={props.toggleMenu}>
           Hide Buttons

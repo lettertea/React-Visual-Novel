@@ -9,7 +9,8 @@ var routePath = [
     bg: "bg/rainy_class.png",
     text: "fasdawer3war",
     sprite: "sprites/shizuku-laughing.png"
-  }
+  },
+  {}
 ];
 
 export default routePath;

@@ -1,4 +1,4 @@
-var quizQuestions = [
+var novelFrames = [
   {
     bg: "bg/rainy_class.png",
     text: "jf",
@@ -22,4 +22,4 @@ var quizQuestions = [
   }
 ];
 
-export default quizQuestions;
+export default novelFrames;

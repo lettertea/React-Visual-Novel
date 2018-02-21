@@ -1,16 +1,21 @@
+// Dependencies
 import React, { Component } from "react";
 import update from "react-addons-update";
-import quizQuestions from "./api/quizQuestions";
+// API
+import novelFrames from "./api/novelFrames";
 import routePath from "./api/routePath";
-import Quiz from "./components/Quiz";
-import RenderFrame from "./components/RenderFrame";
 import Choices from "./api/Choices";
+// Components
+import ChoiceMenu from "./components/ChoiceMenu";
+import RenderFrame from "./components/RenderFrame";
 import MenuButtons from "./components/MenuButtons";
+// css
 import "./App.css";
 
+// States that don't need to mount or rely on api data
 const initialState = {
-  counter: 0,
-  answersCount: {
+  choicesIndex: 0,
+  choicesCount: {
     Sprinter: 0,
     "Mid-distance runner": 0,
     "Long-distance runner": 0
@@ -21,32 +26,34 @@ const initialState = {
 };
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super(); //constructor init
 
     this.state = initialState;
-    this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
   }
 
   setFrame(index) {
-    if (index >= quizQuestions.length) {
-      index = quizQuestions.length - 1;
+    // Makes sure the user's index is within the novelFrames array
+    if (index >= novelFrames.length) {
+      index = novelFrames.length - 1;
     } else if (index <= -1) {
       index = 0;
     }
+    // Updates game with new index
     this.setState({
       index: index,
-      text: quizQuestions[index].text,
-      bg: quizQuestions[index].bg,
-      bgm: quizQuestions[index].bgm,
-      choicesExist: quizQuestions[index].choicesExist,
-      speaker: quizQuestions[index].speaker,
-      sprite: quizQuestions[index].sprite,
-      voice: quizQuestions[index].voice
+      text: novelFrames[index].text,
+      bg: novelFrames[index].bg,
+      bgm: novelFrames[index].bgm,
+      choicesExist: novelFrames[index].choicesExist,
+      speaker: novelFrames[index].speaker,
+      sprite: novelFrames[index].sprite,
+      voice: novelFrames[index].voice
     });
   }
 
   setRouteFrame(routeIndex) {
+    // Updates game with new index when on a detour path following a choice
     this.setState({
       routeIndex: routeIndex,
       routeText: routePath[routeIndex].text,
@@ -60,15 +67,18 @@ class App extends Component {
   }
 
   componentWillMount() {
+    // For main game
     const index = 0;
     this.setFrame(index);
+    // For detour path
     const routeIndex = 0;
     this.setRouteFrame(routeIndex);
 
     this.setState({
-      saveOne: JSON.parse(localStorage.getItem("saved-index")),
+      saveOne: JSON.parse(localStorage.getItem("save-one")), //fist save point will appear on load
+      saveTwo: JSON.parse(localStorage.getItem("save-two")), //second save point will appear on load
       question: Choices[0].question,
-      answerOptions: Choices[0].answers
+      choiceOptions: Choices[0].choices
     });
   }
 
@@ -88,7 +98,10 @@ class App extends Component {
   }
 
   renderFrame() {
-    if (this.state.answersCount.Sprinter === 1) {
+    if (
+      this.state.choicesCount.Sprinter === 1 &&
+      this.state.routeIndex < routePath.length - 1
+    ) {
       return (
         <RenderFrame
           setNextFrame={this.setNextRouteFrame.bind(this)}
@@ -112,71 +125,89 @@ class App extends Component {
       );
     }
   }
+  setNextChoice() {
+    const choicesIndex = this.state.choicesIndex + 1;
 
-  handleAnswerSelected(event) {
-    this.state.choicesExist;
-    this.setUserAnswer(event.currentTarget.name);
+    this.setState({
+      choicesIndex: choicesIndex,
+      choiceOptions: Choices[choicesIndex].choices
+    });
+  }
+
+  handleChoiceSelected(event) {
+    this.setUserChoice(event.currentTarget.name);
     this.setNextFrame();
     this.setState({
       routeIndex: 0,
-      choicesExist: false
+      choicesExist: false // Prevents choice menu from running all at once
     });
-    this.setNextQuestion();
+    this.setNextChoice();
   }
 
-  setUserAnswer(answer) {
-    const updatedAnswersCount = update(this.state.answersCount, {
-      [answer]: { $apply: currentValue => currentValue + 1 }
+  setUserChoice(choice) {
+    const updatedChoicesCount = update(this.state.choicesCount, {
+      [choice]: { $apply: currentValue => currentValue + 1 }
     });
 
     this.setState({
-      answersCount: updatedAnswersCount,
-      answer: answer
+      choicesCount: updatedChoicesCount
     });
   }
 
-  setNextQuestion() {
-    const counter = this.state.counter + 1;
-    const questionId = this.state.questionId + 1;
-
-    this.setState({
-      counter: counter,
-      questionId: questionId,
-      question: Choices[counter].question,
-      answerOptions: Choices[counter].answers,
-      answer: ""
-    });
-  }
-
-  renderQuiz() {
+  renderChoiceMenu() {
     return (
-      <Quiz
-        answer={this.state.answer}
-        answerOptions={this.state.answerOptions}
-        onAnswerSelected={this.handleAnswerSelected}
+      <ChoiceMenu
+        choiceOptions={this.state.choiceOptions}
+        onChoiceSelected={this.handleChoiceSelected.bind(this)}
       />
     );
   }
 
+  // Allows users to show or hide menu buttons
   toggleMenu() {
     this.setState(prevState => ({
       showMenu: !prevState.showMenu
     }));
   }
+
+  // First save point from local storage
   saveOne() {
-    localStorage.setItem("saved-index", this.state.index);
+    localStorage.setItem("save-one", this.state.index);
+    this.setState({
+      saveOne: JSON.parse(localStorage.getItem("save-one"))
+    });
   }
+
+  // Loads saveOne from local storage
   loadOne() {
-    const index = JSON.parse(localStorage.getItem("saved-index"));
+    const index = JSON.parse(localStorage.getItem("save-one"));
     this.setFrame(index);
   }
 
+  // Second save point from local storage
+  saveTwo() {
+    localStorage.setItem("save-two", this.state.index);
+    this.setState({
+      saveTwo: JSON.parse(localStorage.getItem("save-two"))
+    });
+  }
+
+  // Loads saveTwo from local storage
+  loadTwo() {
+    const index = JSON.parse(localStorage.getItem("save-two"));
+    this.setFrame(index);
+  }
+
+  // Menu on bottom of screen
   renderMenuButtons() {
     return (
       <MenuButtons
         saveOne={this.saveOne.bind(this)}
         saveOneIndex={this.state.saveOne}
         loadOne={this.loadOne.bind(this)}
+        saveTwo={this.saveTwo.bind(this)}
+        saveTwoIndex={this.state.saveTwo}
+        loadTwo={this.loadTwo.bind(this)}
         setPreviousFrame={this.setPreviousFrame.bind(this)}
         toggleMenu={this.toggleMenu.bind(this)}
       />
@@ -187,7 +218,7 @@ class App extends Component {
     return (
       <div className="container">
         {this.renderFrame()}
-        {this.state.choicesExist ? this.renderQuiz() : null}
+        {this.state.choicesExist ? this.renderChoiceMenu() : null}
         {this.state.showMenu ? (
           this.renderMenuButtons()
         ) : (

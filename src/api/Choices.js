@@ -1,7 +1,6 @@
 var Choices = [
   {
-    question: "How do you like your workouts?",
-    answers: [
+    choices: [
       {
         type: "Mid-distance runner",
         content: "Intense, exciting, and agonizing."
@@ -17,8 +16,7 @@ var Choices = [
     ]
   },
   {
-    question: "How important are the technical details?",
-    answers: [
+    choices: [
       {
         type: "Sprinter",
         content:
@@ -35,8 +33,7 @@ var Choices = [
     ]
   },
   {
-    question: "What would you rather hear?",
-    answers: [
+    choices: [
       {
         type: "Sprinter",
         content: "Wait--when did you get here?"
@@ -52,8 +49,7 @@ var Choices = [
     ]
   },
   {
-    question: "What type of shoes would you rather wear?",
-    answers: [
+    choices: [
       {
         type: "Long-distance runner",
         content:
@@ -71,8 +67,7 @@ var Choices = [
     ]
   },
   {
-    question: "What is your subtle humble brag?",
-    answers: [
+    choices: [
       {
         type: "Mid-distance runner",
         content:
