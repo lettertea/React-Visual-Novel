@@ -7,6 +7,7 @@ function ChoiceMenu(props) {
       <ChoiceOption
         key={key.content}
         answerContent={key.content}
+        answerType={key.type}
         onChoiceSelected={props.onChoiceSelected}
       />
     );
