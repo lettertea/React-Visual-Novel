@@ -66,19 +66,28 @@ class App extends Component {
     });
   }
 
-  componentWillMount() {
+  setChoiceNumber(choicesIndex) {
+    this.setState({
+      choicesIndex: choicesIndex,
+      question: Choices[choicesIndex].question,
+      choiceOptions: Choices[choicesIndex].choices
+    });
+  }
+
+  componentDidMount() {
     // For main game
     const index = 0;
     this.setFrame(index);
     // For detour path
     const routeIndex = 0;
     this.setRouteFrame(routeIndex);
+    // For Choice number
+    const choicesIndex = 0;
+    this.setChoiceNumber(choicesIndex);
 
     this.setState({
       saveOne: JSON.parse(localStorage.getItem("save-one")), //fist save point will appear on load
-      saveTwo: JSON.parse(localStorage.getItem("save-two")), //second save point will appear on load
-      question: Choices[0].question,
-      choiceOptions: Choices[0].choices
+      saveTwo: JSON.parse(localStorage.getItem("save-two")) //second save point will appear on load
     });
   }
 
@@ -172,30 +181,21 @@ class App extends Component {
 
   // First save point from local storage
   saveOne() {
-    localStorage.setItem("save-one", this.state.index);
-    this.setState({
-      saveOne: JSON.parse(localStorage.getItem("save-one"))
-    });
+    localStorage.setItem("save-one", JSON.stringify(this.state));
   }
 
   // Loads saveOne from local storage
   loadOne() {
-    const index = JSON.parse(localStorage.getItem("save-one"));
-    this.setFrame(index);
+    this.setState(JSON.parse(localStorage.getItem("save-one")));
   }
-
   // Second save point from local storage
   saveTwo() {
-    localStorage.setItem("save-two", this.state.index);
-    this.setState({
-      saveTwo: JSON.parse(localStorage.getItem("save-two"))
-    });
+    localStorage.setItem("save-two", JSON.stringify(this.state));
   }
 
   // Loads saveTwo from local storage
   loadTwo() {
-    const index = JSON.parse(localStorage.getItem("save-two"));
-    this.setFrame(index);
+    this.setState(JSON.parse(localStorage.getItem("save-two")));
   }
 
   // Menu on bottom of screen
