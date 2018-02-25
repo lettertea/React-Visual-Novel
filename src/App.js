@@ -18,7 +18,7 @@ const initialState = {
   choicesCount: {
     Sprinter: 0,
     "Mid-distance runner": 0,
-    "Long-distance runner": 0
+    "Long-distance": 0
   },
   index: 0,
   choicesExist: false,
@@ -39,7 +39,7 @@ class App extends Component {
     } else if (index <= -1) {
       index = 0;
     }
-    // Updates game with new index
+    // Updates novelFrames with new index
     this.setState({
       index: index,
       text: novelFrames[index].text,
@@ -53,7 +53,7 @@ class App extends Component {
   }
 
   setRouteFrame(routeIndex) {
-    // Updates game with new index when on a detour path following a choice
+    // Updates 'detour' route path with new index
     this.setState({
       routeIndex: routeIndex,
       routeText: routePath[routeIndex].text,
@@ -84,11 +84,6 @@ class App extends Component {
     // For Choice number
     const choicesIndex = 0;
     this.setChoiceNumber(choicesIndex);
-
-    this.setState({
-      saveOne: JSON.parse(localStorage.getItem("save-one")), //fist save point will appear on load
-      saveTwo: JSON.parse(localStorage.getItem("save-two")) //second save point will appear on load
-    });
   }
 
   setPreviousFrame() {
@@ -111,6 +106,7 @@ class App extends Component {
       this.state.choicesCount.Sprinter === 1 &&
       this.state.routeIndex < routePath.length - 1
     ) {
+      // For 'routePath.js' choice
       return (
         <RenderFrame
           setNextFrame={this.setNextRouteFrame.bind(this)}
@@ -122,6 +118,7 @@ class App extends Component {
         />
       );
     } else {
+      // Main route: 'novelFrames.js'
       return (
         <RenderFrame
           setNextFrame={this.setNextFrame.bind(this)}
@@ -134,9 +131,9 @@ class App extends Component {
       );
     }
   }
+
   setNextChoice() {
     const choicesIndex = this.state.choicesIndex + 1;
-
     this.setState({
       choicesIndex: choicesIndex,
       choiceOptions: Choices[choicesIndex].choices
@@ -147,8 +144,7 @@ class App extends Component {
     this.setUserChoice(event.currentTarget.name);
     this.setNextFrame();
     this.setState({
-      routeIndex: 0,
-      choicesExist: false // Prevents choice menu from running all at once
+      routeIndex: 0
     });
     this.setNextChoice();
   }
@@ -157,7 +153,6 @@ class App extends Component {
     const updatedChoicesCount = update(this.state.choicesCount, {
       [choice]: { $apply: currentValue => currentValue + 1 }
     });
-
     this.setState({
       choicesCount: updatedChoicesCount
     });
@@ -171,7 +166,6 @@ class App extends Component {
       />
     );
   }
-
   // Allows users to show or hide menu buttons
   toggleMenu() {
     this.setState(prevState => ({
@@ -179,39 +173,36 @@ class App extends Component {
     }));
   }
 
-  // First save point from local storage
-  saveOne() {
-    localStorage.setItem("save-one", JSON.stringify(this.state));
+  // Saves and sets current state to local storage
+  saveSlot(number) {
+    localStorage.setItem(number, JSON.stringify(this.state));
+    this.setState(JSON.parse(localStorage.getItem(number)));
   }
 
-  // Loads saveOne from local storage
-  loadOne() {
-    this.setState(JSON.parse(localStorage.getItem("save-one")));
-  }
-  // Second save point from local storage
-  saveTwo() {
-    localStorage.setItem("save-two", JSON.stringify(this.state));
-  }
-
-  // Loads saveTwo from local storage
-  loadTwo() {
-    this.setState(JSON.parse(localStorage.getItem("save-two")));
+  // Loads and sets state local storage
+  loadSlot(number) {
+    this.setState(JSON.parse(localStorage.getItem(number)));
   }
 
   // Menu on bottom of screen
   renderMenuButtons() {
-    return (
-      <MenuButtons
-        saveOne={this.saveOne.bind(this)}
-        saveOneIndex={this.state.saveOne}
-        loadOne={this.loadOne.bind(this)}
-        saveTwo={this.saveTwo.bind(this)}
-        saveTwoIndex={this.state.saveTwo}
-        loadTwo={this.loadTwo.bind(this)}
-        setPreviousFrame={this.setPreviousFrame.bind(this)}
-        toggleMenu={this.toggleMenu.bind(this)}
-      />
-    );
+    // Shows menu buttons
+    if (this.state.showMenu) {
+      return (
+        <MenuButtons
+          saveSlot={this.saveSlot.bind(this)}
+          loadSlot={this.loadSlot.bind(this)}
+          toggleMenu={this.toggleMenu.bind(this)}
+        />
+      );
+    } else {
+      // Only shows "Show Buttons" on hover
+      return (
+        <div className="menu-buttons hidden">
+          <button onClick={this.toggleMenu.bind(this)}>Show Buttons</button>
+        </div>
+      );
+    }
   }
 
   render() {
@@ -219,13 +210,7 @@ class App extends Component {
       <div className="container">
         {this.renderFrame()}
         {this.state.choicesExist ? this.renderChoiceMenu() : null}
-        {this.state.showMenu ? (
-          this.renderMenuButtons()
-        ) : (
-          <div className="menu-buttons hidden">
-            <button onClick={this.toggleMenu.bind(this)}>Show Buttons</button>
-          </div>
-        )}
+        {this.renderMenuButtons()}
       </div>
     );
   }
