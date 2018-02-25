@@ -1,48 +1,43 @@
 import React from "react";
 
 function MenuButtons(props) {
-  return (
-    <div>
-      <div className="menu-buttons">
-        <span>
-          <button onClick={props.setPreviousFrame}>Back</button>
-        </span>
-        <span>
-          <button
-            onClick={() => {
-              if (window.confirm("Are you sure you want to save?"))
-                props.saveOne();
-            }}
-          >
-            Save
-          </button>
+  function saveAndLoadButtons(number) {
+    return (
+      <span>
+        <button
+          onClick={() => {
+            if (
+              JSON.parse(localStorage.getItem(number)) &&
+              window.confirm("Are you sure you want to overwrite your save?")
+            ) {
+              props.saveSlot(number);
+            } else {
+              props.saveSlot(number);
+            }
+          }}
+        >
+          Save
+        </button>
+        {JSON.parse(localStorage.getItem(number)) ? (
           <button
             onClick={() => {
               if (window.confirm("Are you sure you want to load?"))
-                props.loadOne();
+                props.loadSlot(number);
             }}
           >
-            Load: {props.saveOneIndex + 1}
+            Load
           </button>
-        </span>
-        <span>
-          <button
-            onClick={() => {
-              if (window.confirm("Are you sure you want to save?"))
-                props.saveTwo();
-            }}
-          >
-            Save
-          </button>
-          <button
-            onClick={() => {
-              if (window.confirm("Are you sure you want to load"))
-                props.loadTwo();
-            }}
-          >
-            Load: {props.saveTwoIndex + 1}
-          </button>
-        </span>
+        ) : null}
+      </span>
+    );
+  }
+
+  return (
+    <div>
+      <div className="menu-buttons">
+        {saveAndLoadButtons("one")}
+        {saveAndLoadButtons("two")}
+        {saveAndLoadButtons("three")}
         <button className="shown-button" onClick={props.toggleMenu}>
           Hide Buttons
         </button>
