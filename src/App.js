@@ -179,7 +179,7 @@ class App extends Component {
     this.setState(JSON.parse(localStorage.getItem(number)));
   }
 
-  // Loads and sets state local storage
+  // Loads and sets state from local storage
   loadSlot(number) {
     this.setState(JSON.parse(localStorage.getItem(number)));
   }
@@ -196,7 +196,7 @@ class App extends Component {
         />
       );
     } else {
-      // Only shows "Show Buttons" on hover
+      // Shows "Show Buttons" on hover
       return (
         <div className="menu-buttons hidden">
           <button onClick={this.toggleMenu.bind(this)}>Show Buttons</button>
@@ -205,9 +205,26 @@ class App extends Component {
     }
   }
 
+  textLog() {
+    let textItems = [];
+    for (var i = this.state.index - 1; i >= 0; i--) {
+      textItems.push(
+        <div>
+          <div className="text-log">
+            <div className="text-log-speaker">{novelFrames[i].speaker}</div>
+            {novelFrames[i].text}
+          </div>
+        </div>
+      );
+    }
+    return <div className="overlay text-log-overlay">{textItems}</div>;
+  }
+
   render() {
     return (
       <div className="container">
+        {this.state.showMenu ? this.textLog() : null}
+
         {this.renderFrame()}
         {this.state.choicesExist ? this.renderChoiceMenu() : null}
         {this.renderMenuButtons()}
