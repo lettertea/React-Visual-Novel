@@ -14,7 +14,7 @@ function ChoiceMenu(props) {
   }
 
   return (
-    <div className="choice-buttons">
+    <div className="overlay overlay-choices">
       {props.choiceOptions.map(renderChoiceOptions)}
     </div>
   );
