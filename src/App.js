@@ -217,15 +217,37 @@ class App extends Component {
 
   textLog() {
     let loggedText = [];
-    for (var i = this.state.index - 1; i >= 0; i--) {
-      loggedText.push(
+    let routeText = [];
+    for (var i = 0; i <= this.state.index; i++) {
+      loggedText.unshift(
         <div className="text-log">
           <div className="text-log-speaker">{novelFrames[i].speaker}</div>
           {novelFrames[i].text}
         </div>
       );
     }
-    return <div className="overlay text-log-overlay">{loggedText}</div>;
+
+    if (
+      this.state.choicesCount.Sprinter === 1 &&
+      this.state.routeIndex < routePath.length - 1
+    ) {
+      for (let j = 0; j <= this.state.routeIndex; j++) {
+        routeText.unshift(
+          <div className="text-log">
+            <div className="text-log-speaker">{routePath[j].speaker}</div>
+            {routePath[j].text}
+          </div>
+        );
+      }
+    }
+
+    return (
+      <div className="overlay text-log-overlay">
+        {routeText}
+        {loggedText}
+      </div>
+    );
+  }
   }
 
   render() {
