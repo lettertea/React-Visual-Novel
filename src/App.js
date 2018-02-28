@@ -22,7 +22,8 @@ const initialState = {
   },
   index: 0,
   choicesExist: false,
-  showMenu: true
+  showMenu: true,
+  textLogShown: false
 };
 
 class App extends Component {
@@ -166,10 +167,17 @@ class App extends Component {
       />
     );
   }
+
   // Allows users to show or hide menu buttons
   toggleMenu() {
     this.setState(prevState => ({
       showMenu: !prevState.showMenu
+    }));
+  }
+
+  toggleTextLog() {
+    this.setState(prevState => ({
+      textLogShown: !prevState.textLogShown
     }));
   }
 
@@ -193,6 +201,8 @@ class App extends Component {
           saveSlot={this.saveSlot.bind(this)}
           loadSlot={this.loadSlot.bind(this)}
           toggleMenu={this.toggleMenu.bind(this)}
+          toggleTextLog={this.toggleTextLog.bind(this)}
+          textLogShown={this.state.textLogShown}
         />
       );
     } else {
@@ -206,24 +216,22 @@ class App extends Component {
   }
 
   textLog() {
-    let textItems = [];
+    let loggedText = [];
     for (var i = this.state.index - 1; i >= 0; i--) {
-      textItems.push(
-        <div>
-          <div className="text-log">
-            <div className="text-log-speaker">{novelFrames[i].speaker}</div>
-            {novelFrames[i].text}
-          </div>
+      loggedText.push(
+        <div className="text-log">
+          <div className="text-log-speaker">{novelFrames[i].speaker}</div>
+          {novelFrames[i].text}
         </div>
       );
     }
-    return <div className="overlay text-log-overlay">{textItems}</div>;
+    return <div className="overlay text-log-overlay">{loggedText}</div>;
   }
 
   render() {
     return (
       <div className="container">
-        {this.state.showMenu ? this.textLog() : null}
+        {this.state.textLogShown ? this.textLog() : null}
 
         {this.renderFrame()}
         {this.state.choicesExist ? this.renderChoiceMenu() : null}

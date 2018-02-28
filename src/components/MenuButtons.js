@@ -35,6 +35,12 @@ function MenuButtons(props) {
   return (
     <div>
       <div className="menu-buttons">
+        <span>
+          <button onClick={props.toggleTextLog}>
+            {props.textLogShown ? "Hide Text Log" : "Show Text Log"}
+          </button>
+        </span>
+
         {saveAndLoadButtons("one")}
         {saveAndLoadButtons("two")}
         {saveAndLoadButtons("three")}
