@@ -219,10 +219,12 @@
   font-size: 18px;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 768px) {
   .menu-buttons button {
+    margin-top: 10px;
     font-size: 14px;
     padding: 8px 5px;
+    float: none;
   }
 }
 
@@ -231,7 +233,7 @@
 }
 
 .menu-buttons span {
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 /* Add a background color on hover */
