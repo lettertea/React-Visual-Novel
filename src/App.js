@@ -1,6 +1,7 @@
 // Dependencies
 import React, { Component } from "react";
 import update from "react-addons-update";
+import Sound from "react-sound";
 // API
 import novelFrames from "./api/novelFrames";
 import routePath from "./api/routePath";
@@ -248,16 +249,24 @@ class App extends Component {
       </div>
     );
   }
+  playBGM() {
+    return (
+      <Sound
+        url={this.state.bgm}
+        playStatus={Sound.status.PLAYING}
+        loop="true"
+      />
+    );
   }
 
   render() {
     return (
       <div className="container">
         {this.state.textLogShown ? this.textLog() : null}
-
         {this.renderFrame()}
         {this.state.choicesExist ? this.renderChoiceMenu() : null}
         {this.renderMenuButtons()}
+        {this.playBGM()}
       </div>
     );
   }
