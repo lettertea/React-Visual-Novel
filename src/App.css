@@ -45,9 +45,11 @@
   border-radius: 10px;
   color: black;
   transform: translate(-50%, 0);
-  background-image: url("text-box.png");
-  width: 875px;
-  height: 123px;
+  background-color: rgba(250, 250, 250, 0.9);
+  background-image: linear-gradient(#61d1d1 1px, transparent 1px);
+  background-size: 100% 33.33%;
+  width: 920px;
+  height: 140px;
 }
 
 /* 1094px for smooth transition from 875px to 80% width */
@@ -71,17 +73,37 @@
 }
 
 .speaker {
-  background-image: url("speaker.png");
+  background: #06beb6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #48b1bf,
+    #06beb6
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #4c9ea9, #429494);
+  border-radius: 30px;
   position: absolute;
-  bottom: 116px;
+  bottom: 139px;
   color: white;
   text-align: center;
-  padding-top: 4px;
-  margin-left: -30px;
+  padding-top: 7px;
+  margin-left: -35px;
   width: 290px;
-  height: 49px;
+  height: 42px;
   font-size: 32px;
   z-index: 3;
+}
+
+/* Speaker box's bottom arrow */
+.speaker:before {
+  content: "";
+  position: absolute;
+  right: 230px;
+  top: 49px;
+  width: 0;
+  height: 0;
+  border-left: 13px solid transparent;
+  border-top: 15px solid #4c9ea9;
+  border-right: 13px solid transparent;
 }
 
 /* React CSS Transition Groups animations*/
@@ -200,7 +222,7 @@
 .text-log-speaker {
   font-weight: 500;
   font-size: 24px;
-  color: green;
+  color: DarkGreen;
 }
 
 .menu-buttons {
