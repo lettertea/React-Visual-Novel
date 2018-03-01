@@ -24,7 +24,8 @@ const initialState = {
   index: 0,
   choicesExist: false,
   showMenu: true,
-  textLogShown: false
+  textLogShown: false,
+  textBoxShown: true
 };
 
 class App extends Component {
@@ -117,6 +118,7 @@ class App extends Component {
           sprite={this.state.routeSprite}
           speaker={this.state.routeSpeaker}
           text={this.state.routeText}
+          textBoxShown={this.state.textBoxShown}
         />
       );
     } else {
@@ -129,6 +131,7 @@ class App extends Component {
           sprite={this.state.sprite}
           speaker={this.state.speaker}
           text={this.state.text}
+          textBoxShown={this.state.textBoxShown}
         />
       );
     }
@@ -182,6 +185,12 @@ class App extends Component {
     }));
   }
 
+  toggleTextBox() {
+    this.setState(prevState => ({
+      textBoxShown: !prevState.textBoxShown
+    }));
+  }
+
   // Saves and sets current state to local storage
   saveSlot(number) {
     localStorage.setItem(number, JSON.stringify(this.state));
@@ -203,6 +212,8 @@ class App extends Component {
           loadSlot={this.loadSlot.bind(this)}
           toggleMenu={this.toggleMenu.bind(this)}
           toggleTextLog={this.toggleTextLog.bind(this)}
+          toggleTextBox={this.toggleTextBox.bind(this)}
+          textBoxShown={this.state.textBoxShown}
           textLogShown={this.state.textLogShown}
         />
       );

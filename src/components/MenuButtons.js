@@ -40,7 +40,11 @@ function MenuButtons(props) {
             {props.textLogShown ? "Hide Text Log" : "Show Text Log"}
           </button>
         </span>
-
+        <span>
+          <button onClick={props.toggleTextBox}>
+            {props.textBoxShown ? "Hide Text Box" : "Show Text Box"}
+          </button>
+        </span>
         {saveAndLoadButtons("one")}
         {saveAndLoadButtons("two")}
         {saveAndLoadButtons("three")}

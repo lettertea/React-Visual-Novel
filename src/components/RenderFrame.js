@@ -14,7 +14,7 @@ function RenderFrame(props) {
           >
             <img key={props.bg} className="bg" src={props.bg} />
             <img key={props.sprite} className="sprite" src={props.sprite} />
-            {props.text ? (
+            {props.text && props.textBoxShown ? (
               <div className="text-box">
                 {props.speaker ? (
                   <div className="speaker"> {props.speaker} </div>
@@ -35,7 +35,7 @@ function RenderFrame(props) {
             <img key={props.bg} className="bg" src={props.bg} />
             <img key={props.sprite} className="sprite" src={props.sprite} />
           </ReactCSSTransitionGroup>
-          {props.text ? (
+          {props.text && props.textBoxShown ? (
             <div className="text-box">
               {props.speaker ? (
                 <div className="speaker"> {props.speaker} </div>
