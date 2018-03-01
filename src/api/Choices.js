@@ -2,7 +2,7 @@ var Choices = [
   {
     choices: [
       {
-        type: "Mid-distance runner",
+        type: "Alternate",
         content: "Intense, exciting, and agonizing."
       },
       {
@@ -10,7 +10,7 @@ var Choices = [
         content: "As quick as possible. I don't like running a lot."
       },
       {
-        type: "Long-distance runner",
+        type: "Third",
         content: "Long enough so that I can settle into a rhythm."
       }
     ]

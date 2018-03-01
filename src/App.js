@@ -14,10 +14,11 @@ import "./App.css";
 
 // States that don't need to mount or rely on api data
 const initialState = {
+  testRoutesCompleted: false,
   choicesCount: {
     Sprinter: 0,
-    "Mid-distance runner": 0,
-    "Long-distance": 0
+    Alternate: 0,
+    Third: 0
   },
   index: 0,
   choicesExist: false,
@@ -34,12 +35,13 @@ class App extends Component {
   }
 
   setFrame(index) {
-    // Makes sure the user's index is within the novelFrames array
+    // Makes sure the index is within the novelFrames array
     if (index >= novelFrames.length) {
       index = novelFrames.length - 1;
     } else if (index <= -1) {
       index = 0;
     }
+
     // Updates novelFrames with new index
     this.setState({
       index: index,
@@ -51,6 +53,11 @@ class App extends Component {
       sprite: novelFrames[index].sprite,
       voice: novelFrames[index].voice
     });
+    if (novelFrames[index].testRoutesCompleted) {
+      this.setState({
+        index: 9
+      });
+    }
   }
 
   setChoiceNumber(choicesIndex) {
@@ -93,7 +100,6 @@ class App extends Component {
       />
     );
   }
-  
 
   setNextChoice() {
     const choicesIndex = this.state.choicesIndex + 1;
@@ -103,22 +109,26 @@ class App extends Component {
     });
   }
 
-  handleChoiceSelected(event) {
-    this.setUserChoice(event.currentTarget.name);
-    this.setNextFrame();
-    this.setState({
-      routeIndex: 0
-    });
-    this.setNextChoice();
-  }
-
-  setUserChoice(choice) {
+  setFrameFromChoice(choice) {
     const updatedChoicesCount = update(this.state.choicesCount, {
       [choice]: { $apply: currentValue => currentValue + 1 }
     });
+    // Routes depending on choice
+    if (updatedChoicesCount.Sprinter === 1) {
+      this.setFrame(2);
+    } else if (updatedChoicesCount.Alternate === 1) {
+      this.setFrame(6);
+    } else if (updatedChoicesCount.Third === 1) {
+      this.setFrame(8);
+    }
     this.setState({
       choicesCount: updatedChoicesCount
     });
+  }
+
+  handleChoiceSelected(event) {
+    this.setFrameFromChoice(event.currentTarget.name);
+    this.setNextChoice();
   }
 
   renderChoiceMenu() {

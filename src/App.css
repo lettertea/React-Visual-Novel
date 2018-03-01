@@ -68,7 +68,7 @@
 @media only screen and (max-width: 768px) {
   .text {
     font-size: 20px;
-    line-height: 1.8;
+    line-height: 2.1;
   }
 }
 
@@ -98,7 +98,7 @@
   content: "";
   position: absolute;
   right: 230px;
-  top: 49px;
+  top: 48px;
   width: 0;
   height: 0;
   border-left: 13px solid transparent;
