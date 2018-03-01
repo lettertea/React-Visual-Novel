@@ -52,8 +52,8 @@
   height: 140px;
 }
 
-/* 1094px for smooth transition from 875px to 80% width */
-@media only screen and (max-width: 1094px) {
+/* 1150px for smooth transition from 920px to 80% width */
+@media only screen and (max-width: 1150px) {
   .text-box {
     width: 80%;
   }
