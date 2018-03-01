@@ -164,7 +164,7 @@
 
 .overlay .choice-button {
   font-size: 26px;
-  width: 60%;
+  width: 750px;
   margin: 30px auto;
   border-radius: 25px;
   background-color: #222;
@@ -175,11 +175,11 @@
   display: block;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 833px) {
   .overlay .choice-button {
     padding: 10px 0px;
     font-size: 20px;
-    width: 80%;
+    width: 90%;
   }
 }
 
@@ -236,12 +236,12 @@
   background-color: #22c39b;
   border: 1px solid #1b9878;
   color: white;
-  padding: 10px;
+  padding: 8px;
   cursor: pointer;
   font-size: 18px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 790px) {
   .menu-buttons button {
     margin-top: 10px;
     font-size: 14px;
