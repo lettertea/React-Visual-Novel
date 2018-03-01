@@ -4,7 +4,6 @@ import update from "react-addons-update";
 import Sound from "react-sound";
 // API
 import novelFrames from "./api/novelFrames";
-import routePath from "./api/routePath";
 import Choices from "./api/Choices";
 // Components
 import ChoiceMenu from "./components/ChoiceMenu";
@@ -15,7 +14,6 @@ import "./App.css";
 
 // States that don't need to mount or rely on api data
 const initialState = {
-  choicesIndex: 0,
   choicesCount: {
     Sprinter: 0,
     "Mid-distance runner": 0,
@@ -55,20 +53,6 @@ class App extends Component {
     });
   }
 
-  setRouteFrame(routeIndex) {
-    // Updates 'detour' route path with new index
-    this.setState({
-      routeIndex: routeIndex,
-      routeText: routePath[routeIndex].text,
-      routeBG: routePath[routeIndex].bg,
-      routeBGM: routePath[routeIndex].bgm,
-      routeChoicesExist: routePath[routeIndex].choicesExist,
-      routeSpeaker: routePath[routeIndex].speaker,
-      routeSprite: routePath[routeIndex].sprite,
-      routeVoice: routePath[routeIndex].voice
-    });
-  }
-
   setChoiceNumber(choicesIndex) {
     this.setState({
       choicesIndex: choicesIndex,
@@ -81,9 +65,6 @@ class App extends Component {
     // For main game
     const index = 0;
     this.setFrame(index);
-    // For detour path
-    const routeIndex = 0;
-    this.setRouteFrame(routeIndex);
     // For Choice number
     const choicesIndex = 0;
     this.setChoiceNumber(choicesIndex);
@@ -99,43 +80,20 @@ class App extends Component {
     this.setFrame(index);
   }
 
-  setNextRouteFrame() {
-    const routeIndex = this.state.routeIndex + 1;
-    this.setRouteFrame(routeIndex);
-  }
-
   renderFrame() {
-    if (
-      this.state.choicesCount.Sprinter === 1 &&
-      this.state.routeIndex < routePath.length - 1
-    ) {
-      // For 'routePath.js' choice
-      return (
-        <RenderFrame
-          setNextFrame={this.setNextRouteFrame.bind(this)}
-          bg={this.state.routeBG}
-          sceneChange={this.state.routeSceneChange}
-          sprite={this.state.routeSprite}
-          speaker={this.state.routeSpeaker}
-          text={this.state.routeText}
-          textBoxShown={this.state.textBoxShown}
-        />
-      );
-    } else {
-      // Main route: 'novelFrames.js'
-      return (
-        <RenderFrame
-          setNextFrame={this.setNextFrame.bind(this)}
-          bg={this.state.bg}
-          sceneChange={this.state.sceneChange}
-          sprite={this.state.sprite}
-          speaker={this.state.speaker}
-          text={this.state.text}
-          textBoxShown={this.state.textBoxShown}
-        />
-      );
-    }
+    return (
+      <RenderFrame
+        setNextFrame={this.setNextFrame.bind(this)}
+        bg={this.state.bg}
+        sceneChange={this.state.sceneChange}
+        sprite={this.state.sprite}
+        speaker={this.state.speaker}
+        text={this.state.text}
+        textBoxShown={this.state.textBoxShown}
+      />
+    );
   }
+  
 
   setNextChoice() {
     const choicesIndex = this.state.choicesIndex + 1;
@@ -237,20 +195,6 @@ class App extends Component {
           {novelFrames[i].text}
         </div>
       );
-    }
-
-    if (
-      this.state.choicesCount.Sprinter === 1 &&
-      this.state.routeIndex < routePath.length - 1
-    ) {
-      for (let j = 0; j <= this.state.routeIndex; j++) {
-        routeText.unshift(
-          <div className="text-log">
-            <div className="text-log-speaker">{routePath[j].speaker}</div>
-            {routePath[j].text}
-          </div>
-        );
-      }
     }
 
     return (
