@@ -24,7 +24,8 @@ const initialState = {
   choicesExist: false,
   showMenu: true,
   textLogShown: false,
-  textBoxShown: true
+  textBoxShown: true,
+  indexHistory: []
 };
 
 class App extends Component {
@@ -41,7 +42,6 @@ class App extends Component {
     } else if (index <= -1) {
       index = 0;
     }
-
     // Updates novelFrames with new index
     this.setState({
       index: index,
@@ -53,11 +53,6 @@ class App extends Component {
       sprite: novelFrames[index].sprite,
       voice: novelFrames[index].voice
     });
-    if (novelFrames[index].testRoutesCompleted) {
-      this.setState({
-        index: 9
-      });
-    }
   }
 
   setChoiceNumber(choicesIndex) {
@@ -77,14 +72,27 @@ class App extends Component {
     this.setChoiceNumber(choicesIndex);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    // Update indexHistory if index changed
+    if (prevState.index !== this.state.index) {
+      this.setState({
+        indexHistory: [...this.state.indexHistory, prevState.index]
+      });
+    }
+  }
+
   setPreviousFrame() {
     const index = this.state.index - 1;
     this.setFrame(index);
   }
 
   setNextFrame() {
-    const index = this.state.index + 1;
-    this.setFrame(index);
+    // Resume to main route after testRoutes detour
+    if (novelFrames[this.state.index].testRoutesCompleted) {
+      this.setFrame(10);
+    } else {
+      this.setFrame(this.state.index + 1);
+    }
   }
 
   renderFrame() {
@@ -197,22 +205,18 @@ class App extends Component {
 
   textLog() {
     let loggedText = [];
-    let routeText = [];
-    for (var i = 0; i <= this.state.index; i++) {
+    for (var i = 0; i < this.state.indexHistory.length; i++) {
       loggedText.unshift(
-        <div className="text-log">
-          <div className="text-log-speaker">{novelFrames[i].speaker}</div>
-          {novelFrames[i].text}
+        <div className="text-log" key={loggedText.toString()}>
+          <div className="text-log-speaker">
+            {novelFrames[this.state.indexHistory[i]].speaker}
+          </div>
+          {novelFrames[this.state.indexHistory[i]].text}
         </div>
       );
     }
 
-    return (
-      <div className="overlay text-log-overlay">
-        {routeText}
-        {loggedText}
-      </div>
-    );
+    return <div className="overlay text-log-overlay">{loggedText}</div>;
   }
   playBGM() {
     return (
