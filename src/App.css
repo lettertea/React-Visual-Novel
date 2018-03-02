@@ -85,11 +85,11 @@
   bottom: 139px;
   color: white;
   text-align: center;
-  padding-top: 7px;
+  padding-top: 8px;
   margin-left: -35px;
   width: 290px;
-  height: 42px;
-  font-size: 32px;
+  height: 38px;
+  font-size: 26px;
   z-index: 3;
 }
 
@@ -98,7 +98,7 @@
   content: "";
   position: absolute;
   right: 230px;
-  top: 48px;
+  top: 45px;
   width: 0;
   height: 0;
   border-left: 13px solid transparent;
@@ -221,7 +221,6 @@
 
 .text-log-speaker {
   font-weight: 500;
-  font-size: 24px;
   color: DarkGreen;
 }
 
