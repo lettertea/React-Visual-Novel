@@ -9,6 +9,7 @@ import Choices from "./api/Choices";
 import ChoiceMenu from "./components/ChoiceMenu";
 import RenderFrame from "./components/RenderFrame";
 import MenuButtons from "./components/MenuButtons";
+import SaveMenu from "./components/SaveMenu";
 // css
 import "./App.css";
 
@@ -228,9 +229,14 @@ class App extends Component {
     );
   }
 
+  saveMenu() {
+    return <SaveMenu />;
+  }
+
   render() {
     return (
       <div className="container">
+        {this.saveMenu()}
         {this.state.textLogShown ? this.textLog() : null}
         {this.renderFrame()}
         {this.state.choicesExist ? this.renderChoiceMenu() : null}
