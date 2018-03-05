@@ -1,37 +1,6 @@
 import React from "react";
 
 function MenuButtons(props) {
-  function saveAndLoadButtons(number) {
-    return (
-      <span>
-        <button
-          onClick={() => {
-            if (
-              JSON.parse(localStorage.getItem(number)) &&
-              window.confirm("Are you sure you want to overwrite your save?")
-            ) {
-              props.saveSlot(number);
-            } else {
-              props.saveSlot(number);
-            }
-          }}
-        >
-          Save
-        </button>
-        {JSON.parse(localStorage.getItem(number)) ? (
-          <button
-            onClick={() => {
-              if (window.confirm("Are you sure you want to load?"))
-                props.loadSlot(number);
-            }}
-          >
-            Load
-          </button>
-        ) : null}
-      </span>
-    );
-  }
-
   return (
     <div>
       <div className="menu-buttons">
@@ -45,9 +14,10 @@ function MenuButtons(props) {
             {props.textBoxShown ? "Hide Text Box" : "Show Text Box"}
           </button>
         </span>
-        {saveAndLoadButtons("one")}
-        {saveAndLoadButtons("two")}
-        {saveAndLoadButtons("three")}
+        <span>
+          <button onClick={props.toggleSaveMenu}>Save Menu</button>
+          <button onClick={props.toggleLoadMenu}>Load Menu</button>
+        </span>
         <button className="shown-button" onClick={props.toggleMenu}>
           Hide Buttons
         </button>

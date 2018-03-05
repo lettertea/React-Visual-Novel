@@ -9,7 +9,7 @@ import Choices from "./api/Choices";
 import ChoiceMenu from "./components/ChoiceMenu";
 import RenderFrame from "./components/RenderFrame";
 import MenuButtons from "./components/MenuButtons";
-import SaveMenu from "./components/SaveMenu";
+import SaveAndLoadMenu from "./components/SaveAndLoadMenu";
 // css
 import "./App.css";
 
@@ -26,6 +26,8 @@ const initialState = {
   showMenu: true,
   textLogShown: false,
   textBoxShown: true,
+  saveMenuShown: false,
+  loadMenuShown: false,
   indexHistory: []
 };
 
@@ -168,6 +170,18 @@ class App extends Component {
     }));
   }
 
+  toggleSaveMenu() {
+    this.setState(prevState => ({
+      saveMenuShown: !prevState.saveMenuShown
+    }));
+  }
+
+  toggleLoadMenu() {
+    this.setState(prevState => ({
+      loadMenuShown: !prevState.loadMenuShown
+    }));
+  }
+
   // Saves and sets current state to local storage
   saveSlot(number) {
     localStorage.setItem(number, JSON.stringify(this.state));
@@ -177,6 +191,25 @@ class App extends Component {
   // Loads and sets state from local storage
   loadSlot(number) {
     this.setState(JSON.parse(localStorage.getItem(number)));
+    this.toggleLoadMenu();
+  }
+
+  saveMenu() {
+    return (
+      <SaveAndLoadMenu
+        menuType="Save Menu"
+        executeSlot={this.saveSlot.bind(this)}
+      />
+    );
+  }
+
+  loadMenu() {
+    return (
+      <SaveAndLoadMenu
+        menuType="Load Menu"
+        executeSlot={this.loadSlot.bind(this)}
+      />
+    );
   }
 
   // Menu on bottom of screen
@@ -185,6 +218,8 @@ class App extends Component {
     if (this.state.showMenu) {
       return (
         <MenuButtons
+          toggleSaveMenu={this.toggleSaveMenu.bind(this)}
+          toggleLoadMenu={this.toggleLoadMenu.bind(this)}
           saveSlot={this.saveSlot.bind(this)}
           loadSlot={this.loadSlot.bind(this)}
           toggleMenu={this.toggleMenu.bind(this)}
@@ -229,14 +264,11 @@ class App extends Component {
     );
   }
 
-  saveMenu() {
-    return <SaveMenu />;
-  }
-
   render() {
     return (
       <div className="container">
-        {this.saveMenu()}
+        {this.state.saveMenuShown ? this.saveMenu() : null}
+        {this.state.loadMenuShown ? this.loadMenu() : null}
         {this.state.textLogShown ? this.textLog() : null}
         {this.renderFrame()}
         {this.state.choicesExist ? this.renderChoiceMenu() : null}
