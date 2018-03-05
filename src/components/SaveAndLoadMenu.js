@@ -18,7 +18,7 @@ function SaveAndLoadMenu(props) {
           }
         }}
       >
-        <div className="gallery">
+        <div className="menu-slot">
           <a>
             <img
               className="slot-bg"
@@ -47,7 +47,7 @@ function SaveAndLoadMenu(props) {
       {menuSlot("ten")}
       {menuSlot("eleven")}
       <div className="responsive">
-        <div className="gallery">
+        <div className="menu-slot">
           <div className="save-load-logo">{props.menuType}</div>
         </div>
       </div>
