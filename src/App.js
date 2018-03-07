@@ -151,7 +151,6 @@ class App extends Component {
     );
   }
 
-  // Allows users to show or hide menu buttons
   toggleMenu() {
     this.setState(prevState => ({
       showMenu: !prevState.showMenu
@@ -184,6 +183,7 @@ class App extends Component {
 
   // Saves and sets current state to local storage
   saveSlot(number) {
+    localStorage.setItem("time" + number, new Date().toString());
     localStorage.setItem(number, JSON.stringify(this.state));
     this.setState(JSON.parse(localStorage.getItem(number)));
   }
@@ -197,6 +197,7 @@ class App extends Component {
   saveMenu() {
     return (
       <SaveAndLoadMenu
+        currentTime={this.state.currentTime}
         menuType="Save Menu"
         executeSlot={this.saveSlot.bind(this)}
       />
@@ -206,6 +207,7 @@ class App extends Component {
   loadMenu() {
     return (
       <SaveAndLoadMenu
+        currentTime={this.state.currentTime}
         menuType="Load Menu"
         executeSlot={this.loadSlot.bind(this)}
       />

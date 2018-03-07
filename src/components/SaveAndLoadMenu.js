@@ -1,8 +1,6 @@
 import React from "react";
 
 function SaveAndLoadMenu(props) {
-  var today = new Date().toString();
-
   function menuSlot(number) {
     return (
       <div
@@ -18,17 +16,29 @@ function SaveAndLoadMenu(props) {
           }
         }}
       >
-        <div className="menu-slot">
-          <a>
-            <img
-              className="slot-bg"
-              src="bg/rainy_class.png"
-              alt="Trolltunga Norway"
-            />
-            <img src="sprites/shizuku-angry.png" className="slot-sprite" />
-          </a>
-          <div className="desc">{today}</div>
-        </div>
+        {JSON.parse(localStorage.getItem(number)) ? (
+          <div className="menu-slot">
+            <a>
+              <img
+                className="slot-bg"
+                src={JSON.parse(localStorage.getItem(number)).bg}
+                alt="Trolltunga Norway"
+              />
+              <img
+                src={JSON.parse(localStorage.getItem(number)).sprite}
+                className="slot-sprite"
+              />
+            </a>
+            <div className="desc">
+              {JSON.stringify(localStorage.getItem("time" + number)).replace(
+                /\"/g,
+                ""
+              )}
+            </div>
+          </div>
+        ) : (
+          <div className="menu-slot empty-menu-slot" />
+        )}
       </div>
     );
   }
