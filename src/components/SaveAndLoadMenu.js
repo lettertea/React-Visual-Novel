@@ -22,7 +22,6 @@ function SaveAndLoadMenu(props) {
               <img
                 className="slot-bg"
                 src={JSON.parse(localStorage.getItem(number)).bg}
-                alt="Trolltunga Norway"
               />
               <img
                 src={JSON.parse(localStorage.getItem(number)).sprite}
@@ -57,8 +56,8 @@ function SaveAndLoadMenu(props) {
       {menuSlot("ten")}
       {menuSlot("eleven")}
       <div className="responsive">
-        <div className="menu-slot">
-          <div className="save-load-logo">{props.menuType}</div>
+        <div className="menu-slot" id="menu-type-slot">
+          <div id="save-load-logo">{props.menuType}</div>
         </div>
       </div>
     </div>
