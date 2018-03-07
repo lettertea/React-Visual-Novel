@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import update from "react-addons-update";
 import Sound from "react-sound";
+
 // API
 import novelFrames from "./api/novelFrames";
 import Choices from "./api/Choices";
@@ -170,12 +171,18 @@ class App extends Component {
   }
 
   toggleSaveMenu() {
+    if (this.state.loadMenuShown) {
+      this.setState({ loadMenuShown: false });
+    }
     this.setState(prevState => ({
       saveMenuShown: !prevState.saveMenuShown
     }));
   }
 
   toggleLoadMenu() {
+    if (this.state.saveMenuShown) {
+      this.setState({ saveMenuShown: false });
+    }
     this.setState(prevState => ({
       loadMenuShown: !prevState.loadMenuShown
     }));
@@ -194,6 +201,7 @@ class App extends Component {
     this.toggleLoadMenu();
   }
 
+  // Not menuButtons on bottom
   saveMenu() {
     return (
       <SaveAndLoadMenu
@@ -204,6 +212,7 @@ class App extends Component {
     );
   }
 
+  // Not menuButtons on bottom
   loadMenu() {
     return (
       <SaveAndLoadMenu
@@ -224,6 +233,8 @@ class App extends Component {
           toggleLoadMenu={this.toggleLoadMenu.bind(this)}
           saveSlot={this.saveSlot.bind(this)}
           loadSlot={this.loadSlot.bind(this)}
+          saveMenuShown={this.state.saveMenuShown}
+          loadMenuShown={this.state.loadMenuShown}
           toggleMenu={this.toggleMenu.bind(this)}
           toggleTextLog={this.toggleTextLog.bind(this)}
           toggleTextBox={this.toggleTextBox.bind(this)}
