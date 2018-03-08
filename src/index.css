@@ -4,3 +4,8 @@ body {
 	font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
 		"Lucida Sans", sans-serif;
 }
+
+a {
+	color: inherit; /* blue colors for links too */
+	text-decoration: inherit; /* no underline */
+}
