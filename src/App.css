@@ -208,7 +208,7 @@
   color: #222;
 }
 
-.text-log-overlay {
+.backlog-overlay {
   overflow: auto;
   margin: auto;
   height: 95%;
@@ -216,9 +216,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 5;
 }
 
-.text-log {
+.backlog {
   box-sizing: border-box;
   background-color: #eee;
   background-image: linear-gradient(
@@ -238,7 +239,7 @@
   padding-left: 93px;
 }
 
-.text-log-speaker {
+.backlog-speaker {
   font-weight: 500;
   color: DarkGreen;
 }

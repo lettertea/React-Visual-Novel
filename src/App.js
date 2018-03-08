@@ -286,8 +286,8 @@ class App extends Component {
     let loggedText = [];
     for (var i = 0; i < this.state.indexHistory.length; i++) {
       loggedText.unshift(
-        <div className="text-log" key={loggedText.toString()}>
-          <div className="text-log-speaker">
+        <div className="backlog" key={loggedText.toString()}>
+          <div className="backlog-speaker">
             {novelFrames[this.state.indexHistory[i]].speaker}
           </div>
           {novelFrames[this.state.indexHistory[i]].text}
@@ -295,7 +295,7 @@ class App extends Component {
       );
     }
 
-    return <div className="overlay text-log-overlay">{loggedText}</div>;
+    return <div className="overlay backlog-overlay">{loggedText}</div>;
   }
   playBGM() {
     return (
