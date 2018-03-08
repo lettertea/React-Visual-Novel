@@ -159,6 +159,12 @@ class App extends Component {
   }
 
   toggleTextLog() {
+    if (this.state.saveMenuShown) {
+      this.setState({ saveMenuShown: false });
+    }
+    if (this.state.loadMenuShown) {
+      this.setState({ loadMenuShown: false });
+    }
     this.setState(prevState => ({
       textLogShown: !prevState.textLogShown
     }));
@@ -174,6 +180,9 @@ class App extends Component {
     if (this.state.loadMenuShown) {
       this.setState({ loadMenuShown: false });
     }
+    if (this.state.textLogShown) {
+      this.setState({ textLogShown: false });
+    }
     this.setState(prevState => ({
       saveMenuShown: !prevState.saveMenuShown
     }));
@@ -182,6 +191,9 @@ class App extends Component {
   toggleLoadMenu() {
     if (this.state.saveMenuShown) {
       this.setState({ saveMenuShown: false });
+    }
+    if (this.state.textLogShown) {
+      this.setState({ textLogShown: false });
     }
     this.setState(prevState => ({
       loadMenuShown: !prevState.loadMenuShown
