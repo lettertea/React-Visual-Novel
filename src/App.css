@@ -232,37 +232,61 @@
 }
 
 .menu-buttons button {
-  background-color: #22c39b;
-  border: 1px solid #1b9878;
-  color: white;
-  padding: 8px;
+  /* credit source https://codepen.io/tmrDevelops/full/VeRvKX/ */
+  border: solid 2px #41403e; /* can substitute for others */
+  -ms-flex-item-align: center;
+  align-self: center;
+  background: transparent;
+  padding: 14px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  color: #41403e;
+  font-size: 24px;
+  letter-spacing: 1px;
+  outline: none;
+  -webkit-box-shadow: 20px 38px 34px -26px rgba(0, 0, 0, 0.2);
+  box-shadow: 20px 38px 34px -26px rgba(0, 0, 0, 0.2);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  /*
+  Above is shorthand for:
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  border-bottom-right-radius: 225px 15px;
+  border-bottom-left-radius:15px 255px;
+  */
+  margin-right: 15px;
   cursor: pointer;
-  font-size: 18px;
 }
 
-@media only screen and (max-width: 790px) {
+.menu-buttons button:hover {
+  background-color: #1b9878;
+  /* For hidden button to appear from transparent */
+  -webkit-box-shadow: 2px 8px 4px -6px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 8px 4px -6px rgba(0, 0, 0, 0.3);
+  color: #fdfdfd; /* same as bg color */
+  border: solid 2px #41403e;
+}
+
+@media only screen and (max-width: 1000px) {
   .menu-buttons button {
-    margin-top: 10px;
-    font-size: 14px;
-    padding: 8px 5px;
-    float: none;
+    font-size: 18px;
+    padding: 8px;
+    margin-right: 10px;
   }
 }
 
-.menu-buttons button:not(:last-child) {
-  border-right: none; /* Prevent double borders */
+@media only screen and (max-width: 780px) {
+  .menu-buttons button {
+    float: none;
+    font-size: 16px;
+    padding: 6px;
+    margin-top: 10px;
+  }
 }
 
-.menu-buttons span {
-  margin-right: 10px;
+.menu-buttons button:last-child {
+  margin-right: 0; /* for symmetry; prevents rightmost button margin*/
 }
-
-/* Add a background color on hover */
-.menu-buttons button:hover {
-  background-color: #1b9878;
-  color: white;
-}
-
 .shown-button {
   float: right;
 }
@@ -270,7 +294,9 @@
   float: right;
   background-color: transparent;
   color: transparent;
-  border: 1px solid transparent;
+  border: solid 2px transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 /* Save and Load menus */
