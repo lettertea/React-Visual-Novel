@@ -4,8 +4,8 @@ function MenuButtons(props) {
   return (
     <div>
       <div className="menu-buttons">
-        <button onClick={props.toggleTextLog}>
-          {props.textLogShown ? "Hide Text Log" : "Show Text Log"}
+        <button onClick={props.toggleBacklog}>
+          {props.textLogShown ? "Hide Backlog" : "Show Backlog"}
         </button>
         <button onClick={props.toggleTextBox}>
           {props.textBoxShown ? "Hide Text Box" : "Show Text Box"}

@@ -25,7 +25,7 @@ const initialState = {
   index: 0,
   choicesExist: false,
   showMenu: true,
-  textLogShown: false,
+  backlogShown: false,
   textBoxShown: true,
   saveMenuShown: false,
   loadMenuShown: false,
@@ -158,7 +158,7 @@ class App extends Component {
     }));
   }
 
-  toggleTextLog() {
+  toggleBacklog() {
     if (this.state.saveMenuShown) {
       this.setState({ saveMenuShown: false });
     }
@@ -166,7 +166,7 @@ class App extends Component {
       this.setState({ loadMenuShown: false });
     }
     this.setState(prevState => ({
-      textLogShown: !prevState.textLogShown
+      backlogShown: !prevState.backlogShown
     }));
   }
 
@@ -180,8 +180,8 @@ class App extends Component {
     if (this.state.loadMenuShown) {
       this.setState({ loadMenuShown: false });
     }
-    if (this.state.textLogShown) {
-      this.setState({ textLogShown: false });
+    if (this.state.backlogShown) {
+      this.setState({ backlogShown: false });
     }
     this.setState(prevState => ({
       saveMenuShown: !prevState.saveMenuShown
@@ -192,8 +192,8 @@ class App extends Component {
     if (this.state.saveMenuShown) {
       this.setState({ saveMenuShown: false });
     }
-    if (this.state.textLogShown) {
-      this.setState({ textLogShown: false });
+    if (this.state.backlogShown) {
+      this.setState({ backlogShown: false });
     }
     this.setState(prevState => ({
       loadMenuShown: !prevState.loadMenuShown
@@ -248,10 +248,10 @@ class App extends Component {
           saveMenuShown={this.state.saveMenuShown}
           loadMenuShown={this.state.loadMenuShown}
           toggleMenu={this.toggleMenu.bind(this)}
-          toggleTextLog={this.toggleTextLog.bind(this)}
+          toggleBacklog={this.toggleBacklog.bind(this)}
           toggleTextBox={this.toggleTextBox.bind(this)}
           textBoxShown={this.state.textBoxShown}
-          textLogShown={this.state.textLogShown}
+          backlogShown={this.state.backlogShown}
         />
       );
     } else {
@@ -264,7 +264,7 @@ class App extends Component {
     }
   }
 
-  textLog() {
+  backlog() {
     let loggedText = [];
     for (var i = 0; i < this.state.indexHistory.length; i++) {
       loggedText.unshift(
@@ -294,7 +294,7 @@ class App extends Component {
       <div className="container">
         {this.state.saveMenuShown ? this.saveMenu() : null}
         {this.state.loadMenuShown ? this.loadMenu() : null}
-        {this.state.textLogShown ? this.textLog() : null}
+        {this.state.backlogShown ? this.backlog() : null}
         {this.renderFrame()}
         {this.state.choicesExist ? this.renderChoiceMenu() : null}
         {this.renderMenuButtons()}
