@@ -316,14 +316,13 @@ class App extends Component {
           transitionEnterTimeout={500}
           transitionLeaveTimeout={300}
         >
-          {this.state.titleScreenShown
-            ? this.titleScreen()
-            : this.renderMenuButtons()}
+          {this.state.titleScreenShown ? this.titleScreen() : null}
           {this.state.saveMenuShown ? this.saveMenu() : null}
           {this.state.loadMenuShown ? this.loadMenu() : null}
           {this.state.backlogShown ? this.backlog() : null}
           {this.state.frameIsRendering ? this.renderFrame() : null}
           {this.state.choicesExist ? this.renderChoiceMenu() : null}
+          {!this.state.titleScreenShown ? this.renderMenuButtons() : null}
         </ReactCSSTransitionGroup>
         {this.playBGM()}
       </div>
