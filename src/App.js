@@ -2,17 +2,19 @@
 import React, { Component } from "react";
 import update from "react-addons-update";
 import Sound from "react-sound";
-
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 // API
 import novelFrames from "./api/novelFrames";
 import Choices from "./api/Choices";
 // Components
+import TitleScreen from "./components/TitleScreen";
 import ChoiceMenu from "./components/ChoiceMenu";
 import RenderFrame from "./components/RenderFrame";
 import MenuButtons from "./components/MenuButtons";
 import SaveAndLoadMenu from "./components/SaveAndLoadMenu";
 // css
 import "./App.css";
+import "./TitleScreen.css";
 
 // States that don't need to mount or rely on api data
 const initialState = {
@@ -24,6 +26,8 @@ const initialState = {
   },
   index: 0,
   choicesExist: false,
+  titleScreenShown: true,
+  frameIsRendering: false,
   showMenu: true,
   backlogShown: false,
   textBoxShown: true,
@@ -53,6 +57,7 @@ class App extends Component {
       bg: novelFrames[index].bg,
       bgm: novelFrames[index].bgm,
       choicesExist: novelFrames[index].choicesExist,
+      sceneChange: novelFrames[index].sceneChange,
       speaker: novelFrames[index].speaker,
       sprite: novelFrames[index].sprite,
       voice: novelFrames[index].voice
@@ -65,15 +70,6 @@ class App extends Component {
       question: Choices[choicesIndex].question,
       choiceOptions: Choices[choicesIndex].choices
     });
-  }
-
-  componentDidMount() {
-    // For main game
-    const index = 0;
-    this.setFrame(index);
-    // For Choice number
-    const choicesIndex = 0;
-    this.setChoiceNumber(choicesIndex);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -210,7 +206,27 @@ class App extends Component {
   // Loads and sets state from local storage
   loadSlot(number) {
     this.setState(JSON.parse(localStorage.getItem(number)));
-    this.setState({ saveMenuShown: false }); // save menu to false and not load because save is true when saving
+    this.setState({
+      saveMenuShown: false
+    }); // save menu to false and not load because save is true when saving
+  }
+
+  beginStory() {
+    this.setState({
+      titleScreenShown: false,
+      frameIsRendering: true
+    });
+    this.setFrame(0);
+    this.setChoiceNumber(0);
+  }
+
+  titleScreen() {
+    return (
+      <TitleScreen
+        beginStory={this.beginStory.bind(this)}
+        toggleLoadMenu={this.toggleLoadMenu.bind(this)}
+      />
+    );
   }
 
   // Not menuButtons on bottom
@@ -220,6 +236,7 @@ class App extends Component {
         currentTime={this.state.currentTime}
         menuType="Save Menu"
         executeSlot={this.saveSlot.bind(this)}
+        toggleMenu={this.toggleSaveMenu.bind(this)}
       />
     );
   }
@@ -231,6 +248,7 @@ class App extends Component {
         currentTime={this.state.currentTime}
         menuType="Load Menu"
         executeSlot={this.loadSlot.bind(this)}
+        toggleMenu={this.toggleLoadMenu.bind(this)}
       />
     );
   }
