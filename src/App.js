@@ -198,7 +198,7 @@ class App extends Component {
   // Loads and sets state from local storage
   loadSlot(number) {
     this.setState(JSON.parse(localStorage.getItem(number)));
-    this.toggleLoadMenu();
+    this.setState({ saveMenuShown: false }); // save menu to false and not load because save is true when saving
   }
 
   // Not menuButtons on bottom
