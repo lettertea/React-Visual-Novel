@@ -292,12 +292,21 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        {this.state.saveMenuShown ? this.saveMenu() : null}
-        {this.state.loadMenuShown ? this.loadMenu() : null}
-        {this.state.backlogShown ? this.backlog() : null}
-        {this.renderFrame()}
-        {this.state.choicesExist ? this.renderChoiceMenu() : null}
-        {this.renderMenuButtons()}
+        <ReactCSSTransitionGroup
+          component="div"
+          transitionName="menu"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}
+        >
+          {this.state.titleScreenShown
+            ? this.titleScreen()
+            : this.renderMenuButtons()}
+          {this.state.saveMenuShown ? this.saveMenu() : null}
+          {this.state.loadMenuShown ? this.loadMenu() : null}
+          {this.state.backlogShown ? this.backlog() : null}
+          {this.state.frameIsRendering ? this.renderFrame() : null}
+          {this.state.choicesExist ? this.renderChoiceMenu() : null}
+        </ReactCSSTransitionGroup>
         {this.playBGM()}
       </div>
     );
