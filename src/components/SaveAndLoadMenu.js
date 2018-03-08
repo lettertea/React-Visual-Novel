@@ -58,6 +58,9 @@ function SaveAndLoadMenu(props) {
       <div className="responsive">
         <div className="menu-slot" id="menu-type-slot">
           <div id="save-load-logo">{props.menuType}</div>
+          <button onClick={props.toggleMenu} id="leave-menu-button">
+            Leave
+          </button>
         </div>
       </div>
     </div>
