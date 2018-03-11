@@ -10,6 +10,7 @@
   top: 75%;
   left: 50%;
   transform: translate(-50%, -75%);
+  width: 100%;
 }
 #logo {
   width: 100%;
@@ -26,11 +27,11 @@
 }
 
 #menu {
-  width: 1180px;
+  width: 100%;
   height: 42px;
   list-style: none;
   margin: 100px 0 0 0;
-  padding: 32px 10px;
+  padding: 32px 0;
   border-top: 4px double #aaa;
   border-bottom: 4px double #aaa;
   position: relative;
@@ -114,4 +115,48 @@
     transparent 0%,
     rgba(0, 0, 0, 0.4) 100%
   );
+}
+
+@media only screen and (max-width: 1000px) {
+  #logo {
+    font-size: 80px;
+  }
+
+  #menu {
+    padding: 28px 0 17px;
+  }
+
+  #menu li {
+    width: 30%;
+  }
+
+  #menu li span {
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+
+  #menu li:after,
+  #menu li:before {
+    content: none;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  #logo {
+    font-size: 60px;
+  }
+
+  #menu {
+    padding: 35px 0 125px;
+  }
+
+  #menu li {
+    width: 70%;
+  }
+
+  #menu li span {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
 }

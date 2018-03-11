@@ -4,9 +4,7 @@ function TitleScreen(props) {
   return (
     <div className="overlay" id="title-overlay">
       <div id="title-screen-header">
-        <div href="/" id="logo">
-          Some React Visual Novel
-        </div>
+        <div id="logo">Some React Visual Novel</div>
         <ul id="menu">
           <li>
             <span onClick={props.beginStory}>Begin</span>
