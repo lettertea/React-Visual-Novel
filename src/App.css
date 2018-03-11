@@ -423,7 +423,7 @@
   height: 168.75px;
 }
 
-.desc {
+.slot-date {
   font-size: 16px;
   margin-top: 172px;
   padding: 0 10px;
@@ -431,7 +431,7 @@
   color: white;
 }
 
-.responsive {
+.menu-slot-container {
   float: left;
   width: 300px;
   margin: 20px 10px 0;
