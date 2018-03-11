@@ -3,7 +3,7 @@ import React from "react";
 function SaveAndLoadMenu(props) {
   function saveOrLoadSlot() {
     return (
-      <div className="responsive">
+      <div className="menu-slot-container">
         <div className="menu-slot" id="menu-type-slot">
           <div id="save-load-logo">{props.menuType}</div>
           <button onClick={props.toggleMenu} id="leave-menu-button">
@@ -16,7 +16,7 @@ function SaveAndLoadMenu(props) {
   function menuSlot(number) {
     return (
       <div
-        className="responsive"
+        className="menu-slot-container"
         onClick={() => {
           if (
             JSON.parse(localStorage.getItem(number)) &&
@@ -39,20 +39,22 @@ function SaveAndLoadMenu(props) {
                 src={JSON.parse(localStorage.getItem(number)).sprite}
                 className="slot-sprite"
               />
-              <div className="text-box slot-text-box">
-                {JSON.parse(localStorage.getItem(number)).speaker ? (
-                  <div className="speaker slot-speaker">
-                    {JSON.parse(localStorage.getItem(number)).speaker}
-                  </div>
-                ) : null}
-                {JSON.parse(localStorage.getItem(number)).text ? (
+
+              {JSON.parse(localStorage.getItem(number)).text &&
+              props.textBoxShown ? (
+                <div className="text-box slot-text-box">
+                  {JSON.parse(localStorage.getItem(number)).speaker ? (
+                    <div className="speaker slot-speaker">
+                      {JSON.parse(localStorage.getItem(number)).speaker}
+                    </div>
+                  ) : null}
                   <div className="text slot-text">
                     {JSON.parse(localStorage.getItem(number)).text}
                   </div>
-                ) : null}
-              </div>
+                </div>
+              ) : null}
             </a>
-            <div className="desc">
+            <div className="slot-date">
               {JSON.stringify(localStorage.getItem("time" + number)).replace(
                 /\"/g,
                 ""

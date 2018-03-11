@@ -239,6 +239,7 @@ class App extends Component {
         toggleMenu={this.toggleSaveMenu.bind(this)}
         speaker={this.state.speaker}
         text={this.state.text}
+        textBoxShown={this.state.textBoxShown}
       />
     );
   }
