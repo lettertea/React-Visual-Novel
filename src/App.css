@@ -91,6 +91,7 @@
   height: 38px;
   font-size: 28px;
   z-index: 3;
+  overflow: hidden;
 }
 
 /* Speaker box's bottom arrow */
@@ -212,7 +213,7 @@
   overflow: auto;
   margin: auto;
   height: 95%;
-  width: 95%;
+  width: 90%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -237,6 +238,24 @@
   padding-top: 3px;
   line-height: 1.52;
   padding-left: 93px;
+}
+
+@media only screen and (max-width: 768px) {
+  .backlog {
+    background-image: linear-gradient(
+        90deg,
+        transparent 45px,
+        #abced4 45px,
+        #abced4 47px,
+        transparent 47px
+      ),
+      linear-gradient(#ddd 2px, transparent 2px); /* shifts blue line margin to left */
+    padding-left: 59px;
+    font-size: 18px;
+    padding-top: 2px;
+    line-height: 1.45;
+    background-size: 100% 25%;
+  }
 }
 
 .backlog-speaker {
