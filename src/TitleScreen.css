@@ -82,7 +82,7 @@
     0 0 20px -5px rgba(0, 0, 0, 0.4), 0 0 0px 3px #fff inset;
 }
 #menu li:hover {
-  width: 380px;
+  width: 320px;
 }
 #menu span:hover {
   color: #d90075;
@@ -129,6 +129,9 @@
   #menu li {
     width: 30%;
   }
+  #menu li:hover {
+    width: 32%;
+  }
 
   #menu li span {
     font-size: 30px;
@@ -152,6 +155,9 @@
 
   #menu li {
     width: 70%;
+  }
+  #menu li:hover {
+    width: 75%;
   }
 
   #menu li span {
