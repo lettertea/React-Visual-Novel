@@ -237,6 +237,8 @@ class App extends Component {
         menuType="Save Menu"
         executeSlot={this.saveSlot.bind(this)}
         toggleMenu={this.toggleSaveMenu.bind(this)}
+        speaker={this.state.speaker}
+        text={this.state.text}
       />
     );
   }

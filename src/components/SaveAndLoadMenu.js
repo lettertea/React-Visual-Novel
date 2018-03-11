@@ -1,6 +1,18 @@
 import React from "react";
 
 function SaveAndLoadMenu(props) {
+  function saveOrLoadSlot() {
+    return (
+      <div className="responsive">
+        <div className="menu-slot" id="menu-type-slot">
+          <div id="save-load-logo">{props.menuType}</div>
+          <button onClick={props.toggleMenu} id="leave-menu-button">
+            Leave
+          </button>
+        </div>
+      </div>
+    );
+  }
   function menuSlot(number) {
     return (
       <div
@@ -27,6 +39,18 @@ function SaveAndLoadMenu(props) {
                 src={JSON.parse(localStorage.getItem(number)).sprite}
                 className="slot-sprite"
               />
+              <div className="text-box slot-text-box">
+                {JSON.parse(localStorage.getItem(number)).speaker ? (
+                  <div className="speaker slot-speaker">
+                    {JSON.parse(localStorage.getItem(number)).speaker}
+                  </div>
+                ) : null}
+                {JSON.parse(localStorage.getItem(number)).text ? (
+                  <div className="text slot-text">
+                    {JSON.parse(localStorage.getItem(number)).text}
+                  </div>
+                ) : null}
+              </div>
             </a>
             <div className="desc">
               {JSON.stringify(localStorage.getItem("time" + number)).replace(
@@ -36,7 +60,7 @@ function SaveAndLoadMenu(props) {
             </div>
           </div>
         ) : (
-          <div className="menu-slot empty-menu-slot" />
+          <div className="menu-slot" />
         )}
       </div>
     );
@@ -44,6 +68,7 @@ function SaveAndLoadMenu(props) {
 
   return (
     <div className="overlay overlay-menu">
+      {saveOrLoadSlot()}
       {menuSlot("one")}
       {menuSlot("two")}
       {menuSlot("three")}
@@ -55,14 +80,6 @@ function SaveAndLoadMenu(props) {
       {menuSlot("nine")}
       {menuSlot("ten")}
       {menuSlot("eleven")}
-      <div className="responsive">
-        <div className="menu-slot" id="menu-type-slot">
-          <div id="save-load-logo">{props.menuType}</div>
-          <button onClick={props.toggleMenu} id="leave-menu-button">
-            Leave
-          </button>
-        </div>
-      </div>
     </div>
   );
 }
