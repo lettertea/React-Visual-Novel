@@ -4,6 +4,7 @@ import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 function RenderFrame(props) {
   return (
     <div onClick={props.setNextFrame}>
+      {/* slow css transition for scene change */}
       {props.sceneChange ? (
         <div>
           <ReactCSSTransitionGroup
@@ -26,6 +27,7 @@ function RenderFrame(props) {
         </div>
       ) : (
         <div>
+          {/* fast css transition for regular, sprite changes. No Text box animation */}
           <ReactCSSTransitionGroup
             component="div"
             transitionName="sprite"
