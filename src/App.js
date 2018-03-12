@@ -240,6 +240,9 @@ class App extends Component {
         menuType="Load Menu"
         executeSlot={this.loadSlot.bind(this)}
         toggleMenu={this.toggleLoadMenu.bind(this)}
+        speaker={this.state.speaker}
+        text={this.state.text}
+        textBoxShown={this.state.textBoxShown}
       />
     );
   }
