@@ -11,7 +11,7 @@ import TitleScreen from "./components/TitleScreen";
 import ChoiceMenu from "./components/ChoiceMenu";
 import RenderFrame from "./components/RenderFrame";
 import MenuButtons from "./components/MenuButtons";
-import SaveAndLoadMenu from "./components/SaveAndLoadMenu";
+import SaveLoadMenu from "./components/SaveLoadMenu";
 // CSS
 import "./styles/App.css";
 import "./styles/TitleScreen.css";
@@ -222,7 +222,7 @@ class App extends Component {
 
   saveMenu() {
     return (
-      <SaveAndLoadMenu
+      <SaveLoadMenu
         currentTime={this.state.currentTime}
         menuType="Save Menu"
         executeSlot={this.saveSlot.bind(this)}
@@ -236,7 +236,7 @@ class App extends Component {
 
   loadMenu() {
     return (
-      <SaveAndLoadMenu
+      <SaveLoadMenu
         currentTime={this.state.currentTime}
         menuType="Load Menu"
         executeSlot={this.loadSlot.bind(this)}

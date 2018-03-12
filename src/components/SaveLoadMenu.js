@@ -1,12 +1,12 @@
 import React from "react";
 
-function SaveAndLoadMenu(props) {
+function SaveLoadMenu(props) {
   function saveOrLoadSlot() {
     return (
-      <div className="menu-slot-container">
-        <div className="menu-slot" id="menu-type-slot">
+      <div className="save-load-slot-container">
+        <div className="save-load-slot" id="save-load-type-slot">
           <div id="save-load-logo">{props.menuType}</div>
-          <button onClick={props.toggleMenu} id="leave-menu-button">
+          <button onClick={props.toggleMenu} id="leave-save-load">
             Leave
           </button>
         </div>
@@ -16,7 +16,7 @@ function SaveAndLoadMenu(props) {
   function menuSlot(number) {
     return (
       <div
-        className="menu-slot-container"
+        className="save-load-slot-container"
         onClick={() => {
           if (
             JSON.parse(localStorage.getItem(number)) &&
@@ -29,7 +29,7 @@ function SaveAndLoadMenu(props) {
         }}
       >
         {JSON.parse(localStorage.getItem(number)) ? (
-          <div className="menu-slot">
+          <div className="save-load-slot">
             <a>
               <img
                 className="slot-bg"
@@ -62,14 +62,14 @@ function SaveAndLoadMenu(props) {
             </div>
           </div>
         ) : (
-          <div className="menu-slot" />
+          <div className="save-load-slot" />
         )}
       </div>
     );
   }
 
   return (
-    <div className="overlay overlay-menu">
+    <div className="overlay overlay-save-load">
       {saveOrLoadSlot()}
       {menuSlot("one")}
       {menuSlot("two")}
@@ -85,4 +85,4 @@ function SaveAndLoadMenu(props) {
     </div>
   );
 }
-export default SaveAndLoadMenu;
+export default SaveLoadMenu;
