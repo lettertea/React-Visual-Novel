@@ -11,6 +11,12 @@
   }
 }
 
+.save-load-slot-container {
+  float: left;
+  width: 300px;
+  margin: 10px 10px 0;
+}
+
 .save-load-slot {
   position: relative;
   box-shadow: 0px 2px 3px 2px #222;
@@ -87,12 +93,6 @@
   padding: 0 10px;
   text-align: center;
   color: white;
-}
-
-.save-load-slot-container {
-  float: left;
-  width: 300px;
-  margin: 20px 10px 0;
 }
 
 #save-load-logo {
