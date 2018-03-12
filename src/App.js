@@ -13,8 +13,9 @@ import RenderFrame from "./components/RenderFrame";
 import MenuButtons from "./components/MenuButtons";
 import SaveAndLoadMenu from "./components/SaveAndLoadMenu";
 // CSS
-import "./App.css";
-import "./TitleScreen.css";
+import "./styles/App.css";
+import "./styles/TitleScreen.css";
+import "./styles/saveLoadMenu.css";
 
 class App extends Component {
   constructor() {
