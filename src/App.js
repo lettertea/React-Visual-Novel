@@ -12,35 +12,32 @@ import ChoiceMenu from "./components/ChoiceMenu";
 import RenderFrame from "./components/RenderFrame";
 import MenuButtons from "./components/MenuButtons";
 import SaveAndLoadMenu from "./components/SaveAndLoadMenu";
-// css
+// CSS
 import "./App.css";
 import "./TitleScreen.css";
-
-// States that don't need to mount or rely on api data
-const initialState = {
-  testRoutesCompleted: false,
-  choicesCount: {
-    Sprinter: 0,
-    Alternate: 0,
-    Third: 0
-  },
-  index: 0,
-  choicesExist: false,
-  titleScreenShown: true,
-  frameIsRendering: false,
-  showMenu: true,
-  backlogShown: false,
-  textBoxShown: true,
-  saveMenuShown: false,
-  loadMenuShown: false,
-  indexHistory: []
-};
 
 class App extends Component {
   constructor() {
     super(); //constructor init
 
-    this.state = initialState;
+    this.state = {
+      testRoutesCompleted: false,
+      choicesCount: {
+        Sprinter: 0,
+        Alternate: 0,
+        Third: 0
+      },
+      index: 0,
+      choicesExist: false,
+      titleScreenShown: true,
+      frameIsRendering: false,
+      showMenu: true,
+      backlogShown: false,
+      textBoxShown: true,
+      saveMenuShown: false,
+      loadMenuShown: false,
+      indexHistory: []
+    };
   }
 
   setFrame(index) {
@@ -64,14 +61,6 @@ class App extends Component {
     });
   }
 
-  setChoiceNumber(choicesIndex) {
-    this.setState({
-      choicesIndex: choicesIndex,
-      question: Choices[choicesIndex].question,
-      choiceOptions: Choices[choicesIndex].choices
-    });
-  }
-
   componentDidUpdate(prevProps, prevState) {
     // Update indexHistory if index changed
     if (prevState.index !== this.state.index) {
@@ -81,17 +70,12 @@ class App extends Component {
     }
   }
 
-  setPreviousFrame() {
-    const index = this.state.index - 1;
-    this.setFrame(index);
-  }
-
   setNextFrame() {
     // Resume to main route after testRoutes detour
     if (novelFrames[this.state.index].testRoutesCompleted) {
       this.setFrame(10);
     } else {
-      this.setFrame(this.state.index + 1);
+      this.setFrame(this.state.index + 1); // Normal functionality; goes to the next frame via index
     }
   }
 
@@ -109,14 +93,7 @@ class App extends Component {
     );
   }
 
-  setNextChoice() {
-    const choicesIndex = this.state.choicesIndex + 1;
-    this.setState({
-      choicesIndex: choicesIndex,
-      choiceOptions: Choices[choicesIndex].choices
-    });
-  }
-
+  // diverges to different index depending on user's choice
   setFrameFromChoice(choice) {
     const updatedChoicesCount = update(this.state.choicesCount, {
       [choice]: { $apply: currentValue => currentValue + 1 }
@@ -131,6 +108,14 @@ class App extends Component {
     }
     this.setState({
       choicesCount: updatedChoicesCount
+    });
+  }
+
+  setNextChoice() {
+    const choicesIndex = this.state.choicesIndex + 1;
+    this.setState({
+      choicesIndex: choicesIndex,
+      choiceOptions: Choices[choicesIndex].choices
     });
   }
 
@@ -198,7 +183,7 @@ class App extends Component {
 
   // Saves and sets current state to local storage
   saveSlot(number) {
-    localStorage.setItem("time" + number, new Date().toString());
+    localStorage.setItem("time" + number, new Date().toString()); // saves the current time to the save slot
     localStorage.setItem(number, JSON.stringify(this.state));
     this.setState(JSON.parse(localStorage.getItem(number)));
   }
@@ -211,13 +196,18 @@ class App extends Component {
     }); // save menu to false and not load because save is true when saving
   }
 
+  // "Begin" Button for title page.
   beginStory() {
     this.setState({
       titleScreenShown: false,
       frameIsRendering: true
     });
     this.setFrame(0);
-    this.setChoiceNumber(0);
+    this.setState({
+      choicesIndex: 0,
+      question: Choices[0].question,
+      choiceOptions: Choices[0].choices
+    });
   }
 
   titleScreen() {
@@ -229,7 +219,6 @@ class App extends Component {
     );
   }
 
-  // Not menuButtons on bottom
   saveMenu() {
     return (
       <SaveAndLoadMenu
@@ -244,7 +233,6 @@ class App extends Component {
     );
   }
 
-  // Not menuButtons on bottom
   loadMenu() {
     return (
       <SaveAndLoadMenu
@@ -256,9 +244,8 @@ class App extends Component {
     );
   }
 
-  // Menu on bottom of screen
+  // the GUI interface on the bottom
   renderMenuButtons() {
-    // Shows menu buttons
     if (this.state.showMenu) {
       return (
         <MenuButtons
@@ -320,12 +307,15 @@ class App extends Component {
           transitionLeaveTimeout={300}
         >
           {this.state.titleScreenShown ? this.titleScreen() : null}
+          {this.state.frameIsRendering ? this.renderFrame() : null}
+
+          {/* GUI menu buttons */}
+          {!this.state.titleScreenShown ? this.renderMenuButtons() : null}
           {this.state.saveMenuShown ? this.saveMenu() : null}
           {this.state.loadMenuShown ? this.loadMenu() : null}
           {this.state.backlogShown ? this.backlog() : null}
           {this.state.frameIsRendering ? this.renderFrame() : null}
           {this.state.choicesExist ? this.renderChoiceMenu() : null}
-          {!this.state.titleScreenShown ? this.renderMenuButtons() : null}
         </ReactCSSTransitionGroup>
         {this.playBGM()}
       </div>
