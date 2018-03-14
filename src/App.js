@@ -24,9 +24,8 @@ class App extends Component {
     this.state = {
       testRoutesCompleted: false,
       choicesCount: {
-        Sprinter: 0,
-        Alternate: 0,
-        Third: 0
+        throwRock: 0,
+        noRock: 0
       },
       index: 0,
       choicesExist: false,
@@ -116,12 +115,10 @@ class App extends Component {
       [choice]: { $apply: currentValue => currentValue + 1 }
     });
     // Routes depending on choice
-    if (updatedChoicesCount.Sprinter === 1) {
-      this.setFrame(2);
-    } else if (updatedChoicesCount.Alternate === 1) {
-      this.setFrame(6);
-    } else if (updatedChoicesCount.Third === 1) {
-      this.setFrame(8);
+    if (updatedChoicesCount.throwRock === 1) {
+      this.setFrame(10);
+    } else if (updatedChoicesCount.noRock === 1) {
+      this.setFrame(27);
     }
     this.setState({
       choicesCount: updatedChoicesCount
