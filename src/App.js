@@ -74,7 +74,14 @@ class App extends Component {
   setNextFrame() {
     // Resume to main route after testRoutes detour
     if (novelFrames[this.state.index].testRoutesCompleted) {
-      this.setFrame(10);
+      this.setState({
+        titleScreenShown: true,
+        frameIsRendering: false,
+        choicesCount: {
+          throwRock: 0,
+          noRock: 0
+        }
+      }); // End. Returns to menu screen.
     } else {
       this.setFrame(this.state.index + 1); // Normal functionality; goes to the next frame via index
     }
