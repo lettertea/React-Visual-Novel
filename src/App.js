@@ -55,6 +55,7 @@ class App extends Component {
       bgm: novelFrames[index].bgm,
       choicesExist: novelFrames[index].choicesExist,
       sceneChange: novelFrames[index].sceneChange,
+      sound: novelFrames[index].sound,
       speaker: novelFrames[index].speaker,
       sprite: novelFrames[index].sprite,
       voice: novelFrames[index].voice
@@ -321,6 +322,9 @@ class App extends Component {
       />
     );
   }
+  playSound() {
+    return <Sound url={this.state.sound} playStatus={Sound.status.PLAYING} />;
+  }
 
   render() {
     return (
@@ -343,6 +347,7 @@ class App extends Component {
           {this.state.choicesExist ? this.renderChoiceMenu() : null}
         </ReactCSSTransitionGroup>
         {this.playBGM()}
+        {this.playSound()}
       </div>
     );
   }
