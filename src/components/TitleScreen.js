@@ -17,6 +17,7 @@ function TitleScreen(props) {
               <a
                 href="https://github.com/nashkenazy/generic-vn"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Github
               </a>
