@@ -32,12 +32,12 @@ var novelFrames = [
   {
     speaker: b,
     text:
-      "If I had a large budget, I'd probably use Google Images and take the copyright strike.",
+      "If I had a large budget, I'd use whatever I could and take the copyright strike.",
     sprite: bp
   },
   {
     speaker: t,
-    text: "Don't you already do that?",
+    text: "Is it okay to do that?",
     sprite: bp
   },
   {
@@ -57,10 +57,13 @@ var novelFrames = [
   },
   // Index is 10 above. Main Route divergence point. throwRock route below.
   {
-    text: "There were no rocks in the room."
+    speaker: t,
+    text: "Hey. Answer my question.",
+    sprite: bp
   },
   {
-    text: "I stood up--"
+    text: "I stood up and approached him.",
+    sprite: bn
   },
   {
     speaker: b,
@@ -70,7 +73,7 @@ var novelFrames = [
   },
   {
     speaker: t,
-    text: "Wait, it's actually not recommended because it can cause bugs.",
+    text: "How?",
     sprite: bn
   },
 
@@ -85,7 +88,7 @@ var novelFrames = [
     sprite: bh
   },
   {
-    text: "I summon a rock in my hands and hurl it to Block.",
+    text: "I summon a rock in my hand and hurl it to Block.",
     sprite: bn
   },
   {

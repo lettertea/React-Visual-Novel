@@ -3,11 +3,11 @@ var Choices = [
     choices: [
       {
         type: "throwRock",
-        content: "Call the block out and throw a rock."
+        content: "Call Block out and throw a rock."
       },
       {
         type: "noRock",
-        content: "Let him continue"
+        content: "Let him continue."
       }
     ]
   }
