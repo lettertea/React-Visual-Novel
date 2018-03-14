@@ -126,7 +126,15 @@ class App extends Component {
   }
 
   setNextChoice() {
-    const choicesIndex = this.state.choicesIndex + 1;
+    let choicesIndex = this.state.choicesIndex + 1;
+
+    // Makes sure the index is within the Choices array
+    if (choicesIndex >= Choices.length) {
+      choicesIndex = Choices.length - 1;
+    } else if (choicesIndex <= -1) {
+      choicesIndex = 0;
+    }
+
     this.setState({
       choicesIndex: choicesIndex,
       choiceOptions: Choices[choicesIndex].choices
