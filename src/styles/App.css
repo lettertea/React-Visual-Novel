@@ -185,7 +185,7 @@
   width: 750px;
   margin: 30px auto;
   border-radius: 25px;
-  background-color: #222;
+  background-color: #1d75a5;
   border: none;
   color: white;
   padding: 12px 0px;
@@ -204,7 +204,7 @@
 /* Add a background color on hover */
 .overlay .choice-button:hover {
   background-color: white;
-  color: #222;
+  color: #1d75a5;
 }
 
 .backlog-overlay {
