@@ -9,3 +9,12 @@ a {
 	color: inherit; /* blue colors for links too */
 	text-decoration: inherit; /* no underline */
 }
+
+::-webkit-scrollbar {
+	width: 0px; /* remove scrollbar space */
+	background: transparent; /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+	background: #ff0000;
+}
