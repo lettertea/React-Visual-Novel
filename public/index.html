@@ -10,12 +10,23 @@
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
+    
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png">
+    <!-- Text for title screen -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Squada+One">
-    <link rel="prefetch" href="%PUBLIC_URL%/sprites/shizuku-laughing.png">
-    <link rel="prefetch" href="%PUBLIC_URL%/bg/692056.jpg">
+    <!-- Prefetch data -->
+    <!-- Priority first loads -->
+    <link rel="prefetch" href="%PUBLIC_URL%/bg/microphone.jpeg">
+    <link rel="prefetch" href="%PUBLIC_URL%/sprites/block-pout.png">
+    <link rel="prefetch" href="%PUBLIC_URL%/bgm/city.mp3">
+    <!-- Following loads -->
+    <link rel="prefetch" href="%PUBLIC_URL%/sprites/block-neutral.png">
+    <link rel="prefetch" href="%PUBLIC_URL%/sprites/block-happy.png">
+    <link rel="prefetch" href="%PUBLIC_URL%/bgm/silence.mp3">
+    <link rel="prefetch" href="%PUBLIC_URL%/bgm/take.mp3">
+    <link rel="prefetch" href="%PUBLIC_URL%/sound/thump.mp3">
 
 
 
@@ -29,7 +40,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Generically Long VN Title</title>
+    <title>React Visual Novel Engine</title>
   </head>
   <body>
     <noscript>
