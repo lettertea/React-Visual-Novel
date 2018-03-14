@@ -18,17 +18,4 @@
 
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
-
-*.png
-!spec/*.png
-
-*.jpg
-!spec/*.jpg
-
-*.ogg
-!spec/*.ogg
-
-*.mp3
-!spec/*.mp3
-README.md
+yarn-error.log* README.md
