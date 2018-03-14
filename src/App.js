@@ -1,6 +1,6 @@
 // Dependencies
 import React, { Component } from "react";
-import update from "react-addons-update";
+import update from "immutability-helper";
 import Sound from "react-sound";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 // API

@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "immutability-helper": "^2.6.6",
     "react": "^16.2.0",
     "react-addons-css-transition-group": "^15.6.2",
-    "react-addons-update": "^15.6.2",
     "react-dom": "^16.2.0",
     "react-scripts": "1.0.17",
     "react-sound": "^1.1.0"
