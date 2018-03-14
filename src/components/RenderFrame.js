@@ -31,8 +31,8 @@ function RenderFrame(props) {
           <ReactCSSTransitionGroup
             component="div"
             transitionName="sprite"
-            transitionEnterTimeout={200}
-            transitionLeaveTimeout={100}
+            transitionEnterTimeout={400}
+            transitionLeaveTimeout={300}
           >
             <img key={props.bg} className="bg" src={props.bg} />
             <img key={props.sprite} className="sprite" src={props.sprite} />
