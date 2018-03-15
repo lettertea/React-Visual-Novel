@@ -161,7 +161,7 @@ var novelFrames = [
   },
   {
     speaker: t,
-    text: "I'm not sure if I should feel good about that descirption.",
+    text: "I'm not sure if I should feel good about that description.",
     sprite: bp
   },
   {
