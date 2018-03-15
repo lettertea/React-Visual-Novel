@@ -49,6 +49,7 @@
   height: 50px;
   bottom: 55px;
   padding: 0 0px 0 5px;
+  background-size: 100% 33.33%; /* to counter media query in main textbox styling */
 }
 
 .slot-text {
