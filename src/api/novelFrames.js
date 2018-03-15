@@ -242,7 +242,7 @@ var novelFrames = [
   {
     speaker: b,
     text:
-      "There are great alternatives out there, which I'm not ashamed to say is far superior than mine.",
+      "There are great alternatives out there, which I'm not ashamed to say are far superior than mine.",
     sprite: bn
   },
   {
