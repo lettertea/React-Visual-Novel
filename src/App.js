@@ -62,10 +62,10 @@ class App extends Component {
     });
   }
 
-  // For developers to see what index they're editing. To request, set showIndex to true in novelFrames.js.
+  // For developers to see what index they're editing. To request, set logIndex to true in novelFrames.js.
   componentDidMount() {
     for (var i = 0; i < novelFrames.length; i++) {
-      if (novelFrames[i].showIndex) {
+      if (novelFrames[i].logIndex) {
         console.log([i]);
       }
     }
