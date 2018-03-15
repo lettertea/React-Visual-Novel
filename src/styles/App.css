@@ -67,12 +67,16 @@
 
 @media only screen and (max-width: 768px) {
   .text {
-    margin-top: 4px;
+    margin-top: 5px;
     font-size: 20px;
-    line-height: 1.6;
+    line-height: 1.72;
   }
   .text-box {
-    background-size: 25%;
+    background-size: 100% 25%;
+    height: 140px;
+  }
+  .speaker {
+    bottom: 139px;
   }
 }
 
@@ -95,6 +99,12 @@
   height: 38px;
   font-size: 28px;
   z-index: 3;
+}
+
+@media only screen and (max-width: 768px) {
+  .speaker {
+    bottom: 139px;
+  }
 }
 
 /* Speaker box's bottom arrow */
