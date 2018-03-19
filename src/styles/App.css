@@ -317,7 +317,7 @@
   border: solid 2px #41403e;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1100px) {
   .menu-buttons button {
     font-size: 18px;
     padding: 8px;
@@ -325,7 +325,7 @@
   }
 }
 
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 800px) {
   .menu-buttons button {
     float: none;
     font-size: 16px;
