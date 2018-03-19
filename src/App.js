@@ -144,7 +144,7 @@ class App extends Component {
   }
 
   handleChoiceSelected(event) {
-    this.setState({ isSkipping: false });
+    this.stopSkip();
     this.setFrameFromChoice(event.currentTarget.name);
     this.setNextChoice();
   }
@@ -206,10 +206,25 @@ class App extends Component {
     }));
   }
 
-  toggleSkip() {
-    this.setState(prevState => ({
-      isSkipping: !prevState.isSkipping
-    }));
+  startSkip() {
+    const intervalTime = prompt(
+      "How many milliseconds per frame would you like?",
+      "75"
+    );
+    if (intervalTime > 0) {
+      this.setState({
+        intervalTime: intervalTime,
+        isSkipping: true
+      });
+    } else {
+      this.stopSkip();
+    }
+  }
+
+  stopSkip() {
+    this.setState({
+      isSkipping: false
+    });
   }
 
   skipText() {
@@ -222,7 +237,10 @@ class App extends Component {
       !this.state.backlogShown
     ) {
       clearInterval(this.textSkipper);
-      this.textSkipper = setInterval(this.setNextFrame.bind(this), 80);
+      this.textSkipper = setInterval(
+        this.setNextFrame.bind(this),
+        this.state.intervalTime
+      );
     } else {
       clearInterval(this.textSkipper);
     }
