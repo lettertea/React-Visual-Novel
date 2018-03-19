@@ -216,8 +216,6 @@ class App extends Component {
         intervalTime: intervalTime,
         isSkipping: true
       });
-    } else {
-      this.stopSkip();
     }
   }
 
