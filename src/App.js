@@ -309,7 +309,8 @@ class App extends Component {
           toggleMenu={this.toggleMenu.bind(this)}
           toggleBacklog={this.toggleBacklog.bind(this)}
           toggleTextBox={this.toggleTextBox.bind(this)}
-          toggleSkip={this.toggleSkip.bind(this)}
+          startSkip={this.startSkip.bind(this)}
+          stopSkip={this.stopSkip.bind(this)}
           isSkipping={this.state.isSkipping}
           textBoxShown={this.state.textBoxShown}
           backlogShown={this.state.backlogShown}

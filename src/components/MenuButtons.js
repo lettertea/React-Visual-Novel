@@ -10,9 +10,12 @@ function MenuButtons(props) {
         <button onClick={props.toggleBacklog}>
           {props.backlogShown ? "Hide Backlog" : "Backlog"}
         </button>
-        <button onClick={props.toggleSkip}>
-          {props.isSkipping ? "Stop" : "Skip"}
-        </button>
+        {props.isSkipping ? (
+          <button onClick={props.stopSkip}>Stop</button>
+        ) : (
+          <button onClick={props.startSkip}>Skip</button>
+        )}
+
         <button onClick={props.toggleSaveMenu}>
           {props.saveMenuShown ? "Hide Saves" : "Save"}
         </button>
