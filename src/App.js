@@ -36,6 +36,7 @@ class App extends Component {
       textBoxShown: true,
       saveMenuShown: false,
       loadMenuShown: false,
+      isSkipping: false,
       indexHistory: []
     };
   }
@@ -143,6 +144,7 @@ class App extends Component {
   }
 
   handleChoiceSelected(event) {
+    this.setState({ isSkipping: false });
     this.setFrameFromChoice(event.currentTarget.name);
     this.setNextChoice();
   }
@@ -204,6 +206,28 @@ class App extends Component {
     }));
   }
 
+  toggleSkip() {
+    this.setState(prevState => ({
+      isSkipping: !prevState.isSkipping
+    }));
+  }
+
+  skipText() {
+    if (
+      this.state.isSkipping &&
+      !this.state.choicesExist &&
+      !this.state.loadMenuShown &&
+      !this.state.saveMenuShown &&
+      !this.state.titleScreenShown &&
+      !this.state.backlogShown
+    ) {
+      clearInterval(this.textSkipper);
+      this.textSkipper = setInterval(this.setNextFrame.bind(this), 80);
+    } else {
+      clearInterval(this.textSkipper);
+    }
+  }
+
   // Saves and sets current state to local storage
   saveSlot(number) {
     localStorage.setItem("time" + number, new Date().toString()); // saves the current time to the save slot
@@ -222,6 +246,7 @@ class App extends Component {
   // "Begin" Button for title page.
   beginStory() {
     this.setState({
+      isSkipping: false,
       titleScreenShown: false,
       frameIsRendering: true
     });
@@ -284,6 +309,8 @@ class App extends Component {
           toggleMenu={this.toggleMenu.bind(this)}
           toggleBacklog={this.toggleBacklog.bind(this)}
           toggleTextBox={this.toggleTextBox.bind(this)}
+          toggleSkip={this.toggleSkip.bind(this)}
+          isSkipping={this.state.isSkipping}
           textBoxShown={this.state.textBoxShown}
           backlogShown={this.state.backlogShown}
         />
@@ -337,12 +364,12 @@ class App extends Component {
         >
           {this.state.titleScreenShown ? this.titleScreen() : null}
           {this.state.frameIsRendering ? this.renderFrame() : null}
-
           {/* GUI menu buttons */}
           {!this.state.titleScreenShown ? this.renderMenuButtons() : null}
           {this.state.saveMenuShown ? this.saveMenu() : null}
           {this.state.loadMenuShown ? this.loadMenu() : null}
           {this.state.backlogShown ? this.backlog() : null}
+          {this.skipText()}
           {this.state.frameIsRendering ? this.renderFrame() : null}
           {this.state.choicesExist ? this.renderChoiceMenu() : null}
         </ReactCSSTransitionGroup>

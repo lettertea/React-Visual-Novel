@@ -10,6 +10,9 @@ function MenuButtons(props) {
         <button onClick={props.toggleTextBox}>
           {props.textBoxShown ? "Hide Text Box" : "Show Text Box"}
         </button>
+        <button onClick={props.toggleSkip}>
+          {props.isSkipping ? "Stop" : "Skip"}
+        </button>
         <button onClick={props.toggleSaveMenu}>
           {props.saveMenuShown ? "Hide Saves" : "Show Saves"}
         </button>
