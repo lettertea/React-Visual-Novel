@@ -5,7 +5,6 @@ function RenderFrame(props) {
   return (
     <div onClick={props.setNextFrame}>
       <div>
-        {/* fast css transition for regular, sprite changes. No Text box animation */}
         <ReactCSSTransitionGroup
           component="div"
           transitionName={props.sceneChange ? "scene" : "sprite"}
