@@ -20,7 +20,9 @@ function RenderFrame(props) {
             {props.speaker ? (
               <div className="speaker"> {props.speaker} </div>
             ) : null}
-            <div className="text"> {props.text} </div>
+            <div className="text">
+              {props.speaker ? '"' + props.text + '"' : props.text}
+            </div>
           </div>
         ) : null}
       </div>
