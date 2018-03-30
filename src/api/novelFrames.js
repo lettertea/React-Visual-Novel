@@ -2,9 +2,9 @@
 const t = "Thomas";
 const b = "Block";
 // block sprites
-const bh = "sprites/block-happy.png";
-const bp = "sprites/block-pout.png";
-const bn = "sprites/block-neutral.png";
+const bh = require("./sprites/block-happy.png");
+const bp = require("./sprites/block-pout.png");
+const bn = require("./sprites/block-neutral.png");
 
 var novelFrames = [
   {
@@ -261,25 +261,25 @@ for (let i = 0; i < novelFrames.length; i++) {
 }
 
 for (let i = 0; i < 26; i++) {
-  novelFrames[i].bg = "bg/microphone.jpeg"; // source https://www.pexels.com/photo/blur-close-up-dark-focus-302655/
+  novelFrames[i].bg = require("./bg/microphone.jpeg"); // source https://www.pexels.com/photo/blur-close-up-dark-focus-302655/
 }
 
-novelFrames[26].bg = "bg/notBlockEnd.png";
+novelFrames[26].bg = require("./bg/notBlockEnd.png");
 
 for (let i = 27; i < novelFrames.length; i++) {
-  novelFrames[i].bg = "bg/microphone.jpeg"; // source https://www.pexels.com/photo/blur-close-up-dark-focus-302655/
+  novelFrames[i].bg = require("./bg/microphone.jpeg"); // source https://www.pexels.com/photo/blur-close-up-dark-focus-302655/
 }
 
 // BGM
 for (let i = 0; i < 17; i++) {
-  novelFrames[i].bgm = "bgm/city.mp3"; // source http://freemusicarchive.org/music/David_Szesztay/20170730112627440/Throughout_The_City
+  novelFrames[i].bgm = require("./bgm/city.mp3"); // source http://freemusicarchive.org/music/David_Szesztay/20170730112627440/Throughout_The_City
 }
 
 for (let i = 21; i < 27; i++) {
-  novelFrames[i].bgm = "bgm/silence.mp3"; // source http://freemusicarchive.org/music/Silence_Is_Sexy/Modern_Antiques_Vol_1__2/Silence_is_Sexy_-_Modern_Antiques_Vol_2_-_01_Holiday
+  novelFrames[i].bgm = require("./bgm/silence.mp3"); // source http://freemusicarchive.org/music/Silence_Is_Sexy/Modern_Antiques_Vol_1__2/Silence_is_Sexy_-_Modern_Antiques_Vol_2_-_01_Holiday
 }
 
 for (let i = 27; i < novelFrames.length; i++) {
-  novelFrames[i].bgm = "bgm/take.mp3"; // source https://www.pexels.com/photo/blur-close-up-dark-focus-302655/
+  novelFrames[i].bgm = require("./bgm/take.mp3"); // source https://www.pexels.com/photo/blur-close-up-dark-focus-302655/
 }
 export default novelFrames;
