@@ -41,6 +41,45 @@ class App extends Component {
     };
   }
 
+  /* ============================================================================================
+       Diverges to different index depending on user's choice. Important function for VN writers
+    ============================================================================================ */
+
+  setFrameFromChoice(choice) {
+    const updatedChoicesCount = update(this.state.choicesCount, {
+      [choice]: { $apply: currentValue => currentValue + 1 }
+    });
+    // Routes depending on choice
+    if (updatedChoicesCount.throwRock === 1) {
+      this.setFrame(10);
+    } else if (updatedChoicesCount.noRock === 1) {
+      this.setFrame(27);
+    }
+    this.setState({
+      choicesCount: updatedChoicesCount
+    });
+  }
+
+  setNextFrame() {
+    // Resume to title screen after testRoutes detours
+    if (novelFrames[this.state.index].testRoutesCompleted) {
+      this.setState({
+        titleScreenShown: true,
+        frameIsRendering: false,
+        choicesCount: {
+          throwRock: 0,
+          noRock: 0
+        }
+      });
+    } else {
+      this.setFrame(this.state.index + 1); // Normal functionality; goes to the next frame via index
+    }
+  }
+
+  /* ===========================================================
+       The rest are functionalities. VN writers can ignore rest
+    =========================================================== */
+
   setFrame(index) {
     // Makes sure the index is within the novelFrames array
     if (index >= novelFrames.length) {
@@ -81,22 +120,6 @@ class App extends Component {
     }
   }
 
-  setNextFrame() {
-    // Resume to main route after testRoutes detour
-    if (novelFrames[this.state.index].testRoutesCompleted) {
-      this.setState({
-        titleScreenShown: true,
-        frameIsRendering: false,
-        choicesCount: {
-          throwRock: 0,
-          noRock: 0
-        }
-      }); // End. Returns to menu screen.
-    } else {
-      this.setFrame(this.state.index + 1); // Normal functionality; goes to the next frame via index
-    }
-  }
-
   renderFrame() {
     return (
       <RenderFrame
@@ -109,22 +132,6 @@ class App extends Component {
         textBoxShown={this.state.textBoxShown}
       />
     );
-  }
-
-  // diverges to different index depending on user's choice
-  setFrameFromChoice(choice) {
-    const updatedChoicesCount = update(this.state.choicesCount, {
-      [choice]: { $apply: currentValue => currentValue + 1 }
-    });
-    // Routes depending on choice
-    if (updatedChoicesCount.throwRock === 1) {
-      this.setFrame(10);
-    } else if (updatedChoicesCount.noRock === 1) {
-      this.setFrame(27);
-    }
-    this.setState({
-      choicesCount: updatedChoicesCount
-    });
   }
 
   setNextChoice() {
