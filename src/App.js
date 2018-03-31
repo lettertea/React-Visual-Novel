@@ -28,10 +28,11 @@ class App extends Component {
         noRock: 0
       },
       index: 0,
+      buttonsDeleted: false,
       choicesExist: false,
       titleScreenShown: true,
       frameIsRendering: false,
-      showMenu: true,
+      menuButtonsShown: true,
       backlogShown: false,
       textBoxShown: true,
       saveMenuShown: false,
@@ -167,7 +168,7 @@ class App extends Component {
 
   toggleMenu() {
     this.setState(prevState => ({
-      showMenu: !prevState.showMenu
+      menuButtonsShown: !prevState.menuButtonsShown
     }));
   }
 
@@ -318,11 +319,17 @@ class App extends Component {
     );
   }
 
+  deleteButtons() {
+    this.setState({ buttonsDeleted: true });
+  }
+
   // the GUI interface on the bottom
   renderMenuButtons() {
-    if (this.state.showMenu) {
+    if (!this.state.buttonsDeleted) {
       return (
         <MenuButtons
+          deleteButtons={this.deleteButtons.bind(this)}
+          menuButtonsShown={this.state.menuButtonsShown}
           toggleSaveMenu={this.toggleSaveMenu.bind(this)}
           toggleLoadMenu={this.toggleLoadMenu.bind(this)}
           saveSlot={this.saveSlot.bind(this)}
@@ -338,13 +345,6 @@ class App extends Component {
           textBoxShown={this.state.textBoxShown}
           backlogShown={this.state.backlogShown}
         />
-      );
-    } else {
-      // Shows "Show Buttons" on hover
-      return (
-        <div className="menu-buttons hidden">
-          <button onClick={this.toggleMenu.bind(this)}>Show Buttons</button>
-        </div>
       );
     }
   }
