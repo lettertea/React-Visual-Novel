@@ -319,16 +319,12 @@ class App extends Component {
     );
   }
 
-  deleteButtons() {
-    this.setState({ buttonsDeleted: true });
-  }
-
   // the GUI interface on the bottom
   renderMenuButtons() {
     if (!this.state.buttonsDeleted) {
       return (
         <MenuButtons
-          deleteButtons={this.deleteButtons.bind(this)}
+          deleteButtons={() => this.setState({ buttonsDeleted: true })}
           menuButtonsShown={this.state.menuButtonsShown}
           toggleSaveMenu={this.toggleSaveMenu.bind(this)}
           toggleLoadMenu={this.toggleLoadMenu.bind(this)}
