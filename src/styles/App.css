@@ -36,6 +36,13 @@
   z-index: 1;
 }
 
+.first-sprite {
+  left: 70%;
+}
+.second-sprite {
+  left: 30%;
+}
+
 .text-box {
   position: absolute;
   bottom: 20px;

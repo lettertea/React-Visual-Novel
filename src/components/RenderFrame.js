@@ -12,7 +12,22 @@ function RenderFrame(props) {
           transitionLeaveTimeout={props.sceneChange ? 1700 : 300}
         >
           <img key={props.bg} className="bg" src={props.bg} />
-          <img key={props.sprite} className="sprite" src={props.sprite} />
+          {props.sprite && props.sprite.length == 2 ? (
+            <div>
+              <img
+                key={props.sprite[0]}
+                className="sprite first-sprite"
+                src={props.sprite[0]}
+              />
+              <img
+                key={props.sprite[1]}
+                className="sprite second-sprite"
+                src={props.sprite[1]}
+              />
+            </div>
+          ) : (
+            <img key={props.sprite} className="sprite" src={props.sprite} />
+          )}
         </ReactCSSTransitionGroup>
         {props.text && props.textBoxShown ? (
           <div className="text-box">
