@@ -379,9 +379,10 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         <ReactCSSTransitionGroup
           component="div"
+          className="container"
           transitionName="menu"
           transitionEnterTimeout={500}
           transitionLeaveTimeout={300}
@@ -389,7 +390,6 @@ class App extends Component {
           {this.state.titleScreenShown ? this.titleScreen() : null}
           {this.state.frameIsRendering ? this.renderFrame() : null}
           {/* GUI menu buttons */}
-          {!this.state.titleScreenShown ? this.renderMenuButtons() : null}
           {this.state.saveMenuShown ? this.saveMenu() : null}
           {this.state.loadMenuShown ? this.loadMenu() : null}
           {this.state.backlogShown ? this.backlog() : null}
@@ -397,6 +397,7 @@ class App extends Component {
           {this.state.frameIsRendering ? this.renderFrame() : null}
           {this.state.choicesExist ? this.renderChoiceMenu() : null}
         </ReactCSSTransitionGroup>
+        {!this.state.titleScreenShown ? this.renderMenuButtons() : null}
         {this.playBGM()}
         {this.playSound()}
       </div>

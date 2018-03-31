@@ -1,4 +1,5 @@
 .container {
+  overflow-x: hidden;
   position: absolute;
   width: 1280px;
   height: 720px;
@@ -8,7 +9,7 @@
   transform: translate(-50%, -50%);
 }
 
-@media only screen and (max-width: 1280px) {
+@media only screen and (max-width: 1279px) {
   .container {
     width: 100%;
   }
@@ -274,6 +275,11 @@
   color: DarkGreen;
 }
 
+.menu-buttons-container {
+  z-index: -1;
+  overflow: visible;
+}
+
 .menu-buttons {
   position: relative;
   top: 740px;
@@ -345,6 +351,7 @@
 
 /*  toggle menu button */
 .hidden button {
+  margin-left: 15px;
   float: right;
   background-color: transparent;
   color: transparent;
