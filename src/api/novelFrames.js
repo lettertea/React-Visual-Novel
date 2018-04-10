@@ -95,7 +95,7 @@ var novelFrames = [
     speaker: b,
     text: "Uoghh.",
     sprite: bh,
-    sound: "sound/thump.mp3" // source http://soundbible.com/993-Upper-Cut.html
+    sound: require("./sound/thump.mp3") // source http://soundbible.com/993-Upper-Cut.html
   },
   // index 18 below, bgm change
   {
