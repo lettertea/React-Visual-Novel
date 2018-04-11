@@ -277,7 +277,6 @@ class App extends Component {
     this.setFrame(0);
     this.setState({
       choicesIndex: 0,
-      question: Choices[0].question,
       choiceOptions: Choices[0].choices
     });
   }
