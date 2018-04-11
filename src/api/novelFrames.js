@@ -254,11 +254,6 @@ var novelFrames = [
 ];
 
 // BG
-for (let i = 0; i < novelFrames.length; i++) {
-  if (novelFrames[i].choicesExist !== true) {
-    novelFrames[i].choicesExist = false;
-  }
-}
 
 for (let i = 0; i < 26; i++) {
   novelFrames[i].bg = require("./bg/microphone.jpeg"); // source https://www.pexels.com/photo/blur-close-up-dark-focus-302655/
