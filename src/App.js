@@ -255,8 +255,11 @@ class App extends Component {
   // Saves and sets current state to local storage
   saveSlot(number) {
     localStorage.setItem("time" + number, new Date().toString()); // saves the current time to the save slot
-    localStorage.setItem(number, JSON.stringify(this.state));
-    this.setState(JSON.parse(localStorage.getItem(number)));
+    localStorage.setItem(
+      number,
+      JSON.stringify(this.state, (k, v) => (v === undefined ? null : v))
+    );
+    this.setState(this.state);
   }
 
   // Loads and sets state from local storage
