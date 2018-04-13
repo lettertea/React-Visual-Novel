@@ -1,5 +1,5 @@
 # React-Visual-Novel
-![preview](https://u.imageresize.org/645fa104-1db1-47d4-b368-b361d0dbbcee.png)
+![preview](https://u.imageresize.org/b5417b85-66e4-49ca-b167-f3ec5342bee5.png)
 
 Live demo [here](https://visualnovel.surge.sh).
 
