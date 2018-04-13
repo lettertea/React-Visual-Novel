@@ -1,8 +1,9 @@
-# React-Runner-Quiz
+# React-Visual-Novel
+![preview](https://u.imageresize.org/645fa104-1db1-47d4-b368-b361d0dbbcee.png)
 
 Live demo [here](https://visualnovel.surge.sh).
 
-A visual novel engine made with React. It contains save and load functionalities where its data is stored in the local storage. Users may access the backlog to see previous text, and they may also hide the menu buttons for less distraction. Choices can also be presented to the user where the selected choice can affect gameplay.
+An interactive story game with functionalities such as save, load, backlog, hide menu, and choices.
 
 # Installation
 
