@@ -20,7 +20,7 @@ function SaveLoadMenu(props) {
         onClick={() => {
           if (
             JSON.parse(localStorage.getItem(number)) &&
-            window.confirm("Are you sure?")
+            window.confirm(props.confirmationMessage)
           ) {
             props.executeSlot(number);
           } else {

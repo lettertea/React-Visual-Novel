@@ -291,6 +291,7 @@ class App extends Component {
   saveMenu() {
     return (
       <SaveLoadMenu
+        confirmationMessage="Overwrite save?"
         currentTime={this.state.currentTime}
         menuType="Save Menu"
         executeSlot={this.saveSlot.bind(this)}
@@ -305,6 +306,7 @@ class App extends Component {
   loadMenu() {
     return (
       <SaveLoadMenu
+        confirmationMessage="Load save?"
         currentTime={this.state.currentTime}
         menuType="Load Menu"
         executeSlot={this.loadSlot.bind(this)}
