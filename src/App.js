@@ -374,6 +374,9 @@ class App extends Component {
   playSound() {
     return <Sound url={this.state.sound} playStatus={Sound.status.PLAYING} />;
   }
+  playVoice() {
+    return <Sound url={this.state.voice} playStatus={Sound.status.PLAYING} />;
+  }
 
   render() {
     return (
@@ -398,6 +401,7 @@ class App extends Component {
         {!this.state.titleScreenShown ? this.renderMenuButtons() : null}
         {this.playBGM()}
         {this.playSound()}
+        {this.playVoice()}
       </div>
     );
   }
