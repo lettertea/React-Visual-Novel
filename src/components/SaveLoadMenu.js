@@ -24,7 +24,7 @@ function SaveLoadMenu(props) {
           ) {
             props.executeSlot(number);
           } else {
-            props.executeSlot(number);
+            null;
           }
         }}
       >
