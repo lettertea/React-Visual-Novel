@@ -18,7 +18,9 @@ function SaveLoadMenu(props) {
       <div
         className="save-load-slot-container"
         onClick={() => {
-          if (
+          if (!JSON.parse(localStorage.getItem(number))) {
+            props.executeSlot(number);
+          } else if (
             JSON.parse(localStorage.getItem(number)) &&
             window.confirm(props.confirmationMessage)
           ) {
