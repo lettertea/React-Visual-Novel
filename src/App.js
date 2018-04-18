@@ -17,29 +17,31 @@ import "./styles/App.css";
 import "./styles/TitleScreen.css";
 import "./styles/saveLoadMenu.css";
 
+const INITIAL_STATE = {
+  testRoutesCompleted: false,
+  choicesCount: {
+    throwRock: 0,
+    noRock: 0
+  },
+  index: 0,
+  buttonsDeleted: false,
+  choicesExist: false,
+  titleScreenShown: true,
+  frameIsRendering: false,
+  menuButtonsShown: true,
+  backlogShown: false,
+  textBoxShown: true,
+  saveMenuShown: false,
+  loadMenuShown: false,
+  isSkipping: false,
+  indexHistory: []
+};
+
 class App extends Component {
   constructor() {
     super(); //constructor init
 
-    this.state = {
-      testRoutesCompleted: false,
-      choicesCount: {
-        throwRock: 0,
-        noRock: 0
-      },
-      index: 0,
-      buttonsDeleted: false,
-      choicesExist: false,
-      titleScreenShown: true,
-      frameIsRendering: false,
-      menuButtonsShown: true,
-      backlogShown: false,
-      textBoxShown: true,
-      saveMenuShown: false,
-      loadMenuShown: false,
-      isSkipping: false,
-      indexHistory: []
-    };
+    this.state = INITIAL_STATE;
   }
 
   /* ============================================================================================
@@ -64,14 +66,7 @@ class App extends Component {
   setNextFrame() {
     // Resume to title screen after testRoutes detours
     if (novelFrames[this.state.index].testRoutesCompleted) {
-      this.setState({
-        titleScreenShown: true,
-        frameIsRendering: false,
-        choicesCount: {
-          throwRock: 0,
-          noRock: 0
-        }
-      });
+      this.setState(INITIAL_STATE);
     } else {
       this.setFrame(this.state.index + 1); // Normal functionality; goes to the next frame via index
     }
