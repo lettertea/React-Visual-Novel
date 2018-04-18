@@ -55,7 +55,7 @@ var novelFrames = [
     sprite: bn,
     choicesExist: true
   },
-  // Index is 10 above. Main Route divergence point. throwRock route below.
+  // throwRock route below.
   {
     speaker: t,
     text: "Hey. Answer my question.",
@@ -97,7 +97,6 @@ var novelFrames = [
     sprite: bh,
     sound: require("./sound/thump.mp3") // source http://soundbible.com/993-Upper-Cut.html
   },
-  // index 18 below, bgm change
   {
     text: "..."
   },
@@ -128,7 +127,7 @@ var novelFrames = [
     testRoutesCompleted: true
   },
 
-  // Sprinter noRock: index 27 below
+  // noRock route starts below
   {
     speaker: b,
     text: "Wait, why am I explaining it? Didn't you write it, Thomas?",
@@ -254,7 +253,6 @@ var novelFrames = [
 ];
 
 // BG
-
 for (let i = 0; i < 26; i++) {
   novelFrames[i].bg = require("./bg/microphone.jpeg"); // source https://www.pexels.com/photo/blur-close-up-dark-focus-302655/
 }
@@ -277,4 +275,5 @@ for (let i = 21; i < 27; i++) {
 for (let i = 27; i < novelFrames.length; i++) {
   novelFrames[i].bgm = require("./bgm/take.mp3"); // source https://www.pexels.com/photo/blur-close-up-dark-focus-302655/
 }
+
 export default novelFrames;
