@@ -2,8 +2,8 @@
   background-color: #107896;
   z-index: 5;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  align-items: center;
 }
 @media only screen and (max-width: 1279px) {
   .overlay-save-load {
@@ -14,7 +14,7 @@
 .save-load-slot-container {
   float: left;
   width: 300px;
-  margin: 10px 10px 0;
+  margin: 10px auto;
 }
 
 .save-load-slot {
