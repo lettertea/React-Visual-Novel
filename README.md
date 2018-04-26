@@ -1,5 +1,4 @@
 # React-Visual-Novel
-> A visual novel application on the web.
 
 The application runs on the web browser and renders sounds and images to provide gameplay via React. The application also uses the Web Storage API to save and load user's progress. The user may also see previous texts through the backlog and skip ahead.
 
