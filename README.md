@@ -1,6 +1,6 @@
 # React-Visual-Novel
 
-The application runs on the web browser and renders sounds and images to provide gameplay via React. The application also uses the Web Storage API to save and load user's progress. The user may also see previous texts through the backlog and skip ahead.
+The application runs on the web browser and renders sounds and images to provide gameplay via React. It uses the Web Storage API to save and load user's progress. The user may also see previous texts through the backlog and skip ahead.
 
 ![preview](https://u.imageresize.org/b5417b85-66e4-49ca-b167-f3ec5342bee5.png)
 
