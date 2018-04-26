@@ -111,10 +111,10 @@ novelFrames.js
 ```
 // ... Index 9 below. Choice frame.
 {
-    text: "You've been ignored. (Save before choosing?)",
-    sprite: require("./sprites/block-neutral.png"),
-    choicesExist: true
-  },
+  text: "You've been ignored. (Save before choosing?)",
+  sprite: require("./sprites/block-neutral.png"),
+  choicesExist: true
+},
 ```
 
 When choicesExist is true, the following is present.
@@ -163,9 +163,9 @@ Last index of routes are indicated with `testRoutesCompleted: true` (26 for firs
 Index 26
 ```
 {
-    sceneChange: true,
-    testRoutesCompleted: true
-  },
+  sceneChange: true,
+  testRoutesCompleted: true
+},
   // Goes to title screen
   
 ```
@@ -182,7 +182,7 @@ Index 48
 ```
 
 
-setNextFrame() function in App.js
+App.js
 ```
   setNextFrame() {
     // Resume to title screen after testRoutes detours
