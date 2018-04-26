@@ -18,7 +18,6 @@ import "./styles/TitleScreen.css";
 import "./styles/saveLoadMenu.css";
 
 const INITIAL_STATE = {
-  testRoutesCompleted: false,
   choicesCount: {
     throwRock: 0,
     noRock: 0
@@ -65,8 +64,9 @@ class App extends Component {
 
   setNextFrame() {
     // Resume to title screen after testRoutes detours
+    // Property does not have to be called testRoutesCompleted
     if (novelFrames[this.state.index].testRoutesCompleted) {
-      this.setState(INITIAL_STATE);
+      this.setState(INITIAL_STATE); // Or jump to index. this.setFrame(number);
     } else {
       this.setFrame(this.state.index + 1); // Normal functionality; goes to the next frame via index
     }
