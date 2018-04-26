@@ -1,7 +1,7 @@
 # React-Visual-Novel
 ![preview](https://u.imageresize.org/b5417b85-66e4-49ca-b167-f3ec5342bee5.png)
 
-Live demo [here](https://visualnovel.surge.sh).
+Live demo [here](https://rvn.netlify.com).
 
 An interactive story game with functionalities such as save, load, backlog, hide menu, and choices.
 
@@ -32,10 +32,12 @@ There are a couple of methods to start the application. Both should work fine.
 # Usage
 
 ## Writing a "Frame"
-From the root directory, navigate to ./src/api/novelFrames.js. There should be an array of objects called "novelFrames," which is the default export. Each index represents a frame, where its properties are written in an object. Here is a list of the relevant properties.
+From the root directory, navigate to ./src/api/novelFrames.js. There should be an array of objects called "novelFrames," which is the default export. Each index represents a frame, where its properties are written in an object. The properties are listed below.
 
 - `bg`: Displays a 1280x720 background image.
 - `bgm`: Loops through an audio file. Uses the [react-sound](https://github.com/leoasis/react-sound) component.
+- `choicesExist`: Accepts a boolean. If set to true, the choices from the Choices.js api will be presented to the user.
+- `logIndex`: Accepts a boolean. If set to true, the object's index will be logged into the console.
 - `sceneChange`: Accepts a boolean. If set to true, background and sprite will leave and enter with a fade time of 1700 and 2000 miliseconds respectively. Uses the [ReactCSSTransitionGroup](https://reactjs.org/docs/animation.html) component. Otherwise, fast animation will be used for usual sprite transitions.
 - `sound`: Plays an audio file once.
 - `speaker`: Accepts a string and shows the name of the character in a bubble on top of textbox. Also wraps text in quotes as a side effect.
@@ -59,7 +61,7 @@ From the root directory, navigate to ./src/api/novelFrames.js. There should be a
 
 ## Streamlining the Writing Process
 
-1. Using for loops for the background and background music. They tend to be the same for consecutive frames. You can use a for loop to prevent excessive copying and pasting the values. Here's an example.
+1. Use for loops for the background and background music. They tend to be the same for consecutive frames. You can use a for loop to prevent excessive copying and pasting the values. Here's an example.
 ```
 for (let i = 21; i < 97; i++) {
   novelFrames[i].bgm = require("./bgm/rain.mp3");
@@ -67,7 +69,7 @@ for (let i = 21; i < 97; i++) {
 ```
 You may also set `logIndex: true` in an object to find its index in the console.
 
-2. Creating variables for speakers and sprites. These properties tend to be reused, and they can be written as variables.
+2. Create variables for speakers and sprites. These properties tend to be reused, and they can be written as variables.
 ```
 const b = "Block";
 const bn = require("./sprites/block-neutral.png");
