@@ -1,6 +1,14 @@
+html {
+	overflow: scroll;
+	overflow-x: hidden;
+}
+::-webkit-scrollbar {
+	width: 0px; /* remove scrollbar space */
+	background: transparent; /* optional: just make scrollbar invisible */
+}
+
 body {
 	background-color: #fff;
-	/* Black w/ opacity */
 	font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
 		"Lucida Sans", sans-serif;
 }
