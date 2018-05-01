@@ -67,7 +67,13 @@ class App extends Component {
     // Property does not have to be called testRoutesCompleted
     if (novelFrames[this.state.index].testRoutesCompleted) {
       this.setState(INITIAL_STATE); // Or jump to index. this.setFrame(number);
-    } else {
+    } else if (
+      !this.state.choicesExist &&
+      !this.state.loadMenuShown &&
+      !this.state.saveMenuShown &&
+      !this.state.titleScreenShown &&
+      !this.state.backlogShown
+    ) {
       this.setFrame(this.state.index + 1); // Normal functionality; goes to the next frame via index
     }
   }
@@ -216,35 +222,20 @@ class App extends Component {
     );
     if (intervalTime > 0) {
       this.setState({
-        intervalTime: intervalTime,
         isSkipping: true
       });
+      this.textSkipper = setInterval(
+        this.setNextFrame.bind(this),
+        intervalTime
+      );
     }
   }
 
   stopSkip() {
+    clearInterval(this.textSkipper);
     this.setState({
       isSkipping: false
     });
-  }
-
-  skipText() {
-    if (
-      this.state.isSkipping &&
-      !this.state.choicesExist &&
-      !this.state.loadMenuShown &&
-      !this.state.saveMenuShown &&
-      !this.state.titleScreenShown &&
-      !this.state.backlogShown
-    ) {
-      clearInterval(this.textSkipper);
-      this.textSkipper = setInterval(
-        this.setNextFrame.bind(this),
-        this.state.intervalTime
-      );
-    } else {
-      clearInterval(this.textSkipper);
-    }
   }
 
   // Saves and sets current state to local storage
@@ -391,7 +382,6 @@ class App extends Component {
           {this.state.saveMenuShown ? this.saveMenu() : null}
           {this.state.loadMenuShown ? this.loadMenu() : null}
           {this.state.backlogShown ? this.backlog() : null}
-          {this.skipText()}
           {this.state.frameIsRendering ? this.renderFrame() : null}
           {this.state.choicesExist ? this.renderChoiceMenu() : null}
         </ReactCSSTransitionGroup>
