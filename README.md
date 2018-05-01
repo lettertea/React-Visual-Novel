@@ -83,7 +83,7 @@ for (let i = 21; i < 97; i++) {
 ```
 You may also set `logIndex: true` in an object to find its index in the console.
 
-2. Create variables for speaker and sprite values. They to be reused, and writing the variable name instead of the string or path tends to be quicker and more consistent.
+2. Create variables for speaker and sprite values. Writing the variable name instead of the string or path tends to be quicker and more consistent.
 ```
 const b = "Block";
 const bn = require("./sprites/block-neutral.png");
