@@ -63,10 +63,15 @@ class App extends Component {
   }
 
   setNextFrame() {
-    // Resume to title screen after testRoutes detours
-    // Property does not have to be called testRoutesCompleted
-    if (novelFrames[this.state.index].testRoutesCompleted) {
-      this.setState(INITIAL_STATE); // Or jump to index. this.setFrame(number);
+    const currentIndex = this.state.index;
+    // Resume to title screen after routes detours
+    // Property does not have to be called routeEnd
+    if (novelFrames[currentIndex].routeEnd) {
+      for (let i = 0; i < novelFrames.length; i++) {
+        if (novelFrames[currentIndex].routeEnd === novelFrames[i].routeReturn) {
+          this.setFrame(i);
+        }
+      }
     } else if (
       !this.state.choicesExist &&
       !this.state.loadMenuShown &&
@@ -74,7 +79,7 @@ class App extends Component {
       !this.state.titleScreenShown &&
       !this.state.backlogShown
     ) {
-      this.setFrame(this.state.index + 1); // Normal functionality; goes to the next frame via index
+      this.setFrame(currentIndex + 1); // Normal functionality; goes to the next frame via index
     }
   }
 
@@ -106,7 +111,7 @@ class App extends Component {
 
   // For developers to see what index they're editing. To request, set logIndex to true in novelFrames.js.
   componentDidMount() {
-    for (var i = 0; i < novelFrames.length; i++) {
+    for (let i = 0; i < novelFrames.length; i++) {
       if (novelFrames[i].logIndex) {
         console.log([i]);
       }
@@ -337,7 +342,7 @@ class App extends Component {
 
   backlog() {
     let loggedText = [];
-    for (var i = 0; i < this.state.indexHistory.length; i++) {
+    for (let i = 0; i < this.state.indexHistory.length; i++) {
       loggedText.unshift(
         <div className="backlog" key={loggedText.toString()}>
           <div className="backlog-speaker">
