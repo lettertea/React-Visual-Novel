@@ -1,278 +1,63 @@
-// speaker value
-const t = "Thomas";
-const b = "Block";
-// block sprites
-const bh = require("./sprites/block-happy.png");
-const bp = require("./sprites/block-pout.png");
-const bn = require("./sprites/block-neutral.png");
-
-var novelFrames = [
+let novelFrames = [
   {
-    speaker: t,
-    text: "The production quality is so bad. (Click on the frame to proceed.)"
+    text: "So we will keep track of the player's choices."
   },
   {
-    speaker: t,
-    text:
-      "This guy probably went on Google Images and took whatever he could find."
-  },
-  {
-    speaker: "Random Voice",
-    text: "That's not true."
-  },
-  {
-    text: "Oh, it's a talking block.",
-    sprite: bp
-  },
-  {
-    speaker: b,
-    text: "I went on Pexels and took whatever I could.",
-    sprite: bn
-  },
-  {
-    speaker: b,
-    text:
-      "If I had a large budget, I'd use whatever I could and take the copyright strike.",
-    sprite: bp
-  },
-  {
-    speaker: t,
-    text: "Is it okay to do that?",
-    sprite: bp
-  },
-  {
-    speaker: b,
-    text: "...",
-    sprite: bn
-  },
-  {
-    speaker: b,
-    text: "I made this project because I enjoy playing visual novels.",
-    sprite: bn
-  },
-  {
-    text: "You've been ignored. (Save before choosing?)",
-    sprite: bn,
     choicesExist: true
   },
   {
-    routeBegin: "throwRock",
-    speaker: t,
-    text: "Hey. Answer my question.",
-    sprite: bp
+    routeBegins: "pickedUpObject",
+    text: "I bend down to pick up the object."
   },
   {
-    text: "I stood up and approached him.",
-    sprite: bn
-  },
-  {
-    speaker: b,
-    text:
-      "Wait--I wanted to talk about why state mutations are actually very good practices.",
-    sprite: bn
-  },
-  {
-    speaker: t,
-    text: "How?",
-    sprite: bn
+    text: "It's a key.",
+    jumpTo: "objectChoice"
   },
 
   {
-    speaker: b,
-    text: "...",
-    sprite: bn
+    routeBegins: "objectIgnored",
+    text: "I shouldn't do that."
   },
   {
-    speaker: b,
-    text: "Teh heh!",
-    sprite: bh
+    text: "It could be infected or a trap.",
+    jumpTo: "objectChoice"
   },
   {
-    text: "I summon a rock in my hand and hurl it to Block.",
-    sprite: bn
+    receiveJump: "objectChoice",
+    text: "I walk ahead the dungeon and see a door ahead."
   },
   {
-    speaker: b,
-    text: "Uoghh.",
-    sprite: bh,
-    sound: require("./sound/thump.mp3") // source http://soundbible.com/993-Upper-Cut.html
-  },
-  {
-    text: "..."
-  },
-  {
-    text: "I don't think he's moving."
-  },
-  {
-    text: "I walk onto the stage and wave my hands over his figure."
-  },
-  {
-    speaker: b,
-    text: "Thomas... I have one thing I need to tell you."
-  },
-  {
-    text: "Block does his same old grin."
-  },
-  {
-    speaker: b,
-    text: "My name is not Block."
-  },
-  { text: "His face relaxes." },
-  {
-    speaker: t,
-    text: "I'll remember that, Not Block."
-  },
-  {
-    sceneChange: true,
-    routeEnd: "Rocks"
-  },
-  {
-    routeBegin: "noRock",
-    speaker: b,
-    text: "Wait, why am I explaining it? Didn't you write it, Thomas?",
-    sprite: bn
-  },
-  {
-    speaker: t,
-    text: "Shhh. I didn't want to use a sprite of myself, so I drew you.",
-    sprite: bp
-  },
-  {
-    speaker: b,
-    text: "...",
-    sprite: bp,
-    routeEnd: "Rocks"
-  },
-  {
-    speaker: t,
-    text: "Talk about how cool I was when I doing the CSS.",
-    sprite: bp,
-    routeReturn: "Rocks"
-  },
-  {
-    speaker: b,
-    text: "Yes, Thomas is a super cool CSS programmer.",
-    sprite: bn
-  },
-  {
-    speaker: b,
-    text: "He hacked so many strips of solutions together.",
-    sprite: bh
-  },
-  {
-    speaker: t,
-    text: "I'm not sure if I should feel good about that description.",
-    sprite: bp
-  },
-  {
-    speaker: b,
-    text: "Yeah, it's cause you ain't cool.",
-    sprite: bp
-  },
-  {
-    speaker: t,
-    text: "(*ﾟﾛﾟ)",
-    sprite: bp
-  },
-  {
-    speaker: b,
     text:
-      "So after hacking a bunch of CSS together, he managed to center a bunch of things and make it work on mobile.",
-    sprite: bn
+      "I grab the handle and pull it, but it doesn't budge. It needs a key.",
+    jumpBecauseStoreTo: "haveKey"
   },
   {
-    speaker: b,
-    text:
-      "We tested it only on a limited amount of phones, so it might not work for everyone.",
-    sprite: bn
+    text: "I try picking it, but nothing happens."
   },
   {
-    speaker: b,
-    text:
-      "As for the React portion, one of the main problems was adding multiple routes following a choice.",
-    sprite: bn
+    text: "No key end.",
+    jumpTo: "titleScreen"
+  },
+  // Jumps to below if the user picks up the key
+  {
+    receiveJumpBecauseStore: "haveKey",
+    text: "I take out the key from my pocket and insert it into the lock."
   },
   {
-    speaker: b,
-    text:
-      "The backlog would either get text it shouldn't record or wouldn't get text it should record.",
-    sprite: bn
+    text: "The door opens."
   },
   {
-    speaker: b,
-    text: "We ended up having to change the way how we handled the choices.",
-    sprite: bn
-  },
-  {
-    speaker: b,
-    text:
-      "Instead of having multiple files to contain each independent route, we made it all into one.",
-    sprite: bn
-  },
-  {
-    speaker: b,
-    text:
-      "It functions, and surprisingly, it's a lot less code in terms of scalability.",
-    sprite: bh
-  },
-  {
-    speaker: b,
-    text:
-      'But depending on your goals, I might not recommend using this as your "engine"',
-    sprite: bn
-  },
-  {
-    speaker: b,
-    text:
-      "Out of the box, this doesn't come with a lot of animations, effects, or other functionalities many engines come with.",
-    sprite: bn
-  },
-  {
-    speaker: b,
-    text:
-      "But if you like the flexibility to write them yourself or just want to build a simple visual novel on the web, go for it.",
-    sprite: bn
-  },
-  {
-    speaker: b,
-    text:
-      'I\'d be happy that you find my visual novel "engine" useful in any way.',
-    sprite: bh
-  },
-  {
-    speaker: b,
-    text:
-      "There are great alternatives out there, which I'm not ashamed to say are far superior than mine.",
-    sprite: bn
-  },
-  {
-    speaker: b,
-    text: "If you have any questions or comments, you can message me.",
-    sprite: bn
+    text: "Key unlocked end.",
+    jumpTo: "titleScreen"
   }
 ];
 
 // BG
-for (let i = 0; i < 26; i++) {
+for (let i = 0; i < novelFrames.length; i++) {
   novelFrames[i].bg = require("./bg/microphone.jpeg"); // source https://www.pexels.com/photo/blur-close-up-dark-focus-302655/
 }
 
-novelFrames[26].bg = require("./bg/notBlockEnd.png");
-
-for (let i = 27; i < novelFrames.length; i++) {
-  novelFrames[i].bg = require("./bg/microphone.jpeg"); // source https://www.pexels.com/photo/blur-close-up-dark-focus-302655/
-}
-
-// BGM
-for (let i = 0; i < 17; i++) {
-  novelFrames[i].bgm = require("./bgm/city.mp3"); // source http://freemusicarchive.org/music/David_Szesztay/20170730112627440/Throughout_The_City
-}
-
-for (let i = 21; i < 27; i++) {
-  novelFrames[i].bgm = require("./bgm/silence.mp3"); // source http://freemusicarchive.org/music/Silence_Is_Sexy/Modern_Antiques_Vol_1__2/Silence_is_Sexy_-_Modern_Antiques_Vol_2_-_01_Holiday
-}
-
-for (let i = 27; i < novelFrames.length; i++) {
+for (let i = 0; i < novelFrames.length; i++) {
   novelFrames[i].bgm = require("./bgm/take.mp3"); // source https://www.pexels.com/photo/blur-close-up-dark-focus-302655/
 }
 
