@@ -18,9 +18,9 @@ import "./styles/TitleScreen.css";
 import "./styles/saveLoadMenu.css";
 
 const INITIAL_STATE = {
-  choicesCount: {
-    throwRock: 0,
-    noRock: 0
+  choicesStore: {
+    pickedObject: 0,
+    noObject: 0
   },
   index: 0,
   buttonsDeleted: false,
@@ -43,8 +43,8 @@ class App extends Component {
     this.state = INITIAL_STATE;
   }
 
-  setFrameFromChoice(choice) {
-    const updatedChoicesCount = update(this.state.choicesCount, {
+  setFrameFromChoice(choice, jumpTo) {
+    const updatedChoicesStore = update(this.state.choicesStore, {
       [choice]: { $apply: currentValue => currentValue + 1 }
     });
     for (let i = 0; i < novelFrames.length; i++) {
@@ -54,7 +54,7 @@ class App extends Component {
     }
 
     this.setState({
-      choicesCount: updatedChoicesCount
+      choicesStore: updatedChoicesStore
     });
   }
 
@@ -150,7 +150,7 @@ class App extends Component {
 
   handleChoiceSelected(event) {
     this.stopSkip();
-    this.setFrameFromChoice(event.currentTarget.name);
+    this.setFrameFromChoice(event.currentTarget.name, event.currentTarget.id);
     this.setNextChoice();
   }
 
