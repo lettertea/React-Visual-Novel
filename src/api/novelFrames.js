@@ -55,8 +55,8 @@ var novelFrames = [
     sprite: bn,
     choicesExist: true
   },
-  // throwRock route below.
   {
+    routeBegin: "throwRock",
     speaker: t,
     text: "Hey. Answer my question.",
     sprite: bp
@@ -124,11 +124,10 @@ var novelFrames = [
   },
   {
     sceneChange: true,
-    testRoutesCompleted: true
+    routeEnd: "Rocks"
   },
-
-  // noRock route starts below
   {
+    routeBegin: "noRock",
     speaker: b,
     text: "Wait, why am I explaining it? Didn't you write it, Thomas?",
     sprite: bn
@@ -141,12 +140,14 @@ var novelFrames = [
   {
     speaker: b,
     text: "...",
-    sprite: bp
+    sprite: bp,
+    routeEnd: "Rocks"
   },
   {
     speaker: t,
     text: "Talk about how cool I was when I doing the CSS.",
-    sprite: bp
+    sprite: bp,
+    routeReturn: "Rocks"
   },
   {
     speaker: b,
@@ -247,8 +248,7 @@ var novelFrames = [
   {
     speaker: b,
     text: "If you have any questions or comments, you can message me.",
-    sprite: bn,
-    testRoutesCompleted: true
+    sprite: bn
   }
 ];
 
