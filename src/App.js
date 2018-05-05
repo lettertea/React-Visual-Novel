@@ -48,7 +48,7 @@ class App extends Component {
       [choice]: { $apply: currentValue => currentValue + 1 }
     });
     for (let i = 0; i < novelFrames.length; i++) {
-      if (choice === novelFrames[i].routeBegin) {
+      if (jumpTo === novelFrames[i].routeBegins) {
         this.setFrame(i);
       }
     }
@@ -60,11 +60,29 @@ class App extends Component {
 
   setNextFrame() {
     const currentIndex = this.state.index;
-    // Resumes to common route
-    if (novelFrames[currentIndex].routeEnd) {
+    // Jumps indexes because choices store
+    if (
+      this.state.choicesStore.pickedObject === 1 &&
+      novelFrames[currentIndex].jumpBecauseStoreTo === "haveKey"
+    ) {
       for (let i = 0; i < novelFrames.length; i++) {
-        if (novelFrames[currentIndex].routeEnd === novelFrames[i].routeReturn) {
+        if (
+          novelFrames[currentIndex].jumpBecauseStoreTo ===
+          novelFrames[i].receiveJumpBecauseStore
+        ) {
           this.setFrame(i);
+        }
+      }
+    } else if (novelFrames[currentIndex].jumpTo) {
+      // Jumps indexes normally
+      if (novelFrames[currentIndex].jumpTo === "titleScreen") {
+        this.setState(INITIAL_STATE);
+      } else if (novelFrames[currentIndex].jumpTo) {
+        // Resumes to common route
+        for (let i = 0; i < novelFrames.length; i++) {
+          if (novelFrames[currentIndex].jumpTo === novelFrames[i].receiveJump) {
+            this.setFrame(i);
+          }
         }
       }
     } else if (
@@ -74,6 +92,7 @@ class App extends Component {
       !this.state.titleScreenShown &&
       !this.state.backlogShown
     ) {
+      // Sets to frame one index higher
       this.setFrame(currentIndex + 1); // Normal functionality; goes to the next frame via index
     }
   }
