@@ -43,20 +43,16 @@ class App extends Component {
     this.state = INITIAL_STATE;
   }
 
-  /* ============================================================================================
-       Diverges to different index depending on user's choice. Important function for VN writers
-    ============================================================================================ */
-
   setFrameFromChoice(choice) {
     const updatedChoicesCount = update(this.state.choicesCount, {
       [choice]: { $apply: currentValue => currentValue + 1 }
     });
-    // Routes depending on choice
-    if (updatedChoicesCount.throwRock === 1) {
-      this.setFrame(10);
-    } else if (updatedChoicesCount.noRock === 1) {
-      this.setFrame(27);
+    for (let i = 0; i < novelFrames.length; i++) {
+      if (choice === novelFrames[i].routeBegin) {
+        this.setFrame(i);
+      }
     }
+
     this.setState({
       choicesCount: updatedChoicesCount
     });
@@ -64,8 +60,7 @@ class App extends Component {
 
   setNextFrame() {
     const currentIndex = this.state.index;
-    // Resume to title screen after routes detours
-    // Property does not have to be called routeEnd
+    // Resumes to common route
     if (novelFrames[currentIndex].routeEnd) {
       for (let i = 0; i < novelFrames.length; i++) {
         if (novelFrames[currentIndex].routeEnd === novelFrames[i].routeReturn) {
@@ -82,10 +77,6 @@ class App extends Component {
       this.setFrame(currentIndex + 1); // Normal functionality; goes to the next frame via index
     }
   }
-
-  /* ===========================================================
-       The rest are functionalities. VN writers can ignore rest
-    =========================================================== */
 
   setFrame(index) {
     // Makes sure the index is within the novelFrames array
