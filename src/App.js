@@ -18,10 +18,7 @@ import "./styles/TitleScreen.css";
 import "./styles/saveLoadMenu.css";
 
 const INITIAL_STATE = {
-  choicesStore: {
-    pickedObject: 0,
-    noObject: 0
-  },
+  choicesStore: {},
   index: 0,
   buttonsDeleted: false,
   choicesExist: false,
@@ -44,18 +41,19 @@ class App extends Component {
   }
 
   setFrameFromChoice(choice, jumpTo) {
-    const updatedChoicesStore = update(this.state.choicesStore, {
-      [choice]: { $apply: currentValue => currentValue + 1 }
-    });
     for (let i = 0; i < novelFrames.length; i++) {
       if (jumpTo === novelFrames[i].routeBegins) {
         this.setFrame(i);
       }
     }
 
-    this.setState({
-      choicesStore: updatedChoicesStore
-    });
+    let choicesStore = Object.assign({}, this.state.choicesStoreic); //creating copy of object
+    if (choicesStore[choice]) {
+      choicesStore[choice]++;
+    } else {
+      choicesStore[choice] = 1;
+    }
+    this.setState({ choicesStore });
   }
 
   setNextFrame() {
