@@ -24,7 +24,7 @@ let novelFrames = [
   },
   {
     receiveJump: "objectChoice",
-    text: "I walk ahead the dungeon and see a door ahead."
+    text: "I walk ahead deeper into the dungeon and see a door ahead."
   },
   {
     text:
