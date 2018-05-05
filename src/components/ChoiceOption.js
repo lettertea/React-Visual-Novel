@@ -5,11 +5,10 @@ function ChoiceOption(props) {
     <input
       type="button"
       className="choice-button"
-      name={props.answerType}
-      checked={props.answerType === props.answer}
-      id={props.answerType}
-      value={props.answerContent}
-      disabled={props.answer}
+      key={props.content}
+      id={props.jumpTo}
+      name={props.store}
+      value={props.content}
       onClick={props.onChoiceSelected}
     />
   );

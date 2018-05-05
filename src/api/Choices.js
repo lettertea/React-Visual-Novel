@@ -2,12 +2,12 @@ var Choices = [
   {
     choices: [
       {
-        type: "throwRock",
-        content: "Call Block out and throw a rock."
+        jumpTo: "pickedUpObject",
+        content: "Pick up the object on the floor"
       },
       {
-        type: "noRock",
-        content: "Let him continue."
+        jumpTo: "objectIgnored",
+        content: "Ignore the object."
       }
     ]
   }
