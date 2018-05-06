@@ -13,7 +13,6 @@ let novelFrames = [
     text: "It's a key.",
     jumpTo: "objectChoice"
   },
-
   {
     routeBegins: "objectIgnored",
     text: "I shouldn't do that."
@@ -58,7 +57,7 @@ for (let i = 0; i < novelFrames.length; i++) {
 }
 
 for (let i = 0; i < novelFrames.length; i++) {
-  novelFrames[i].bgm = require("./bgm/take.mp3"); // source https://www.pexels.com/photo/blur-close-up-dark-focus-302655/
+  novelFrames[i].bgm = require("./bgm/take.mp3"); // source http://freemusicarchive.org/music/David_Szesztay/20170730112627440/Throughout_The_City
 }
 
 export default novelFrames;
