@@ -51,6 +51,11 @@ From the root directory, navigate to ./src/api/novelFrames.js. There should be a
 - `bgm`: Loops through an audio file. Uses the [react-sound](https://github.com/leoasis/react-sound) component. Requires a path to an audio file.
 - `choicesExist`: Accepts a boolean. If set to true, the choices from the Choices.js api will be presented to the user.
 - `logIndex`: Accepts a boolean. If set to true, the object's index will be logged into the console.
+- `jumpBecauseStoreTo`: The starting point of a jump if its value is equal to `receiveJumpBecauseStore` and the store value from the choice the user made.
+- `jumpTo`: The starting point of a jump if its value is equal to `receiveJump`.
+- `receiveJump`: The end point of a jump if its value is equal to `jumpTo`.
+- `receiveJumpBecauseStore`: The end point of a jump if its value is equal to `jumpBecauseStoreTo` and the store value from the choice the user made.
+- `routeBegins`: The end point of a jump immediately following making a choice. Must equal to the `jumpToBecauseChoice` property in Choices.js.
 - `sceneChange`: Accepts a boolean. If set to true, background and sprite will leave and enter with a fade time of 1700 and 2000 miliseconds respectively. Uses the [ReactCSSTransitionGroup](https://reactjs.org/docs/animation.html) component. Otherwise, fast animation will be used for usual sprite transitions.
 - `sound`: Plays an audio file once. Requires a path to an audio file.
 - `speaker`: Accepts a string and shows the name of the character in a bubble on top of textbox. Also wraps text in quotes as a side effect.
@@ -97,103 +102,10 @@ const bn = require("./sprites/block-neutral.png");
 ```
 
 ## Creating Choices
-This process will involve Choices.js and novelFrames.js in the ./src/api directory as well as App.js from the /.src directory.
+When you want the user to make a choice, set `choicesExist: true` in novelFrames.js. The app will go through the array of objects in Choices.js and present the current choice. For example, if it is your third time setting `choicesExist: true`, then the second index in choices will be used.
 
-When you want the user to make a choice, set `choicesExist: true` in novelFrames.js. The app will go through the array of objects in Choices.js and present the current choice. For example, if it is your third time setting `choicesExist: true`, then the second index in Choices.js will be used.
+The Choices.js array of objects accepts choices, also an array of object (example below). It accepts three properties in its object: `store`, `jumpToBecauseChoice`, and `content`. The `store` property is used if you would like utilize the user's choice data later. The `jumpToBecauseChoice` property is used to jump to a particular index immediately after a choice. However, it must equal to `routeBegins` in novelFrames.js to work. The `content` property is like the front-end as it shows the user what the choice will do and has no effect on functionality.
 
-The Choices.js array of objects accepts choices, also an array of object (example below). It accepts two properties in its object: `type` and `content`. The `type` property is purely for functionality and must match the state in the constructor of App.js. The `content` property is like the front-end as it shows the user what the choice will do and has no effect on functionality.
-
-Once the choice has been made, you can choose to make the user jump to an index in novelFrames.js. Thus, the user will only see the route affected by the choice, skipping the other, irrelevant route. Once the route is completed, you can make the user jump back to the main route at a certain index or end the game. To do so. In my example below, I use the state, `testRoutesCompleted`. The novelFrames.js property must have that property set to true. You are free to create your own state and name it whatever you want in App.js.
-
-Example (see demo site for execution):
-
-novelFrames.js
-```
-// ... Index 9 below. Choice frame.
-{
-  text: "You've been ignored. (Save before choosing?)",
-  sprite: require("./sprites/block-neutral.png"),
-  choicesExist: true
-},
-```
-
-When choicesExist is true, the following is present.
-
-Choices.js
-```
-var Choices = [
-  {
-    choices: [
-      {
-        type: "throwRock",
-        content: "Call Block out and throw a rock."
-      },
-      {
-        type: "noRock",
-        content: "Let him continue."
-      }
-    ]
-  }
-];
-// ...
-```
-
-Found near top of App.js file in constructor function. `throwRock` and `noRock` states matches the choices type.
-```
-    this.state = {
-      // ...
-      choicesCount: {
-        throwRock: 0,
-        noRock: 0
-      // ...
-      },
-```
-setFrameFromChoice() function in App.js
-```
-// Routes depending on choice
-    if (updatedChoicesCount.throwRock === 1) {
-      this.setFrame(10);
-    } else if (updatedChoicesCount.noRock === 1) {
-      this.setFrame(27);
-    }
-```
-
-Last index of routes are indicated with `testRoutesCompleted: true` (26 for first choice, 48 for second)
-
-Index 26
-```
-{
-  sceneChange: true,
-  testRoutesCompleted: true
-},
-  // Goes to title screen
-  
-```
-Index 48
-```
-// ...
-{
-    speaker: b,
-    text: "If you have any questions or comments, you can message me.",
-    sprite: bn,
-    testRoutesCompleted: true
-  }
-// goes to title screen
-```
-
-
-App.js
-```
-  setNextFrame() {
-    // Resume to title screen after testRoutes detours
-    // Property does not have to be called testRoutesCompleted
-    if (novelFrames[this.state.index].testRoutesCompleted) {
-      this.setState(INITIAL_STATE); // Or jump to index. this.setFrame(number);
-    } // ...
-  }
-  // ...
-    
-```
 
 ## License
 
