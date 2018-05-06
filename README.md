@@ -104,8 +104,9 @@ const bn = require("./sprites/block-neutral.png");
 ## Creating Choices
 When you want the user to make a choice, set `choicesExist: true` in novelFrames.js. The app will go through the array of objects in Choices.js and present the current choice. For example, if it is your third time setting `choicesExist: true`, then the second index in choices will be used.
 
-The Choices.js array of objects accepts choices, also an array of object (example below). It accepts three properties in its object: `store`, `jumpToBecauseChoice`, and `content`. The `store` property is used if you would like utilize the user's choice data later. The `jumpToBecauseChoice` property is used to jump to a particular index immediately after a choice. However, it must equal to `routeBegins` in novelFrames.js to work. The `content` property is like the front-end as it shows the user what the choice will do and has no effect on functionality.
+The Choices.js array of objects accepts choices, also an array of object. It accepts three properties in its object: `store`, `jumpToBecauseChoice`, and `content`. The `store` property is used if you would like utilize the user's choice data later. The `jumpToBecauseChoice` property is used to jump to a particular index immediately after a choice. However, it must equal to `routeBegins` in novelFrames.js to work. The `content` property is like the front-end as it shows the user what the choice will do and has no effect on functionality.
 
+See the sample site, which aligns with the repository's [novelFrames.js](https://github.com/nashkenazy/React-Visual-Novel/blob/master/src/api/novelFrames.js) and [Choices.js](https://github.com/nashkenazy/React-Visual-Novel/blob/master/src/api/Choices.js) files, for a working application of these concepts.
 
 ## License
 
