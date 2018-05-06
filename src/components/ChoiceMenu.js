@@ -8,7 +8,7 @@ function ChoiceMenu(props) {
         key={key.content}
         content={key.content}
         store={key.store}
-        jumpTo={key.jumpTo}
+        jumpToBecauseChoice={key.jumpToBecauseChoice}
         onChoiceSelected={props.onChoiceSelected}
       />
     );

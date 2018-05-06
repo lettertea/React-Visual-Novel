@@ -39,14 +39,14 @@ class App extends Component {
     this.state = INITIAL_STATE;
   }
 
-  setFrameFromChoice(choice, jumpTo) {
+  setFrameFromChoice(choice, jumpToBecauseChoice) {
     for (let i = 0; i < novelFrames.length; i++) {
-      if (jumpTo === novelFrames[i].routeBegins) {
+      if (jumpToBecauseChoice === novelFrames[i].routeBegins) {
         this.setFrame(i);
       }
     }
 
-    let choicesStore = Object.assign({}, this.state.choicesStoreic); //creating copy of object
+    let choicesStore = Object.assign({}, this.state.choicesStoreic);
     if (choicesStore[choice]) {
       choicesStore[choice]++;
     } else {

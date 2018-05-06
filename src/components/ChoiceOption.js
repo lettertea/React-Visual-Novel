@@ -6,7 +6,7 @@ function ChoiceOption(props) {
       type="button"
       className="choice-button"
       key={props.content}
-      id={props.jumpTo}
+      id={props.jumpToBecauseChoice}
       name={props.store}
       value={props.content}
       onClick={props.onChoiceSelected}
