@@ -1,0 +1,84 @@
+.menu-buttons-container {
+  z-index: -1;
+  overflow: visible;
+}
+
+.menu-buttons {
+  position: relative;
+  top: 740px;
+  width: 100%;
+  float: left;
+}
+
+.menu-buttons button {
+  /* credit source https://codepen.io/tmrDevelops/full/VeRvKX/ */
+  border: solid 2px #41403e; /* can substitute for others */
+  -ms-flex-item-align: center;
+  align-self: center;
+  background: transparent;
+  padding: 14px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  color: #41403e;
+  font-size: 24px;
+  letter-spacing: 1px;
+  outline: none;
+  -webkit-box-shadow: 20px 38px 34px -26px rgba(0, 0, 0, 0.2);
+  box-shadow: 20px 38px 34px -26px rgba(0, 0, 0, 0.2);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  /*
+  Above is shorthand for:
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  border-bottom-right-radius: 225px 15px;
+  border-bottom-left-radius:15px 255px;
+  */
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.menu-buttons button:hover {
+  background-color: #1b9878;
+  /* For hidden button to appear from transparent */
+  -webkit-box-shadow: 2px 8px 4px -6px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 8px 4px -6px rgba(0, 0, 0, 0.3);
+  color: #fdfdfd; /* same as bg color */
+  border: solid 2px #41403e;
+}
+
+@media only screen and (max-width: 1100px) {
+  .menu-buttons button {
+    font-size: 18px;
+    padding: 8px;
+    margin-right: 10px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .menu-buttons button {
+    float: none;
+    font-size: 16px;
+    padding: 6px;
+    margin-top: 10px;
+  }
+}
+
+.menu-buttons button:last-child {
+  margin-right: 0; /* for symmetry; prevents rightmost button margin*/
+}
+
+/* toggle menu button */
+.shown-button {
+  float: right;
+}
+
+/*  toggle menu button */
+.hidden button {
+  margin-left: 15px;
+  float: right;
+  background-color: transparent;
+  color: transparent;
+  border: solid 2px transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}

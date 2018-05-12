@@ -12,9 +12,16 @@ import RenderFrame from "./components/RenderFrame";
 import MenuButtons from "./components/MenuButtons";
 import SaveLoadMenu from "./components/SaveLoadMenu";
 // CSS
-import "./styles/App.css";
-import "./styles/TitleScreen.css";
-import "./styles/saveLoadMenu.css";
+import "./styles/container.css";
+import "./styles/sprites.css";
+import "./styles/animations.css";
+import "./styles/backlog.css";
+import "./styles/choicesoverlay.css";
+import "./styles/menubuttons.css";
+import "./styles/saveloadmenu.css";
+import "./styles/sprites.css";
+import "./styles/textbox.css";
+import "./styles/titlescreen.css";
 
 const INITIAL_STATE = {
   choicesStore: {},

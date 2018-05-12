@@ -1,0 +1,36 @@
+.overlay-choices {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.overlay .choice-button {
+  font-size: 26px;
+  width: 750px;
+  margin: 30px auto;
+  border-radius: 25px;
+  background-color: #1d75a5;
+  border: none;
+  color: white;
+  padding: 12px 0px;
+  cursor: pointer;
+  display: block;
+}
+
+@media only screen and (max-width: 833px) {
+  .overlay .choice-button {
+    padding: 10px 0px;
+    font-size: 20px;
+    width: 90%;
+  }
+}
+
+/* Add a background color on hover */
+.overlay .choice-button:hover {
+  background-color: white;
+  color: #1d75a5;
+}
+
+
+

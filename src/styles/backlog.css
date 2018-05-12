@@ -1,0 +1,53 @@
+.backlog-overlay {
+  overflow: auto;
+  margin: auto;
+  height: 95%;
+  width: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+.backlog {
+  box-sizing: border-box;
+  background-color: #eee;
+  background-image: linear-gradient(
+      90deg,
+      transparent 79px,
+      #abced4 79px,
+      #abced4 81px,
+      transparent 81px
+    ),
+    linear-gradient(#ddd 2px, transparent 2px);
+  background-size: 100% 33.33%;
+  font-size: 22px;
+  width: 100%;
+  height: 104px;
+  padding-top: 3px;
+  line-height: 1.52;
+  padding-left: 93px;
+}
+
+@media only screen and (max-width: 768px) {
+  .backlog {
+    background-image: linear-gradient(
+        90deg,
+        transparent 45px,
+        #abced4 45px,
+        #abced4 47px,
+        transparent 47px
+      ),
+      linear-gradient(#ddd 2px, transparent 2px); /* shifts blue line margin to left */
+    padding-left: 59px;
+    font-size: 18px;
+    padding-top: 2px;
+    line-height: 1.45;
+    background-size: 100% 25%;
+  }
+}
+
+.backlog-speaker {
+  font-weight: 500;
+  color: DarkGreen;
+}
