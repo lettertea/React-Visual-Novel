@@ -119,6 +119,8 @@ class App extends Component {
       sound: novelFrames[index].sound,
       speaker: novelFrames[index].speaker,
       sprite: novelFrames[index].sprite,
+      spriteLeft: novelFrames[index].spriteLeft,
+      spriteRight: novelFrames[index].spriteRight,
       voice: novelFrames[index].voice
     });
   }
@@ -148,6 +150,8 @@ class App extends Component {
         bg={this.state.bg}
         sceneChange={this.state.sceneChange}
         sprite={this.state.sprite}
+        spriteLeft={this.state.spriteLeft}
+        spriteRight={this.state.spriteRight}
         speaker={this.state.speaker}
         text={this.state.text}
         textBoxShown={this.state.textBoxShown}
