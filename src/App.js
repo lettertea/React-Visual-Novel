@@ -53,12 +53,8 @@ class App extends Component {
       }
     }
 
-    let choicesStore = Object.assign({}, this.state.choicesStoreic);
-    if (choicesStore[choice]) {
-      choicesStore[choice]++;
-    } else {
-      choicesStore[choice] = 1;
-    }
+    let choicesStore = Object.assign({}, this.state.choicesStore);
+    choicesStore[choice]++ || (choicesStore[choice] = 1);
     this.setState({ choicesStore });
   }
 
