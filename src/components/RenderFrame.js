@@ -10,6 +10,7 @@ function RenderFrame(props) {
           transitionName={props.sceneChange ? "scene" : "sprite"}
           transitionEnterTimeout={props.sceneChange ? 2000 : 400}
           transitionLeaveTimeout={props.sceneChange ? 1700 : 300}
+          className="sprite-center"
         >
           <img key={props.bg} className="bg" src={props.bg} />
           <img key={props.sprite} className="sprite" src={props.sprite} />

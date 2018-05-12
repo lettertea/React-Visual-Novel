@@ -1,15 +1,18 @@
+.sprite-center {
+	display: flex;
+	justify-content: center;
+}
+
 .sprite {
 	position: absolute;
 	bottom: 0;
 	margin: auto;
-	left: 50%;
-	transform: translate(-50%, 0);
 	z-index: 1;
 }
 
 .left {
-	left: 70%;
+	right: 50%;
 }
 .right {
-	left: 30%;
+	left: 50%;
 }
