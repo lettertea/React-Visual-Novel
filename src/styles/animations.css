@@ -19,6 +19,26 @@
   transition: opacity 300ms ease-out;
 }
 
+.sprite-slide-enter {
+  opacity: 0;
+  transition: transform 1000ms ease-in-out, opacity 1000ms ease-in-out;
+  transform: translate(100%, 0);
+}
+.sprite-slide-enter-active {
+  opacity: 1;
+  transform: translate(0%, 0);
+}
+
+.sprite-slide-leave {
+  opacity: 1;
+  transition: transform 1000ms ease-in-out, opacity 1000ms ease-in-out;
+  transform: translate(0%, 0);
+}
+.sprite-slide-leave-active {
+  opacity: 0;
+  transform: translate(-100%, 0);
+}
+
 /* BG & textbox animations for scenery change */
 .scene-enter {
   opacity: 0;

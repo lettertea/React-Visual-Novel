@@ -106,7 +106,7 @@ class App extends Component {
     // Updates novelFrames with new index
     this.setState({
       index: index,
-      text: novelFrames[index].text,
+      animation: novelFrames[index].animation,
       bg: novelFrames[index].bg,
       bgm: novelFrames[index].bgm,
       choicesExist: novelFrames[index].choicesExist,
@@ -116,6 +116,7 @@ class App extends Component {
       sprite: novelFrames[index].sprite,
       spriteLeft: novelFrames[index].spriteLeft,
       spriteRight: novelFrames[index].spriteRight,
+      text: novelFrames[index].text,
       voice: novelFrames[index].voice
     });
   }
@@ -142,6 +143,7 @@ class App extends Component {
     return (
       <RenderFrame
         setNextFrame={this.setNextFrame.bind(this)}
+        animation={this.state.animation}
         bg={this.state.bg}
         sceneChange={this.state.sceneChange}
         sprite={this.state.sprite}

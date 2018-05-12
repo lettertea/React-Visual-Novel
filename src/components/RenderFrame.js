@@ -2,15 +2,43 @@ import React from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 function RenderFrame(props) {
+  function transitionName() {
+    if (props.animation === "sceneChange") {
+      return "scene";
+    } else if (props.animation === "spriteSlide") {
+      return "sprite-slide";
+    } else {
+      return "sprite";
+    }
+  }
+  function transitionEnter() {
+    if (props.animation === "sceneChange") {
+      return 2000;
+    } else if (props.animation === "spriteSlide") {
+      return 1000;
+    } else {
+      return 300;
+    }
+  }
+
+  function transitionLeave() {
+    if (props.animation === "sceneChange") {
+      return 1700;
+    } else if (props.animation === "spriteSlide") {
+      return 1000;
+    } else {
+      return 300;
+    }
+  }
   return (
     <div onClick={props.setNextFrame}>
       <div>
         <ReactCSSTransitionGroup
           component="div"
-          transitionName={props.sceneChange ? "scene" : "sprite"}
-          transitionEnterTimeout={props.sceneChange ? 2000 : 400}
-          transitionLeaveTimeout={props.sceneChange ? 1700 : 300}
           className="sprite-center"
+          transitionName={transitionName()}
+          transitionEnterTimeout={transitionEnter()}
+          transitionLeaveTimeout={transitionLeave()}
         >
           <img key={props.bg} className="bg" src={props.bg} />
           <img key={props.sprite} className="sprite" src={props.sprite} />
