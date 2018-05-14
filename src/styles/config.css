@@ -1,0 +1,44 @@
+#config-overlay {
+	background-color: #6b5b95;
+	display: flex;
+	flex-flow: column;
+	height: 100%;
+}
+#config-title {
+	position: absolute;
+	left: 0;
+}
+
+#config-overlay ul {
+	list-style-type: none;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+}
+
+#config-overlay li {
+	display: inline-block;
+}
+
+#config-overlay li a {
+	font-size: 20px;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 20px;
+	text-decoration: none;
+}
+
+#config-overlay li a:not(.active) {
+	cursor: pointer;
+}
+
+#config-overlay li a:hover:not(.active) {
+	background-color: #111;
+}
+
+#config-overlay .active {
+	background-color: #4caf50;
+}

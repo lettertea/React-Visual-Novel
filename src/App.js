@@ -8,11 +8,13 @@ import Choices from "./api/Choices";
 // Components
 import TitleScreen from "./components/TitleScreen";
 import ChoiceMenu from "./components/ChoiceMenu";
+import ConfigMenu from "./components/ConfigMenu";
 import RenderFrame from "./components/RenderFrame";
 import MenuButtons from "./components/MenuButtons";
 import SaveLoadMenu from "./components/SaveLoadMenu";
 // CSS
 import "./styles/textbox.css"; // Must import first so saveLoadMenu can use it
+import "./styles/config.css";
 import "./styles/container.css";
 import "./styles/animations.css";
 import "./styles/backlog.css";
@@ -26,11 +28,10 @@ import "./styles/transitions.css";
 const INITIAL_STATE = {
   choicesStore: {},
   index: 0,
-  buttonsDeleted: false,
   choicesExist: false,
+  configMenuShown: false,
   titleScreenShown: true,
   frameIsRendering: false,
-  menuButtonsShown: true,
   backlogShown: false,
   textBoxShown: true,
   saveMenuShown: false,
@@ -190,9 +191,9 @@ class App extends Component {
     );
   }
 
-  toggleMenu() {
+  toggleConfigMenu() {
     this.setState(prevState => ({
-      menuButtonsShown: !prevState.menuButtonsShown
+      configMenuShown: !prevState.configMenuShown
     }));
   }
 
@@ -302,6 +303,15 @@ class App extends Component {
     );
   }
 
+  configMenu() {
+    return (
+      <ConfigMenu
+        beginStory={this.beginStory.bind(this)}
+        toggleLoadMenu={this.toggleLoadMenu.bind(this)}
+      />
+    );
+  }
+
   saveMenu() {
     return (
       <SaveLoadMenu
@@ -334,28 +344,26 @@ class App extends Component {
 
   // the GUI interface on the bottom
   renderMenuButtons() {
-    if (!this.state.buttonsDeleted) {
-      return (
-        <MenuButtons
-          deleteButtons={() => this.setState({ buttonsDeleted: true })}
-          menuButtonsShown={this.state.menuButtonsShown}
-          toggleSaveMenu={this.toggleSaveMenu.bind(this)}
-          toggleLoadMenu={this.toggleLoadMenu.bind(this)}
-          saveSlot={this.saveSlot.bind(this)}
-          loadSlot={this.loadSlot.bind(this)}
-          saveMenuShown={this.state.saveMenuShown}
-          loadMenuShown={this.state.loadMenuShown}
-          toggleMenu={this.toggleMenu.bind(this)}
-          toggleBacklog={this.toggleBacklog.bind(this)}
-          toggleTextBox={this.toggleTextBox.bind(this)}
-          startSkip={this.startSkip.bind(this)}
-          stopSkip={this.stopSkip.bind(this)}
-          isSkipping={this.state.isSkipping}
-          textBoxShown={this.state.textBoxShown}
-          backlogShown={this.state.backlogShown}
-        />
-      );
-    }
+    return (
+      <MenuButtons
+        menuButtonsShown={this.state.menuButtonsShown}
+        toggleSaveMenu={this.toggleSaveMenu.bind(this)}
+        toggleLoadMenu={this.toggleLoadMenu.bind(this)}
+        saveSlot={this.saveSlot.bind(this)}
+        loadSlot={this.loadSlot.bind(this)}
+        saveMenuShown={this.state.saveMenuShown}
+        loadMenuShown={this.state.loadMenuShown}
+        toggleConfigMenu={this.toggleConfigMenu.bind(this)}
+        configMenuShown={this.state.configMenuShown}
+        toggleBacklog={this.toggleBacklog.bind(this)}
+        toggleTextBox={this.toggleTextBox.bind(this)}
+        textBoxShown={this.state.textBoxShown}
+        backlogShown={this.state.backlogShown}
+        startSkip={this.startSkip.bind(this)}
+        stopSkip={this.stopSkip.bind(this)}
+        isSkipping={this.state.isSkipping}
+      />
+    );
   }
 
   backlog() {
@@ -402,6 +410,7 @@ class App extends Component {
           {this.state.titleScreenShown ? this.titleScreen() : null}
           {this.state.frameIsRendering ? this.renderFrame() : null}
           {/* GUI menu buttons */}
+          {this.state.configMenuShown ? this.configMenu() : null}
           {this.state.saveMenuShown ? this.saveMenu() : null}
           {this.state.loadMenuShown ? this.loadMenu() : null}
           {this.state.backlogShown ? this.backlog() : null}
