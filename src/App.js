@@ -386,7 +386,7 @@ class App extends Component {
       <Sound
         url={this.state.bgm}
         playStatus={Sound.status.PLAYING}
-        loop="true"
+        loop={true}
       />
     );
   }
@@ -418,9 +418,9 @@ class App extends Component {
           {this.state.choicesExist ? this.renderChoiceMenu() : null}
         </ReactCSSTransitionGroup>
         {!this.state.titleScreenShown ? this.renderMenuButtons() : null}
-        {this.playBGM()}
-        {this.playSound()}
-        {this.playVoice()}
+        {this.state.bgm ? this.playBGM() : null}
+        {this.state.sound ? this.playSound() : null}
+        {this.state.voice ? this.playVoice() : null}
       </div>
     );
   }
