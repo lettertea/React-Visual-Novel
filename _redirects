@@ -1,0 +1,4 @@
+# redirect netlify sitename to your sitename for SEO purposes,
+# to avoid duplicate content.  Do this for http and https
+https://rvn.netlify.com/* https://www.rvn.com/:splat 301!
+http://rvn.netlify.com/* http://www.rvn.com/:splat 301!
