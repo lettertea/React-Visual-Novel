@@ -13,10 +13,10 @@ function SaveLoadMenu(props) {
       </div>
     );
   }
+
   function menuSlot(number) {
     return (
       <div
-        className="save-load-slot-container"
         onClick={() => {
           if (!JSON.parse(localStorage.getItem(number))) {
             props.executeSlot(number);
