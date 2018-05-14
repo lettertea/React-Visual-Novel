@@ -7,7 +7,7 @@
 
 .sprite-enter.sprite-enter-active {
   opacity: 1;
-  transition: opacity 300ms ease-out;
+  transition: opacity 200ms ease-out;
 }
 
 .sprite-leave {
@@ -16,7 +16,7 @@
 
 .sprite-leave.sprite-leave-active {
   opacity: 0;
-  transition: opacity 300ms ease-in;
+  transition: opacity 200ms ease-in;
 }
 
 .sprite-slide-enter {
