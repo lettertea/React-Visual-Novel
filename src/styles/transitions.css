@@ -1,0 +1,78 @@
+/* React CSS Transition Groups animations*/
+
+/* Sprite animations*/
+.sprite-enter {
+  opacity: 0;
+}
+
+.sprite-enter.sprite-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-out;
+}
+
+.sprite-leave {
+  opacity: 1;
+}
+
+.sprite-leave.sprite-leave-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
+
+.sprite-slide-enter {
+  opacity: 0;
+  transition: transform 1000ms ease-in-out, opacity 1000ms ease-in-out;
+  transform: translate(30%, 0);
+}
+.sprite-slide-enter-active {
+  opacity: 1;
+  transform: translate(0%, 0);
+}
+
+.sprite-slide-leave {
+  opacity: 1;
+  transition: transform 1000ms ease-in-out, opacity 1000ms ease-in-out;
+  transform: translate(0%, 0);
+}
+.sprite-slide-leave-active {
+  opacity: 0;
+  transform: translate(-30%, 0);
+}
+
+/* BG & textbox animations for scenery change */
+.scene-enter {
+  opacity: 0;
+}
+
+.scene-enter.scene-enter-active {
+  opacity: 1;
+  transition: opacity 2000ms ease-in;
+}
+
+.scene-leave {
+  opacity: 1;
+}
+
+.scene-leave.scene-leave-active {
+  opacity: 0;
+  transition: opacity 1700ms ease-in;
+}
+
+/* menu transitions */
+.menu-enter {
+  opacity: 0;
+}
+
+.menu-enter.menu-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.menu-leave {
+  opacity: 1;
+}
+
+.menu-leave.menu-leave-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}

@@ -21,6 +21,7 @@ import "./styles/menubuttons.css";
 import "./styles/saveloadmenu.css";
 import "./styles/sprites.css";
 import "./styles/titlescreen.css";
+import "./styles/transitions.css";
 
 const INITIAL_STATE = {
   choicesStore: {},
@@ -106,7 +107,6 @@ class App extends Component {
     // Updates novelFrames with new index
     this.setState({
       index: index,
-      animation: novelFrames[index].animation,
       bg: novelFrames[index].bg,
       bgm: novelFrames[index].bgm,
       choicesExist: novelFrames[index].choicesExist,
@@ -114,6 +114,8 @@ class App extends Component {
       sound: novelFrames[index].sound,
       speaker: novelFrames[index].speaker,
       sprite: novelFrames[index].sprite,
+      spriteAnimation: novelFrames[index].spriteAnimation,
+      transition: novelFrames[index].transition,
       spriteLeft: novelFrames[index].spriteLeft,
       spriteRight: novelFrames[index].spriteRight,
       text: novelFrames[index].text,
@@ -143,10 +145,11 @@ class App extends Component {
     return (
       <RenderFrame
         setNextFrame={this.setNextFrame.bind(this)}
-        animation={this.state.animation}
+        transition={this.state.transition}
         bg={this.state.bg}
         sceneChange={this.state.sceneChange}
         sprite={this.state.sprite}
+        spriteAnimation={this.state.spriteAnimation}
         spriteLeft={this.state.spriteLeft}
         spriteRight={this.state.spriteRight}
         speaker={this.state.speaker}

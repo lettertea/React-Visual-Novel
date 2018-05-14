@@ -1,78 +1,36 @@
-/* React CSS Transition Groups animations*/
-
-/* Sprite animations*/
-.sprite-enter {
-  opacity: 0;
+/* slight edit from source: https://css-tricks.com/snippets/css/shake-css-keyframe-animation/ */
+.shake {
+  animation: shake 0.7s;
 }
 
-.sprite-enter.sprite-enter-active {
-  opacity: 1;
-  transition: opacity 400ms ease-out;
+@keyframes shake {
+  20%,
+  80% {
+    transform: translateX(4px);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translateX(-8px);
+  }
+
+  40%,
+  60% {
+    transform: translateX(8px);
+  }
 }
 
-.sprite-leave {
-  opacity: 1;
+.bounce {
+  animation: bounce 0.4s;
 }
 
-.sprite-leave.sprite-leave-active {
-  opacity: 0;
-  transition: opacity 300ms ease-out;
-}
-
-.sprite-slide-enter {
-  opacity: 0;
-  transition: transform 1000ms ease-in-out, opacity 1000ms ease-in-out;
-  transform: translate(100%, 0);
-}
-.sprite-slide-enter-active {
-  opacity: 1;
-  transform: translate(0%, 0);
-}
-
-.sprite-slide-leave {
-  opacity: 1;
-  transition: transform 1000ms ease-in-out, opacity 1000ms ease-in-out;
-  transform: translate(0%, 0);
-}
-.sprite-slide-leave-active {
-  opacity: 0;
-  transform: translate(-100%, 0);
-}
-
-/* BG & textbox animations for scenery change */
-.scene-enter {
-  opacity: 0;
-}
-
-.scene-enter.scene-enter-active {
-  opacity: 1;
-  transition: opacity 2000ms ease-in;
-}
-
-.scene-leave {
-  opacity: 1;
-}
-
-.scene-leave.scene-leave-active {
-  opacity: 0;
-  transition: opacity 1700ms ease-in;
-}
-
-/* menu transitions */
-.menu-enter {
-  opacity: 0;
-}
-
-.menu-enter.menu-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
-}
-
-.menu-leave {
-  opacity: 1;
-}
-
-.menu-leave.menu-leave-active {
-  opacity: 0;
-  transition: opacity 300ms ease-in;
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(30px);
+  }
 }
