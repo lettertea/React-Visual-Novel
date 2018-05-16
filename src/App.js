@@ -29,6 +29,7 @@ const INITIAL_STATE = {
   bgmVolume: 100,
   effectVolume: 90,
   voiceVolume: 80,
+  font: "Trebuchet MS",
   choicesStore: {},
   index: 0,
   choicesExist: false,
@@ -148,6 +149,7 @@ class App extends Component {
   renderFrame() {
     return (
       <RenderFrame
+        font={this.state.font}
         setNextFrame={this.setNextFrame.bind(this)}
         transition={this.state.transition}
         bg={this.state.bg}
@@ -309,6 +311,8 @@ class App extends Component {
   configMenu() {
     return (
       <ConfigMenu
+        changeFont={newFont => this.setState({ font: newFont.label })}
+        font={this.state.font}
         bgmVolume={this.state.bgmVolume}
         effectVolume={this.state.effectVolume}
         voiceVolume={this.state.voiceVolume}

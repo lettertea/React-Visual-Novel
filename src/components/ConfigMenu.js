@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-rangeslider";
+import Select from "react-select";
 import "react-rangeslider/lib/index.css";
 
 class ConfigMenu extends Component {
@@ -41,6 +42,8 @@ class ConfigMenu extends Component {
 
   render() {
     const {
+      font,
+      changeFont,
       bgmVolume,
       bgmVolumeChange,
       effectVolume,
@@ -48,6 +51,34 @@ class ConfigMenu extends Component {
       voiceVolume,
       voiceVolumeChange
     } = this.props;
+    const options = [
+      { label: "Arial" },
+      { label: "Arial Black" },
+      { label: "Bookman" },
+      { label: "Courier New" },
+      { label: "Garamond" },
+      { label: "Georgia" },
+      { label: "Helvetica" },
+      { label: "Impact" },
+      { label: "Lucida Grande" },
+      { label: "Lucida Sans Unicode" },
+      { label: "Times New Roman" },
+      { label: "Trebuchet MS" },
+      { label: "Verdana" }
+    ];
+
+    for (let i = 0; i < options.length; i++) {
+      options[i].value = options[i].label;
+    }
+
+    const styles = {
+      option: (styles, { data }) => {
+        return {
+          ...styles,
+          "font-family": data.label
+        };
+      }
+    };
     return (
       <div className="overlay" id="config-overlay">
         <ul>
@@ -62,7 +93,6 @@ class ConfigMenu extends Component {
           </li>
         </ul>
         <div>
-          {" "}
           {this.state.soundShown ? (
             <div>
               {this.slider("BGM", bgmVolume, bgmVolumeChange)}
@@ -71,7 +101,11 @@ class ConfigMenu extends Component {
             </div>
           ) : null}
         </div>
-        <div> {this.state.textShown ? "text shown" : null}</div>
+        <div>
+          {this.state.textShown ? (
+            <Select options={options} styles={styles} onChange={changeFont} />
+          ) : null}
+        </div>
       </div>
     );
   }

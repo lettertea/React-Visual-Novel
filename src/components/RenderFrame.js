@@ -30,6 +30,7 @@ function RenderFrame(props) {
       return 200;
     }
   }
+
   return (
     <div onClick={props.setNextFrame}>
       <div>
@@ -58,7 +59,7 @@ function RenderFrame(props) {
           />
         </ReactCSSTransitionGroup>
         {props.text && props.textBoxShown ? (
-          <div className="text-box">
+          <div className="text-box" style={{ "font-family": props.font }}>
             {props.speaker ? (
               <div className="speaker"> {props.speaker} </div>
             ) : null}
