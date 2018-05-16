@@ -80,8 +80,7 @@
 
 .slot-sprite {
   position: absolute;
-  bottom: 0;
-  transform: scaleX(0.234);
+  height: 168.75px;
 }
 
 .slot-date {
