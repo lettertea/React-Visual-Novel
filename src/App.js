@@ -26,6 +26,9 @@ import "./styles/titlescreen.css";
 import "./styles/transitions.css";
 
 const INITIAL_STATE = {
+  bgmVolume: 100,
+  effectVolume: 90,
+  voiceVolume: 80,
   choicesStore: {},
   index: 0,
   choicesExist: false,
@@ -306,6 +309,12 @@ class App extends Component {
   configMenu() {
     return (
       <ConfigMenu
+        bgmVolume={this.state.bgmVolume}
+        effectVolume={this.state.effectVolume}
+        voiceVolume={this.state.voiceVolume}
+        bgmVolumeChange={value => this.setState({ bgmVolume: value })}
+        effectVolumeChange={value => this.setState({ effectVolume: value })}
+        voiceVolumeChange={value => this.setState({ voiceVolume: value })}
         beginStory={this.beginStory.bind(this)}
         toggleLoadMenu={this.toggleLoadMenu.bind(this)}
       />
@@ -385,17 +394,29 @@ class App extends Component {
     return (
       <Sound
         url={this.state.bgm}
-        bgmVolume={this.state.bgmVolume}
+        volume={this.state.bgmVolume}
         playStatus={Sound.status.PLAYING}
         loop={true}
       />
     );
   }
   playEffect() {
-    return <Sound url={this.state.effect} playStatus={Sound.status.PLAYING} />;
+    return (
+      <Sound
+        url={this.state.effect}
+        volume={this.state.effectVolume}
+        playStatus={Sound.status.PLAYING}
+      />
+    );
   }
   playVoice() {
-    return <Sound url={this.state.voice} playStatus={Sound.status.PLAYING} />;
+    return (
+      <Sound
+        url={this.state.voice}
+        volume={this.state.voiceVolume}
+        playStatus={Sound.status.PLAYING}
+      />
+    );
   }
 
   render() {

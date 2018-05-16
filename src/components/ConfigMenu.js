@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Slider from "react-rangeslider";
+import "react-rangeslider/lib/index.css";
 
 class ConfigMenu extends Component {
   constructor() {
@@ -28,25 +30,24 @@ class ConfigMenu extends Component {
     }
   }
 
-  slider() {
+  slider(type, value, onChangeFunction) {
     return (
-      <div className="slidecontainer">
-        <input
-          type="range"
-          min="1"
-          max="100"
-          value="50"
-          class="slider"
-          ref="myRange"
-        />
-        <p>
-          Value: <span ref="demo" />
-        </p>
+      <div class="slider-container">
+        <span>{type}</span>
+        <Slider value={value} onChange={onChangeFunction} />
       </div>
     );
   }
 
   render() {
+    const {
+      bgmVolume,
+      bgmVolumeChange,
+      effectVolume,
+      effectVolumeChange,
+      voiceVolume,
+      voiceVolumeChange
+    } = this.props;
     return (
       <div className="overlay" id="config-overlay">
         <ul>
@@ -60,7 +61,16 @@ class ConfigMenu extends Component {
             <a>Text</a>
           </li>
         </ul>
-        <div> {this.state.soundShown ? this.slider() : null}</div>
+        <div>
+          {" "}
+          {this.state.soundShown ? (
+            <div>
+              {this.slider("BGM", bgmVolume, bgmVolumeChange)}
+              {this.slider("Voice", voiceVolume, voiceVolumeChange)}
+              {this.slider("Effect", effectVolume, effectVolumeChange)}
+            </div>
+          ) : null}
+        </div>
         <div> {this.state.textShown ? "text shown" : null}</div>
       </div>
     );

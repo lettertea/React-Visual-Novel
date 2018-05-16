@@ -42,3 +42,11 @@
 #config-overlay .active {
 	background-color: #4caf50;
 }
+.slider-container {
+	padding: 8px 12px 2px;
+	margin: 15px 10px;
+	border-radius: 4px;
+	background: white;
+	width: 350px;
+}
+
