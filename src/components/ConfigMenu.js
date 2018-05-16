@@ -28,6 +28,24 @@ class ConfigMenu extends Component {
     }
   }
 
+  slider() {
+    return (
+      <div className="slidecontainer">
+        <input
+          type="range"
+          min="1"
+          max="100"
+          value="50"
+          class="slider"
+          ref="myRange"
+        />
+        <p>
+          Value: <span ref="demo" />
+        </p>
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="overlay" id="config-overlay">
@@ -42,7 +60,7 @@ class ConfigMenu extends Component {
             <a>Text</a>
           </li>
         </ul>
-        <div> {this.state.soundShown ? "sound shown" : null}</div>
+        <div> {this.state.soundShown ? this.slider() : null}</div>
         <div> {this.state.textShown ? "text shown" : null}</div>
       </div>
     );

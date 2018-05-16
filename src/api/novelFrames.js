@@ -46,7 +46,7 @@ let novelFrames = [
   // Jumps to below if the user picks up the key
   {
     receiveJumpBecauseStore: "haveKey",
-    sound: require("./sounds/unlock.mp3"),
+    effect: require("./sounds/unlock.mp3"),
     text: "I take out the key from my pocket and insert it into the lock."
   },
   {

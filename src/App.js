@@ -110,9 +110,9 @@ class App extends Component {
       index: index,
       bg: novelFrames[index].bg,
       bgm: novelFrames[index].bgm,
+      effect: novelFrames[index].effect,
       choicesExist: novelFrames[index].choicesExist,
       sceneChange: novelFrames[index].sceneChange,
-      sound: novelFrames[index].sound,
       speaker: novelFrames[index].speaker,
       sprite: novelFrames[index].sprite,
       spriteAnimation: novelFrames[index].spriteAnimation,
@@ -385,13 +385,14 @@ class App extends Component {
     return (
       <Sound
         url={this.state.bgm}
+        bgmVolume={this.state.bgmVolume}
         playStatus={Sound.status.PLAYING}
         loop={true}
       />
     );
   }
-  playSound() {
-    return <Sound url={this.state.sound} playStatus={Sound.status.PLAYING} />;
+  playEffect() {
+    return <Sound url={this.state.effect} playStatus={Sound.status.PLAYING} />;
   }
   playVoice() {
     return <Sound url={this.state.voice} playStatus={Sound.status.PLAYING} />;
@@ -419,7 +420,7 @@ class App extends Component {
         </ReactCSSTransitionGroup>
         {!this.state.titleScreenShown ? this.renderMenuButtons() : null}
         {this.state.bgm ? this.playBGM() : null}
-        {this.state.sound ? this.playSound() : null}
+        {this.state.effect ? this.playEffect() : null}
         {this.state.voice ? this.playVoice() : null}
       </div>
     );
