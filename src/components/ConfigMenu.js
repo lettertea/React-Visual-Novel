@@ -103,7 +103,12 @@ class ConfigMenu extends Component {
         </div>
         <div>
           {this.state.textShown ? (
-            <Select options={options} styles={styles} onChange={changeFont} />
+            <Select
+              options={options}
+              styles={styles}
+              onChange={changeFont}
+              defaultValue={options[11]}
+            />
           ) : null}
         </div>
       </div>
