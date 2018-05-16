@@ -40,7 +40,7 @@ let novelFrames = [
   },
   {
     logIndex: true,
-    sceneChange: true,
+    transition: "sceneChange",
     jumpTo: "titleScreen"
   },
   // Jumps to below if the user picks up the key
@@ -54,7 +54,7 @@ let novelFrames = [
   },
   {
     logIndex: true,
-    sceneChange: true,
+    transition: "sceneChange",
     jumpTo: "titleScreen"
   }
 ];
