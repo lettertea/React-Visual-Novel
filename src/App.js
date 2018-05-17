@@ -197,12 +197,24 @@ class App extends Component {
   }
 
   toggleConfigMenu() {
+    if (this.state.saveMenuShown) {
+      this.setState({ saveMenuShown: false });
+    }
+    if (this.state.loadMenuShown) {
+      this.setState({ loadMenuShown: false });
+    }
+    if (this.state.backlogShown) {
+      this.setState({ backlogShown: false });
+    }
     this.setState(prevState => ({
       configMenuShown: !prevState.configMenuShown
     }));
   }
 
   toggleBacklog() {
+    if (this.state.configMenuShown) {
+      this.setState({ configMenuShown: false });
+    }
     if (this.state.saveMenuShown) {
       this.setState({ saveMenuShown: false });
     }
@@ -221,6 +233,9 @@ class App extends Component {
   }
 
   toggleSaveMenu() {
+    if (this.state.configMenuShown) {
+      this.setState({ configMenuShown: false });
+    }
     if (this.state.loadMenuShown) {
       this.setState({ loadMenuShown: false });
     }
@@ -233,6 +248,9 @@ class App extends Component {
   }
 
   toggleLoadMenu() {
+    if (this.state.configMenuShown) {
+      this.setState({ configMenuShown: false });
+    }
     if (this.state.saveMenuShown) {
       this.setState({ saveMenuShown: false });
     }

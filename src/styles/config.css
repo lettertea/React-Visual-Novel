@@ -2,7 +2,7 @@
 	background-color: #4ea6ca;
 	display: flex;
 	flex-flow: column;
-	height: 100%;
+	z-index: 5;
 }
 
 #config-header {
