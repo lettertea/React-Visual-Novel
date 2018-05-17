@@ -26,9 +26,9 @@ import "./styles/titlescreen.css";
 import "./styles/transitions.css";
 
 const INITIAL_STATE = {
-  bgmVolume: 100,
+  bgmVolume: 80,
   effectVolume: 90,
-  voiceVolume: 80,
+  voiceVolume: 100,
   font: "Trebuchet MS",
   choicesStore: {},
   index: 0,
