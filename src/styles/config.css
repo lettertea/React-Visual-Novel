@@ -1,52 +1,114 @@
 #config-overlay {
-	background-color: #6b5b95;
+	background-color: #4ea6ca;
 	display: flex;
 	flex-flow: column;
 	height: 100%;
 }
-#config-title {
-	position: absolute;
-	left: 0;
+
+#config-header {
+	font-size: 34px;
+	text-align: center;
+	margin-top: 15px;
+	padding-bottom: 15px;
+	border-bottom: double #333;
+}
+@keyframes stripe-slide {
+	0% {
+		background-position: 0% 0;
+	}
+	100% {
+		background-position: 100% 0;
+	}
 }
 
-#config-overlay ul {
+#config-overlay > ul {
 	list-style-type: none;
-	text-align: center;
 	margin: 0;
 	padding: 0;
-	overflow: hidden;
-	background-color: #333;
-}
-
-#config-overlay li {
-	display: inline-block;
-}
-
-#config-overlay li a {
-	font-size: 20px;
-	display: block;
-	color: white;
+	margin-top: 15px;
 	text-align: center;
-	padding: 14px 20px;
-	text-decoration: none;
 }
 
-#config-overlay li a:not(.active) {
+/* Edited from source: https://codepen.io/Zeindelf/pen/vZbyEg */
+
+.config-btn {
+	overflow: visible;
+	margin: 0 20px;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	font: inherit;
+	line-height: normal;
 	cursor: pointer;
+	-moz-user-select: text;
+	text-decoration: none;
+	text-transform: uppercase;
+	padding: 16px 36px 22px;
+	background-color: inherit;
+	color: #444;
+	border: 2px solid #444;
+	border-radius: 4px;
+	transition: all 0.5s ease;
+}
+.config-btn::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+.config-btn--stripe {
+	overflow: hidden;
+	position: relative;
+}
+.config-btn--stripe:after {
+	content: "";
+	display: block;
+	height: 7px;
+	width: 100%;
+	background-image: repeating-linear-gradient(
+		45deg,
+		#666,
+		#666 1px,
+		transparent 2px,
+		transparent 5px
+	);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	border-top: 1px solid #666;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	background-size: 7px 7px;
+}
+.config-btn--stripe:hover,
+.active {
+	background-color: #666;
+	color: #fff;
+	border-color: #000;
+}
+.config-btn--stripe:hover:after,
+.active:after {
+	background-image: repeating-linear-gradient(
+		45deg,
+		#fff,
+		#fff 1px,
+		transparent 2px,
+		transparent 5px
+	);
+	border-top: 1px solid #000;
+	animation: stripe-slide 12s infinite linear forwards;
 }
 
-#config-overlay li a:hover:not(.active) {
-	background-color: #111;
-}
-
-#config-overlay .active {
-	background-color: #4caf50;
-}
-.slider-container {
-	padding: 8px 12px 2px;
+.config-container {
 	margin: 15px 10px;
 	border-radius: 4px;
 	background: white;
 	width: 350px;
 }
 
+.slider-container {
+	padding: 8px 12px 2px;
+}
+
+.font-container {
+	padding: 6px 12px;
+	line-height: 1.6;
+}

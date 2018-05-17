@@ -33,7 +33,7 @@ class ConfigMenu extends Component {
 
   slider(type, value, onChangeFunction) {
     return (
-      <div class="slider-container">
+      <div class="config-container slider-container">
         <span>{type}</span>
         <Slider value={value} onChange={onChangeFunction} />
       </div>
@@ -41,6 +41,7 @@ class ConfigMenu extends Component {
   }
 
   render() {
+    const { soundShown, textShown } = this.state;
     const {
       font,
       changeFont,
@@ -54,15 +55,12 @@ class ConfigMenu extends Component {
     const options = [
       { label: "Arial" },
       { label: "Arial Black" },
-      { label: "Bookman" },
       { label: "Courier New" },
-      { label: "Garamond" },
       { label: "Georgia" },
       { label: "Helvetica" },
       { label: "Impact" },
-      { label: "Lucida Grande" },
       { label: "Lucida Sans Unicode" },
-      { label: "Times New Roman" },
+      { label: "Times" },
       { label: "Trebuchet MS" },
       { label: "Verdana" }
     ];
@@ -80,20 +78,32 @@ class ConfigMenu extends Component {
       }
     };
     return (
-      <div className="overlay" id="config-overlay">
+      <div
+        className="overlay"
+        id="config-overlay"
+        style={{ "font-family": font }}
+      >
+        <div id="config-header">Config</div>
         <ul>
-          <li id="config-title">
-            <a class="active">Config</a>
-          </li>
-          <li onClick={() => this.toggleSound()}>
-            <a>Sound</a>
-          </li>
-          <li onClick={() => this.toggleText()}>
-            <a>Text</a>
-          </li>
+          <button
+            class={
+              "config-btn config-btn--stripe " + (soundShown ? "active" : null)
+            }
+            onClick={() => this.toggleSound()}
+          >
+            Audio
+          </button>
+          <button
+            class={
+              "config-btn config-btn--stripe " + (textShown ? "active" : null)
+            }
+            onClick={() => this.toggleText()}
+          >
+            Text
+          </button>
         </ul>
         <div>
-          {this.state.soundShown ? (
+          {soundShown ? (
             <div>
               {this.slider("BGM", bgmVolume, bgmVolumeChange)}
               {this.slider("Voice", voiceVolume, voiceVolumeChange)}
@@ -102,13 +112,18 @@ class ConfigMenu extends Component {
           ) : null}
         </div>
         <div>
-          {this.state.textShown ? (
-            <Select
-              options={options}
-              styles={styles}
-              onChange={changeFont}
-              defaultValue={options[11]}
-            />
+          {textShown ? (
+            <div className="config-container font-container">
+              Font Styles
+              <Select
+                options={options}
+                styles={styles}
+                onChange={changeFont}
+                defaultValue={
+                  options[options.findIndex(obj => obj.label === font)]
+                }
+              />
+            </div>
           ) : null}
         </div>
       </div>
