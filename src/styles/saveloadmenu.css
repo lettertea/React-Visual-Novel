@@ -41,43 +41,6 @@
   height: 168.75px;
 }
 
-.slot-text-box {
-  width: 80%;
-  height: 50px;
-  bottom: 55px;
-  padding: 0 0px 0 5px;
-  background-size: 100% 33.33%; /* to counter media query in main textbox styling */
-}
-
-.slot-text {
-  height: 24px;
-  width: 90%;
-  height: 40px;
-  font-size: 12px;
-  margin-top: 2px;
-  line-height: 1.35;
-}
-
-.slot-speaker {
-  margin-left: -10px;
-  top: -26px;
-  padding-top: 4px;
-  height: 22px;
-  width: 110px;
-  font-size: 16px;
-}
-
-.slot-speaker:before {
-  content: "";
-
-  right: 80px;
-  top: 26px;
-
-  border-left: 4px solid transparent;
-  border-top: 5px solid #4c9ea9;
-  border-right: 4px solid transparent;
-}
-
 .slot-sprite {
   position: absolute;
   height: 168.75px;

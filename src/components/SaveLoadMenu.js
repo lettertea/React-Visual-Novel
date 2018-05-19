@@ -41,20 +41,6 @@ function SaveLoadMenu(props) {
                 src={JSON.parse(localStorage.getItem(number)).sprite}
                 className="slot-sprite"
               />
-
-              {JSON.parse(localStorage.getItem(number)).text &&
-              props.textBoxShown ? (
-                <div className="text-box slot-text-box">
-                  {JSON.parse(localStorage.getItem(number)).speaker ? (
-                    <div className="speaker slot-speaker">
-                      {JSON.parse(localStorage.getItem(number)).speaker}
-                    </div>
-                  ) : null}
-                  <div className="text slot-text">
-                    {JSON.parse(localStorage.getItem(number)).text}
-                  </div>
-                </div>
-              ) : null}
             </a>
             <div className="slot-date">
               {JSON.stringify(localStorage.getItem("time" + number)).replace(
