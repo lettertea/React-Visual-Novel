@@ -44,17 +44,17 @@ function RenderFrame(props) {
           <img key={props.bg} className="bg" src={props.bg} />
           <img
             key={props.sprite}
-            className={"sprite " + props.spriteAnimation}
+            className={"sprite " + props.spriteEffect}
             src={props.sprite}
           />
           <img
             key={props.spriteLeft + "left"}
-            className="sprite left"
+            className={"spriteLeft " + props.spriteLeftEffect}
             src={props.spriteLeft}
           />
           <img
             key={props.spriteRight + "right"}
-            className="sprite right"
+            className={"spriteRight " + props.spriteRightEffect}
             src={props.spriteRight}
           />
         </ReactCSSTransitionGroup>

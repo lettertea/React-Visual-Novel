@@ -16,9 +16,9 @@ import SaveLoadMenu from "./components/SaveLoadMenu";
 import "./styles/textbox.css"; // Must import first so saveLoadMenu can use it
 import "./styles/config.css";
 import "./styles/container.css";
-import "./styles/animations.css";
 import "./styles/backlog.css";
 import "./styles/choicesoverlay.css";
+import "./styles/effects.css";
 import "./styles/menubuttons.css";
 import "./styles/saveloadmenu.css";
 import "./styles/sprites.css";
@@ -119,7 +119,10 @@ class App extends Component {
       sceneChange: novelFrames[index].sceneChange,
       speaker: novelFrames[index].speaker,
       sprite: novelFrames[index].sprite,
-      spriteAnimation: novelFrames[index].spriteAnimation,
+      spriteEffect: novelFrames[index].spriteEffect,
+      spriteLeftEffect: novelFrames[index].spriteLeftEffect,
+      spriteRightEffect: novelFrames[index].spriteRightEffect,
+
       transition: novelFrames[index].transition,
       spriteLeft: novelFrames[index].spriteLeft,
       spriteRight: novelFrames[index].spriteRight,
@@ -305,8 +308,8 @@ class App extends Component {
 
   // "Begin" Button for title page.
   beginStory() {
+    this.stopSkip();
     this.setState({
-      isSkipping: false,
       titleScreenShown: false,
       frameIsRendering: true
     });
