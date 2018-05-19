@@ -38,8 +38,16 @@ function SaveLoadMenu(props) {
                 src={JSON.parse(localStorage.getItem(number)).bg}
               />
               <img
+                src={JSON.parse(localStorage.getItem(number)).spriteLeft}
+                className="slot-sprite left"
+              />
+              <img
                 src={JSON.parse(localStorage.getItem(number)).sprite}
                 className="slot-sprite"
+              />
+              <img
+                src={JSON.parse(localStorage.getItem(number)).spriteRight}
+                className="slot-sprite right"
               />
             </a>
             <div className="slot-date">
