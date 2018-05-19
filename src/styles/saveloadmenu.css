@@ -24,6 +24,7 @@
 .save-load-slot > a {
   display: flex;
   justify-content: center;
+  transform: translate(0);
 }
 
 .save-load-slot:hover {
@@ -43,7 +44,8 @@
 
 .slot-sprite {
   position: absolute;
-  height: 168.75px;
+  bottom: 0px;
+  width: 42.66%;
 }
 
 .slot-date {
