@@ -7,7 +7,7 @@
 
 .sprite-enter.sprite-enter-active {
   opacity: 1;
-  transition: opacity 200ms ease-out;
+  transition: opacity 250ms linear;
 }
 
 .sprite-leave {
@@ -16,27 +16,39 @@
 
 .sprite-leave.sprite-leave-active {
   opacity: 0;
-  transition: opacity 200ms ease-in;
+  transition: opacity 250ms linear;
 }
 
 .sprite-slide-enter {
   opacity: 0;
-  transition: transform 1000ms ease-in-out, opacity 1000ms ease-in-out;
-  transform: translate(30%, 0);
+  animation: bounce 0.4s;
+  transition: opacity 250ms ease-in-out;
 }
 .sprite-slide-enter-active {
   opacity: 1;
-  transform: translate(0%, 0);
 }
 
 .sprite-slide-leave {
   opacity: 1;
-  transition: transform 1000ms ease-in-out, opacity 1000ms ease-in-out;
-  transform: translate(0%, 0);
+  animation: bounce 0.4s;
+  transition: opacity 250ms ease-in-out;
 }
 .sprite-slide-leave-active {
   opacity: 0;
-  transform: translate(-30%, 0);
+}
+
+.bounce {
+  animation: bounce 0.4s;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(30px);
+  }
 }
 
 /* BG & textbox animations for scenery change */

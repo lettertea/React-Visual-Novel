@@ -15,9 +15,9 @@ function RenderFrame(props) {
     if (props.transition === "sceneChange") {
       return 2000;
     } else if (props.transition === "spriteSlide") {
-      return 1000;
+      return 400;
     } else {
-      return 200;
+      return 250;
     }
   }
 
@@ -25,9 +25,9 @@ function RenderFrame(props) {
     if (props.transition === "sceneChange") {
       return 1700;
     } else if (props.transition === "spriteSlide") {
-      return 1000;
+      return 400;
     } else {
-      return 200;
+      return 250;
     }
   }
 

@@ -1,6 +1,19 @@
+.move-left {
+  transition: transform 1000ms ease-in-out;
+  transform: translateX(-400px);
+}
+
+.move-right {
+  transition: transform 1000ms ease-in-out;
+  transform: translateX(400px);
+}
 /* slight edit from source: https://css-tricks.com/snippets/css/shake-css-keyframe-animation/ */
 .shake {
   animation: shake 0.7s;
+}
+
+.bounce {
+  animation: bounce 0.4s;
 }
 
 @keyframes shake {
@@ -19,10 +32,6 @@
   60% {
     transform: translateX(8px);
   }
-}
-
-.bounce {
-  animation: bounce 0.4s;
 }
 
 @keyframes bounce {
