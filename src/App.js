@@ -120,12 +120,11 @@ class App extends Component {
       speaker: novelFrames[index].speaker,
       sprite: novelFrames[index].sprite,
       spriteEffect: novelFrames[index].spriteEffect,
-      spriteLeftEffect: novelFrames[index].spriteLeftEffect,
-      spriteRightEffect: novelFrames[index].spriteRightEffect,
-
-      transition: novelFrames[index].transition,
       spriteLeft: novelFrames[index].spriteLeft,
+      spriteLeftEffect: novelFrames[index].spriteLeftEffect,
       spriteRight: novelFrames[index].spriteRight,
+      spriteRightEffect: novelFrames[index].spriteRightEffect,
+      transition: novelFrames[index].transition,
       text: novelFrames[index].text,
       voice: novelFrames[index].voice
     });
@@ -158,9 +157,11 @@ class App extends Component {
         bg={this.state.bg}
         sceneChange={this.state.sceneChange}
         sprite={this.state.sprite}
-        spriteAnimation={this.state.spriteAnimation}
+        spriteEffect={this.state.spriteEffect}
         spriteLeft={this.state.spriteLeft}
+        spriteLeftEffect={this.state.spriteLeftEffect}
         spriteRight={this.state.spriteRight}
+        spriteRightEffect={this.state.spriteRightEffect}
         speaker={this.state.speaker}
         text={this.state.text}
         textBoxShown={this.state.textBoxShown}
