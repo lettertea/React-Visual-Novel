@@ -120,12 +120,15 @@ class App extends Component {
       speaker: novelFrames[index].speaker,
       sprite: novelFrames[index].sprite,
       spriteEffect: novelFrames[index].spriteEffect,
+      spriteTransition: novelFrames[index].spriteTransition,
       spriteLeft: novelFrames[index].spriteLeft,
       spriteLeftEffect: novelFrames[index].spriteLeftEffect,
+      spriteLeftTransition: novelFrames[index].spriteLeftTransition,
       spriteRight: novelFrames[index].spriteRight,
       spriteRightEffect: novelFrames[index].spriteRightEffect,
-      transition: novelFrames[index].transition,
+      spriteRightTransition: novelFrames[index].spriteRightTransition,
       text: novelFrames[index].text,
+      bgTransition: novelFrames[index].bgTransition,
       voice: novelFrames[index].voice
     });
   }
@@ -144,18 +147,21 @@ class App extends Component {
       <RenderFrame
         font={this.state.font}
         setNextFrame={this.setNextFrame.bind(this)}
-        transition={this.state.transition}
         bg={this.state.bg}
         sceneChange={this.state.sceneChange}
         sprite={this.state.sprite}
         spriteEffect={this.state.spriteEffect}
+        spriteTransition={this.state.spriteTransition}
         spriteLeft={this.state.spriteLeft}
         spriteLeftEffect={this.state.spriteLeftEffect}
+        spriteLeftTransition={this.state.spriteLeftTransition}
         spriteRight={this.state.spriteRight}
         spriteRightEffect={this.state.spriteRightEffect}
+        spriteRightTransition={this.state.spriteRightTransition}
         speaker={this.state.speaker}
         text={this.state.text}
         textBoxShown={this.state.textBoxShown}
+        bgTransition={this.state.bgTransition}
       />
     );
   }
