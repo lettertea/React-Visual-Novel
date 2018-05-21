@@ -1,18 +1,17 @@
-.sprite-center {
-	display: flex;
-	justify-content: center;
-}
-
 .sprite {
 	position: absolute;
 	bottom: 0;
 	margin: auto;
 	z-index: 1;
+	left: 0;
+	right: 0;
 }
 
 .left {
-	transform: translateX(-350px);
+	left: -350px;
+	right: 350px;
 }
 .right {
-	transform: translateX(350px);
+	left: 350px;
+	right: -350px;
 }
