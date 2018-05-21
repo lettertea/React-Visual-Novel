@@ -21,6 +21,15 @@
   }
 }
 
+.header {
+  font-size: 34px;
+  text-align: center;
+  width: 1280px;
+  padding: 10px 0;
+  background: #222;
+  color: white;
+}
+
 .bg {
   position: fixed;
   left: 50%;

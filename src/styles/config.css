@@ -5,13 +5,15 @@
 	z-index: 5;
 }
 
-#config-header {
+.header {
 	font-size: 34px;
 	text-align: center;
-	margin-top: 15px;
-	padding-bottom: 15px;
-	border-bottom: double #333;
+	width: 1280px;
+	padding: 10px 0;
+	background: #222;
+	color: white;
 }
+
 @keyframes stripe-slide {
 	0% {
 		background-position: 0% 0;

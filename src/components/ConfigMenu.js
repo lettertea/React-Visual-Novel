@@ -83,7 +83,7 @@ class ConfigMenu extends Component {
         id="config-overlay"
         style={{ "font-family": font }}
       >
-        <div id="config-header">Config</div>
+        <div className="header">Config</div>
         <ul>
           <button
             class={
