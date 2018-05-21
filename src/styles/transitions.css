@@ -59,6 +59,130 @@
   transform: translate(350px, 0);
 }
 
+.from-left-enter {
+  opacity: 0;
+  transition: transform 800ms ease-in-out, opacity 400ms linear;
+  transform: translate(-200px, 0);
+}
+.from-left-enter-active {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.from-left-leave {
+  opacity: 1;
+  transition: transform 800ms ease-in-out, opacity 400ms linear;
+  transform: translate(0, 0);
+}
+.from-left-leave-active {
+  opacity: 0;
+  transform: translate(200px, 0);
+}
+
+.from-right-enter {
+  opacity: 0;
+  transition: transform 800ms ease-in-out, opacity 400ms linear;
+  transform: translate(200px, 0);
+}
+.from-right-enter-active {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.from-right-leave {
+  opacity: 1;
+  transition: transform 800ms ease-in-out, opacity 400ms linear;
+  transform: translate(0, 0);
+}
+.from-right-leave-active {
+  opacity: 0;
+  transform: translate(-200px, 0);
+}
+
+/* sprite left */
+
+.from-left-at-left-enter {
+  opacity: 0;
+  transition: transform 800ms ease-in-out, opacity 400ms linear;
+  transform: translate(-550px, 0);
+}
+.from-left-at-left-enter-active {
+  opacity: 1;
+  transform: translate(-350px, 0);
+}
+
+.from-left-at-left-leave {
+  opacity: 1;
+  transition: transform 800ms ease-in-out, opacity 400ms linear;
+  transform: translate(-350px, 0);
+}
+.from-left-at-left-leave-active {
+  opacity: 0;
+  transform: translate(-150px, 0);
+}
+
+.from-right-at-left-enter {
+  opacity: 0;
+  transition: transform 800ms ease-in-out, opacity 400ms linear;
+  transform: translate(-150px, 0);
+}
+.from-right-at-left-enter-active {
+  opacity: 1;
+  transform: translate(-350px, 0);
+}
+
+.from-right-at-left-leave {
+  opacity: 1;
+  transition: transform 800ms ease-in-out, opacity 400ms linear;
+  transform: translate(-350px, 0);
+}
+.from-right-at-left-leave-active {
+  opacity: 0;
+  transform: translate(-550px, 0);
+}
+
+/* sprite right */
+
+.from-left-at-right-enter {
+  opacity: 0;
+  transition: transform 800ms ease-in-out, opacity 400ms linear;
+  transform: translate(-150px, 0);
+}
+.from-left-at-right-enter-active {
+  opacity: 1;
+  transform: translate(-350px, 0);
+}
+
+.from-left-at-right-leave {
+  opacity: 1;
+  transition: transform 800ms ease-in-out, opacity 400ms linear;
+  transform: translate(-350px, 0);
+}
+.from-left-at-right-leave-active {
+  opacity: 0;
+  transform: translate(-550px, 0);
+}
+
+.from-right-at-right-enter {
+  opacity: 0;
+  transition: transform 800ms ease-in-out, opacity 400ms linear;
+  transform: translate(-550px, 0);
+}
+.from-right-at-right-enter-active {
+  opacity: 1;
+  transform: translate(-350px, 0);
+}
+
+.from-right-at-right-leave {
+  opacity: 1;
+  transition: transform 800ms ease-in-out, opacity 400ms linear;
+  transform: translate(-350px, 0);
+}
+.from-right-at-right-leave-active {
+  opacity: 0;
+  transform: translate(-150px, 0);
+}
+
 .bounce-enter {
   opacity: 0;
   animation: bounce 0.4s;
@@ -77,10 +201,6 @@
   opacity: 0;
 }
 
-.bounce {
-  animation: bounce 0.4s;
-}
-
 @keyframes bounce {
   0%,
   100% {
@@ -91,21 +211,57 @@
   }
 }
 
-/* BG & textbox animations for scenery change */
-.scene-enter {
+.shake-enter {
+  opacity: 0;
+  animation: shake 0.7s;
+  transition: opacity 250ms ease-in-out;
+}
+.shake-enter-active {
+  opacity: 1;
+}
+
+.shake-leave {
+  opacity: 1;
+  animation: shake 0.7s;
+  transition: opacity 250ms ease-in-out;
+}
+.shake-leave-active {
   opacity: 0;
 }
 
-.scene-enter.scene-enter-active {
+@keyframes shake {
+  20%,
+  80% {
+    transform: translateX(4px);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translateX(-8px);
+  }
+
+  40%,
+  60% {
+    transform: translateX(8px);
+  }
+}
+
+/* BG & textbox animations for scenery change */
+.scene-change-enter {
+  opacity: 0;
+}
+
+.scene-change-enter.scene-change-enter-active {
   opacity: 1;
   transition: opacity 2000ms ease-in;
 }
 
-.scene-leave {
+.scene-change-leave {
   opacity: 1;
 }
 
-.scene-leave.scene-leave-active {
+.scene-change-leave.scene-change-leave-active {
   opacity: 0;
   transition: opacity 1700ms ease-in;
 }

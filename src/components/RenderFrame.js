@@ -2,6 +2,25 @@ import React from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 function RenderFrame(props) {
+  function transitionName(key) {
+    let value = props[key];
+    if (value) {
+      if (key === "spriteLeftTransition") {
+        if (value === "from-left") {
+          value += "-at-left";
+        }
+      }
+      if (key === "spriteRightTransition") {
+        if (value === "from-right") {
+          value += "-at-right";
+        }
+      }
+      return value;
+    } else {
+      return "sprite";
+    }
+  }
+
   function transitionTime(key) {
     if (props[key] === "scene-change") {
       return 2000;
@@ -27,7 +46,7 @@ function RenderFrame(props) {
         <ReactCSSTransitionGroup
           component="div"
           className="sprite-center"
-          transitionName={props.bgTransition || "scene-change"}
+          transitionName={transitionName("bgTransition")}
           transitionEnterTimeout={transitionTime("bgTransition")}
           transitionLeaveTimeout={transitionTime("bgTransition")}
         >
@@ -35,7 +54,7 @@ function RenderFrame(props) {
         </ReactCSSTransitionGroup>
         <ReactCSSTransitionGroup
           className="sprite-center"
-          transitionName={props.spriteTransition || "sprite"}
+          transitionName={transitionName("spriteTransition")}
           transitionEnterTimeout={transitionTime("spriteTransition")}
           transitionLeaveTimeout={transitionTime("spriteTransition")}
         >
@@ -47,7 +66,7 @@ function RenderFrame(props) {
         </ReactCSSTransitionGroup>
         <ReactCSSTransitionGroup
           className="sprite-center"
-          transitionName={props.spriteLeftTransition || "sprite"}
+          transitionName={transitionName("spriteLeftTransition")}
           transitionEnterTimeout={transitionTime("spriteLeftTransition")}
           transitionLeaveTimeout={transitionTime("spriteLeftTransition")}
         >
@@ -59,7 +78,7 @@ function RenderFrame(props) {
         </ReactCSSTransitionGroup>
         <ReactCSSTransitionGroup
           className="sprite-center"
-          transitionName={props.spriteRightTransition || "sprite"}
+          transitionName={transitionName("spriteRightTransition")}
           transitionEnterTimeout={transitionTime("spriteRightTransition")}
           transitionLeaveTimeout={transitionTime("spriteRightTransition")}
         >
