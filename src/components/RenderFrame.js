@@ -25,8 +25,8 @@ function RenderFrame(props) {
     if (props[key] === "scene-change") {
       return 2000;
     } else if (
-      props[key] === "slide-left" ||
-      props[key] === "slide-right" ||
+      props[key] === "center-to-left" ||
+      props[key] === "center-to-right" ||
       props[key] === "from-left" ||
       props[key] === "from-right"
     ) {
