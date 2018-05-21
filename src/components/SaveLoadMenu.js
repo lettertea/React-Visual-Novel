@@ -140,12 +140,14 @@ class SaveLoadMenu extends Component {
   render() {
     return (
       <div className="overlay overlay-save-load">
-        <div className="header">
-          {this.props.menuType}
-          <span className="exit-button" onClick={this.props.toggleMenu}>
-            &#10006;
-          </span>
-        </div>
+        <ul className="header">
+          <li>
+            <a>{this.props.menuType}</a>
+          </li>
+          <li className="exit-button" onClick={this.props.toggleMenu}>
+            <a>&times;</a>
+          </li>
+        </ul>
         {this.menuSlot(this.state.slotNumber)}
         <div className="slot-date">
           {localStorage.getItem("time" + this.state.slotNumber)}

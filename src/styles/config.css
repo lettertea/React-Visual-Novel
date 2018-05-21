@@ -5,15 +5,6 @@
 	z-index: 5;
 }
 
-.header {
-	font-size: 34px;
-	text-align: center;
-	width: 1280px;
-	padding: 10px 0;
-	background: #222;
-	color: white;
-}
-
 @keyframes stripe-slide {
 	0% {
 		background-position: 0% 0;
@@ -25,9 +16,8 @@
 
 #config-overlay > ul {
 	list-style-type: none;
-	margin: 0;
+	margin: 0 0 15px 0;
 	padding: 0;
-	margin-top: 15px;
 	text-align: center;
 }
 
@@ -80,12 +70,14 @@
 	bottom: 0;
 	background-size: 7px 7px;
 }
+
 .config-btn--stripe:hover,
 .active {
 	background-color: #666;
 	color: #fff;
 	border-color: #000;
 }
+
 .config-btn--stripe:hover:after,
 .active:after {
 	background-image: repeating-linear-gradient(

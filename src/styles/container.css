@@ -22,24 +22,40 @@
 }
 
 .header {
-  font-size: 34px;
+  list-style-type: none;
+  width: 100%;
   text-align: center;
-  width: 1280px;
-  padding: 10px 0;
-  background: #222;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: black;
+}
+
+.header li {
+  display: inline-block;
+}
+
+.header a {
+  font-size: 36px;
+  display: block;
   color: white;
+  text-align: center;
+  padding: 8px 20px;
+  text-decoration: none;
 }
 
 .exit-button {
   position: absolute;
-  top: 0;
   right: 0;
-  padding: 7px 20px;
-  transition: 400ms;
   cursor: pointer;
 }
 
-.exit-button:hover {
+.exit-button a {
+  transition: 300ms;
+  cursor: pointer;
+}
+
+.exit-button a:hover {
   background: #e61919;
 }
 
