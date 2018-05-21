@@ -465,8 +465,8 @@ class App extends Component {
           component="div"
           className="container"
           transitionName="menu"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}
+          transitionEnterTimeout={400}
+          transitionLeaveTimeout={600}
         >
           {this.state.titleScreenShown ? this.titleScreen() : null}
           {this.state.frameIsRendering ? this.renderFrame() : null}

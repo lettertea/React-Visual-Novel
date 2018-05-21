@@ -117,7 +117,7 @@
 
 .menu-enter.menu-enter-active {
   opacity: 1;
-  transition: opacity 500ms ease-in;
+  transition: opacity 400ms ease-out;
 }
 
 .menu-leave {
@@ -126,5 +126,5 @@
 
 .menu-leave.menu-leave-active {
   opacity: 0;
-  transition: opacity 300ms ease-in;
+  transition: opacity 600ms ease-in;
 }
