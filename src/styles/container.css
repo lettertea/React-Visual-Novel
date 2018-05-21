@@ -30,6 +30,19 @@
   color: white;
 }
 
+.exit-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 7px 20px;
+  transition: 400ms;
+  cursor: pointer;
+}
+
+.exit-button:hover {
+  background: #e61919;
+}
+
 .bg {
   position: fixed;
   left: 50%;

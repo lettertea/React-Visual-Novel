@@ -51,8 +51,7 @@
 }
 
 .slot-date {
-  position: absolute;
-  bottom: 170px;
+  bottom: 110px;
   text-align: center;
   width: 100%;
   font-size: 26px;
@@ -61,7 +60,7 @@
 
 .save-load-buttons {
   position: absolute;
-  bottom: 100px;
+  bottom: 50px;
   text-align: center;
   width: 100%;
 }

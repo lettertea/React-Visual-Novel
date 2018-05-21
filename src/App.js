@@ -350,8 +350,7 @@ class App extends Component {
         bgmVolumeChange={value => this.setState({ bgmVolume: value })}
         effectVolumeChange={value => this.setState({ effectVolume: value })}
         voiceVolumeChange={value => this.setState({ voiceVolume: value })}
-        beginStory={this.beginStory.bind(this)}
-        toggleLoadMenu={this.toggleLoadMenu.bind(this)}
+        toggleConfigMenu={this.toggleConfigMenu.bind(this)}
       />
     );
   }

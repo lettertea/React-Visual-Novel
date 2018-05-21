@@ -50,7 +50,8 @@ class ConfigMenu extends Component {
       effectVolume,
       effectVolumeChange,
       voiceVolume,
-      voiceVolumeChange
+      voiceVolumeChange,
+      toggleConfigMenu
     } = this.props;
     const options = [
       { label: "Arial" },
@@ -83,7 +84,11 @@ class ConfigMenu extends Component {
         id="config-overlay"
         style={{ "font-family": font }}
       >
-        <div className="header">Config</div>
+        <div className="header">
+          Config<span className="exit-button" onClick={toggleConfigMenu}>
+            &#10006;
+          </span>
+        </div>
         <ul>
           <button
             class={
