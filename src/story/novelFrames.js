@@ -35,56 +35,56 @@ let spriteCache = "";
 let spriteLeftCache = "";
 let spriteRightCache = "";
 
-for (let e of novelFrames) {
+for (let key of novelFrames) {
   // sprite
-  if (e.sprite && e.sprite !== "") {
-    spriteCache = e.sprite;
+  if (key.sprite && key.sprite !== "") {
+    spriteCache = key.sprite;
   }
-  if (e.sprite === "") {
+  if (key.sprite === "") {
     spriteCache = "";
   }
-  if (!e.sprite && e.sprite !== "") {
-    e.sprite = spriteCache;
+  if (!key.sprite && key.sprite !== "") {
+    key.sprite = spriteCache;
   }
   // spriteLeft
-  if (e.spriteLeft && e.spriteLeft !== "") {
-    spriteLeftCache = e.spriteLeft;
+  if (key.spriteLeft && key.spriteLeft !== "") {
+    spriteLeftCache = key.spriteLeft;
   }
-  if (e.spriteLeft === "") {
+  if (key.spriteLeft === "") {
     spriteLeftCache = "";
   }
-  if (!e.spriteLeft && e.spriteLeft !== "") {
-    e.spriteLeft = spriteLeftCache;
+  if (!key.spriteLeft && key.spriteLeft !== "") {
+    key.spriteLeft = spriteLeftCache;
   }
   // spriteRight
-  if (e.spriteRight && e.spriteRight !== "") {
-    spriteRightCache = e.spriteRight;
+  if (key.spriteRight && key.spriteRight !== "") {
+    spriteRightCache = key.spriteRight;
   }
-  if (e.spriteRight === "") {
+  if (key.spriteRight === "") {
     spriteRightCache = "";
   }
-  if (!e.spriteRight && e.spriteRight !== "") {
-    e.spriteRight = spriteRightCache;
+  if (!key.spriteRight && key.spriteRight !== "") {
+    key.spriteRight = spriteRightCache;
   }
   // bg
-  if (e.bg && e.bg !== "") {
-    bgCache = e.bg;
+  if (key.bg && key.bg !== "") {
+    bgCache = key.bg;
   }
-  if (e.bg === "") {
+  if (key.bg === "") {
     bgCache = "";
   }
-  if (!e.bg && e.bg !== "") {
-    e.bg = bgCache;
+  if (!key.bg && key.bg !== "") {
+    key.bg = bgCache;
   }
   // bgm
-  if (e.bgm && e.bgm !== "") {
-    bgmCache = e.bgm;
+  if (key.bgm && key.bgm !== "") {
+    bgmCache = key.bgm;
   }
-  if (e.bgm === "") {
+  if (key.bgm === "") {
     bgmCache = "";
   }
-  if (!e.bgm && e.bgm !== "") {
-    e.bgm = bgmCache;
+  if (!key.bgm && key.bgm !== "") {
+    key.bgm = bgmCache;
   }
 }
 
