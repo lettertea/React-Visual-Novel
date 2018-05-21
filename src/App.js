@@ -3,8 +3,8 @@ import React, { Component } from "react";
 import Sound from "react-sound";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 // API
-import novelFrames from "./api/novelFrames";
-import Choices from "./api/Choices";
+import novelFrames from "./story/novelFrames";
+import Choices from "./story/Choices";
 // Components
 import TitleScreen from "./components/TitleScreen";
 import ChoiceMenu from "./components/ChoiceMenu";
