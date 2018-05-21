@@ -4,6 +4,8 @@ import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 function RenderFrame(props) {
   function transitionName(key) {
     let value = props[key];
+    // This is to make writing transitions consistent due to
+    // spriteLeft and spriteRight also using `translate();`.
     if (value) {
       if (key === "spriteLeftTransition") {
         if (value === "from-left") {
@@ -27,10 +29,14 @@ function RenderFrame(props) {
     } else if (
       props[key] === "center-to-left" ||
       props[key] === "center-to-right" ||
+      props[key] === "left-to-center" ||
+      props[key] === "left-to-right" ||
+      props[key] === "right-to-center" ||
+      props[key] === "right-to-left" ||
       props[key] === "from-left" ||
       props[key] === "from-right"
     ) {
-      return 800;
+      return 1000;
     } else if (props[key] === "shake") {
       return 700;
     } else if (props[key] === "bounce") {
