@@ -1,12 +1,6 @@
-.move-left {
-  transition: transform 1000ms ease-in-out;
-  transform: translateX(-400px);
-}
+/* Add your CSS classes here */
 
-.move-right {
-  transition: transform 1000ms ease-in-out;
-  transform: translateX(400px);
-}
+/* pre-built effects */
 /* slight edit from source: https://css-tricks.com/snippets/css/shake-css-keyframe-animation/ */
 .shake {
   animation: shake 0.7s;
