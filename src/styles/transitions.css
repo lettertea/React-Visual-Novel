@@ -19,21 +19,61 @@
   transition: opacity 250ms linear;
 }
 
-.sprite-slide-enter {
+.slide-left-enter {
+  opacity: 0;
+  transition: transform 1000ms ease-in-out, opacity 500ms ease-in-out;
+  transform: translate(0, 0);
+}
+.slide-left-enter-active {
+  opacity: 1;
+  transform: translate(-350px, 0);
+}
+
+.slide-left-leave {
+  opacity: 1;
+  transition: transform 1000ms ease-in-out, opacity 500ms ease-in-out;
+  transform: translate(0, 0);
+}
+.slide-left-leave-active {
+  opacity: 0;
+  transform: translate(-350px, 0);
+}
+
+.slide-right-enter {
+  opacity: 0;
+  transition: transform 1000ms ease-in-out, opacity 500ms ease-in-out;
+  transform: translate(0, 0);
+}
+.slide-right-enter-active {
+  opacity: 1;
+  transform: translate(350px, 0);
+}
+
+.slide-right-leave {
+  opacity: 1;
+  transition: transform 1000ms ease-in-out, opacity 500ms ease-in-out;
+  transform: translate(0, 0);
+}
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate(350px, 0);
+}
+
+.bounce-enter {
   opacity: 0;
   animation: bounce 0.4s;
   transition: opacity 250ms ease-in-out;
 }
-.sprite-slide-enter-active {
+.bounce-enter-active {
   opacity: 1;
 }
 
-.sprite-slide-leave {
+.bounce-leave {
   opacity: 1;
   animation: bounce 0.4s;
   transition: opacity 250ms ease-in-out;
 }
-.sprite-slide-leave-active {
+.bounce-leave-active {
   opacity: 0;
 }
 
