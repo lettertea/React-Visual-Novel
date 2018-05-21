@@ -359,6 +359,8 @@ class App extends Component {
   saveMenu() {
     return (
       <SaveLoadMenu
+        choicesExist={this.state.choicesExist}
+        choiceOptions={this.state.choiceOptions}
         confirmationMessage="Overwrite save?"
         currentTime={this.state.currentTime}
         menuType="Save Menu"
@@ -374,6 +376,8 @@ class App extends Component {
   loadMenu() {
     return (
       <SaveLoadMenu
+        choicesExist={this.state.choicesExist}
+        choiceOptions={this.state.choiceOptions}
         confirmationMessage="Load save?"
         currentTime={this.state.currentTime}
         menuType="Load Menu"
