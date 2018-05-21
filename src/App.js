@@ -130,15 +130,6 @@ class App extends Component {
     });
   }
 
-  // For developers to see what index they're editing. To request, set logIndex to true in novelFrames.js.
-  componentDidMount() {
-    for (let i = 0; i < novelFrames.length; i++) {
-      if (novelFrames[i].logIndex) {
-        console.log([i]);
-      }
-    }
-  }
-
   componentDidUpdate(prevProps, prevState) {
     // Update indexHistory if index changed
     if (prevState.index !== this.state.index) {
