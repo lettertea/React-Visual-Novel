@@ -69,13 +69,65 @@ novelFrames[9].bg = require("./bg/lockedIn.png");
 for (let i = 10; i < 12; i++) {
   novelFrames[i].bg = require("./bg/microphone.jpeg"); // source https://www.pexels.com/photo/blur-close-up-dark-focus-302655/
 }
+// Algorithm to set values to keys from most recent value
 
-novelFrames[12].bg = require("./bg/entrance.jpeg");
+let bgCache = "";
+let bgmCache = "";
+let spriteCache = "";
+let spriteLeftCache = "";
+let spriteRightCache = "";
 
-// BGM
-
-for (let i = 0; i < novelFrames.length; i++) {
-  novelFrames[i].bgm = require("./bgm/take.mp3"); // source http://freemusicarchive.org/music/David_Szesztay/20170730112627440/Throughout_The_City
+for (let e of novelFrames) {
+  // sprite
+  if (e.sprite && e.sprite !== "") {
+    spriteCache = e.sprite;
+  }
+  if (e.sprite === "") {
+    spriteCache = "";
+  }
+  if (!e.sprite && e.sprite !== "") {
+    e.sprite = spriteCache;
+  }
+  // spriteLeft
+  if (e.spriteLeft && e.spriteLeft !== "") {
+    spriteLeftCache = e.spriteLeft;
+  }
+  if (e.spriteLeft === "") {
+    spriteLeftCache = "";
+  }
+  if (!e.spriteLeft && e.spriteLeft !== "") {
+    e.spriteLeft = spriteLeftCache;
+  }
+  // spriteRight
+  if (e.spriteRight && e.spriteRight !== "") {
+    spriteRightCache = e.spriteRight;
+  }
+  if (e.spriteRight === "") {
+    spriteRightCache = "";
+  }
+  if (!e.spriteRight && e.spriteRight !== "") {
+    e.spriteRight = spriteRightCache;
+  }
+  // bg
+  if (e.bg && e.bg !== "") {
+    bgCache = e.bg;
+  }
+  if (e.bg === "") {
+    bgCache = "";
+  }
+  if (!e.bg && e.bg !== "") {
+    e.bg = bgCache;
+  }
+  // bgm
+  if (e.bgm && e.bgm !== "") {
+    bgmCache = e.bgm;
+  }
+  if (e.bgm === "") {
+    bgmCache = "";
+  }
+  if (!e.bgm && e.bgm !== "") {
+    e.bgm = bgmCache;
+  }
 }
 
 export default novelFrames;
