@@ -123,12 +123,7 @@ class SaveLoadMenu extends Component {
                   {JSON.parse(localStorage.getItem(this.state.slotNumber)).text}
                 </div>
               </div>
-            ) : (
-              <div
-                className="save-load-slot"
-                onClick={() => this.props.executeSlot(this.state.slotNumber)}
-              />
-            )}
+            ) : null}
           </a>
         </div>
       );
