@@ -362,7 +362,7 @@ class App extends Component {
         choiceOptions={this.state.choiceOptions}
         confirmationMessage="Overwrite save?"
         currentTime={this.state.currentTime}
-        menuType="Save Menu"
+        menuType="Save"
         executeSlot={this.saveSlot.bind(this)}
         toggleMenu={this.toggleSaveMenu.bind(this)}
         speaker={this.state.speaker}
@@ -379,7 +379,7 @@ class App extends Component {
         choiceOptions={this.state.choiceOptions}
         confirmationMessage="Load save?"
         currentTime={this.state.currentTime}
-        menuType="Load Menu"
+        menuType="Load"
         executeSlot={this.loadSlot.bind(this)}
         toggleMenu={this.toggleLoadMenu.bind(this)}
         speaker={this.state.speaker}
