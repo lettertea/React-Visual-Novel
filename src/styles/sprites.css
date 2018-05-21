@@ -11,8 +11,8 @@
 }
 
 .left {
-	right: 55%;
+	transform: translateX(-350px);
 }
 .right {
-	left: 55%;
+	transform: translateX(350px);
 }
