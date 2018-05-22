@@ -29,63 +29,25 @@ let novelFrames = [
 
 // Algorithm to set values to keys from most recent value
 
-let bgCache = "";
-let bgmCache = "";
-let spriteCache = "";
-let spriteLeftCache = "";
-let spriteRightCache = "";
-
-for (let key of novelFrames) {
-  // sprite
-  if (key.sprite && key.sprite !== "") {
-    spriteCache = key.sprite;
-  }
-  if (key.sprite === "") {
-    spriteCache = "";
-  }
-  if (!key.sprite && key.sprite !== "") {
-    key.sprite = spriteCache;
-  }
-  // spriteLeft
-  if (key.spriteLeft && key.spriteLeft !== "") {
-    spriteLeftCache = key.spriteLeft;
-  }
-  if (key.spriteLeft === "") {
-    spriteLeftCache = "";
-  }
-  if (!key.spriteLeft && key.spriteLeft !== "") {
-    key.spriteLeft = spriteLeftCache;
-  }
-  // spriteRight
-  if (key.spriteRight && key.spriteRight !== "") {
-    spriteRightCache = key.spriteRight;
-  }
-  if (key.spriteRight === "") {
-    spriteRightCache = "";
-  }
-  if (!key.spriteRight && key.spriteRight !== "") {
-    key.spriteRight = spriteRightCache;
-  }
-  // bg
-  if (key.bg && key.bg !== "") {
-    bgCache = key.bg;
-  }
-  if (key.bg === "") {
-    bgCache = "";
-  }
-  if (!key.bg && key.bg !== "") {
-    key.bg = bgCache;
-  }
-  // bgm
-  if (key.bgm && key.bgm !== "") {
-    bgmCache = key.bgm;
-  }
-  if (key.bgm === "") {
-    bgmCache = "";
-  }
-  if (!key.bgm && key.bgm !== "") {
-    key.bgm = bgmCache;
+function setFutureProperties(key) {
+  let cache = "";
+  for (let obj of novelFrames) {
+    if (obj[key] && obj[key] !== "") {
+      cache = obj[key];
+    }
+    if (obj[key] === "") {
+      cache = "";
+    }
+    if (!obj[key] && obj[key] !== "") {
+      obj[key] = cache;
+    }
   }
 }
+
+setFutureProperties("sprite");
+setFutureProperties("spriteLeft");
+setFutureProperties("spriteRight");
+setFutureProperties("bg");
+setFutureProperties("bgm");
 
 export default novelFrames;
