@@ -40,8 +40,7 @@ const INITIAL_STATE = {
   textBoxShown: true,
   saveMenuShown: false,
   loadMenuShown: false,
-  isSkipping: false,
-  indexHistory: []
+  isSkipping: false
 };
 
 class App extends Component {
@@ -131,15 +130,6 @@ class App extends Component {
       bgTransition: novelFrames[index].bgTransition,
       voice: novelFrames[index].voice
     });
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    // Update indexHistory if index changed
-    if (prevState.index !== this.state.index) {
-      this.setState({
-        indexHistory: [...this.state.indexHistory, prevState.index]
-      });
-    }
   }
 
   renderFrame() {
@@ -415,13 +405,11 @@ class App extends Component {
 
   backlog() {
     let loggedText = [];
-    for (let i = 0; i < this.state.indexHistory.length; i++) {
+    for (let i = 0; i < this.state.index + 1; i++) {
       loggedText.unshift(
-        <div className="backlog" key={loggedText.toString()}>
-          <div className="backlog-speaker">
-            {novelFrames[this.state.indexHistory[i]].speaker}
-          </div>
-          {novelFrames[this.state.indexHistory[i]].text}
+        <div className="backlog" key={i}>
+          <div className="backlog-speaker">{novelFrames[i].speaker}</div>
+          {novelFrames[i].text}
         </div>
       );
     }
