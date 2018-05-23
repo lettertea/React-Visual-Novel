@@ -35,10 +35,7 @@ class ConfigMenu extends Component {
 
   category(name, shown, handleClick) {
     return (
-      <button
-        class={"config-btn config-btn--stripe " + (shown ? "active" : null)}
-        onClick={handleClick}
-      >
+      <button class={"config-btn config-btn--stripe " + (shown ? "active" : null)} onClick={handleClick}>
         {name}
       </button>
     );

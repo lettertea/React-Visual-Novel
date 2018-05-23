@@ -12,11 +12,7 @@ function RenderFrame(props) {
       props[key] === "to-right-far"
     ) {
       return 1200;
-    } else if (
-      props[key] === "shake" ||
-      props[key] === "from-left" ||
-      props[key] === "from-right"
-    ) {
+    } else if (props[key] === "shake" || props[key] === "from-left" || props[key] === "from-right") {
       return 700;
     } else if (props[key] === "bounce") {
       return 400;
@@ -40,11 +36,7 @@ function RenderFrame(props) {
           transitionEnterTimeout={transitionTime("spriteTransition")}
           transitionLeaveTimeout={transitionTime("spriteTransition")}
         >
-          <img
-            key={props.sprite}
-            className={"sprite " + props.spriteEffect}
-            src={props.sprite}
-          />
+          <img key={props.sprite} className={"sprite " + props.spriteEffect} src={props.sprite} />
         </ReactCSSTransitionGroup>
         <ReactCSSTransitionGroup
           transitionName={props.spriteLeftTransition || "sprite"}
@@ -70,12 +62,8 @@ function RenderFrame(props) {
         </ReactCSSTransitionGroup>
         {props.text && props.textBoxShown ? (
           <div className="text-box" style={{ "font-family": props.font }}>
-            {props.speaker ? (
-              <div className="speaker"> {props.speaker} </div>
-            ) : null}
-            <div className="text">
-              {props.speaker ? `"${props.text}"` : props.text}
-            </div>
+            {props.speaker ? <div className="speaker"> {props.speaker} </div> : null}
+            <div className="text">{props.speaker ? `"${props.text}"` : props.text}</div>
           </div>
         ) : null}
       </div>

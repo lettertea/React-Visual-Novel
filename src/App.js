@@ -7,6 +7,7 @@ import novelFrames from "./story/novelFrames";
 import Choices from "./story/Choices";
 // Components
 import TitleScreen from "./components/TitleScreen";
+import Backlog from "./components/Backlog";
 import ChoiceMenu from "./components/ChoiceMenu";
 import ConfigMenu from "./components/ConfigMenu";
 import RenderFrame from "./components/RenderFrame";
@@ -66,15 +67,9 @@ class App extends Component {
   setNextFrame() {
     const currentIndex = this.state.index;
     // Jumps indexes because choices store
-    if (
-      this.state.choicesStore.pickedObject === 1 &&
-      novelFrames[currentIndex].jumpBecauseStoreTo === "haveKey"
-    ) {
+    if (this.state.choicesStore.pickedObject === 1 && novelFrames[currentIndex].jumpBecauseStoreTo === "haveKey") {
       for (let i = 0; i < novelFrames.length; i++) {
-        if (
-          novelFrames[currentIndex].jumpBecauseStoreTo ===
-          novelFrames[i].receiveJumpBecauseStore
-        ) {
+        if (novelFrames[currentIndex].jumpBecauseStoreTo === novelFrames[i].receiveJumpBecauseStore) {
           this.setFrame(i);
         }
       }
@@ -181,10 +176,7 @@ class App extends Component {
 
   renderChoiceMenu() {
     return (
-      <ChoiceMenu
-        choiceOptions={this.state.choiceOptions}
-        onChoiceSelected={this.handleChoiceSelected.bind(this)}
-      />
+      <ChoiceMenu choiceOptions={this.state.choiceOptions} onChoiceSelected={this.handleChoiceSelected.bind(this)} />
     );
   }
 
@@ -255,18 +247,12 @@ class App extends Component {
   }
 
   startSkip() {
-    const intervalTime = prompt(
-      "How many milliseconds per frame would you like?",
-      "75"
-    );
+    const intervalTime = prompt("How many milliseconds per frame would you like?", "75");
     if (intervalTime > 0) {
       this.setState({
         isSkipping: true
       });
-      this.textSkipper = setInterval(
-        this.setNextFrame.bind(this),
-        intervalTime
-      );
+      this.textSkipper = setInterval(this.setNextFrame.bind(this), intervalTime);
     }
   }
 
@@ -292,10 +278,7 @@ class App extends Component {
       ("0" + d.getMinutes()).slice(-2);
 
     localStorage.setItem("time" + number, datestring); // saves the current time to the save slot
-    localStorage.setItem(
-      number,
-      JSON.stringify(this.state, (k, v) => (v === undefined ? null : v))
-    );
+    localStorage.setItem(number, JSON.stringify(this.state, (k, v) => (v === undefined ? null : v)));
     this.setState(this.state);
   }
 
@@ -322,12 +305,7 @@ class App extends Component {
   }
 
   titleScreen() {
-    return (
-      <TitleScreen
-        beginStory={this.beginStory.bind(this)}
-        toggleLoadMenu={this.toggleLoadMenu.bind(this)}
-      />
-    );
+    return <TitleScreen beginStory={this.beginStory.bind(this)} toggleLoadMenu={this.toggleLoadMenu.bind(this)} />;
   }
 
   configMenu() {
@@ -407,33 +385,15 @@ class App extends Component {
   backlog() {
     return <Backlog index={this.state.index} setFrame={this.setFrame} toggleBacklog={this.toggleBacklog} />;
   }
+
   playBGM() {
-    return (
-      <Sound
-        url={this.state.bgm}
-        volume={this.state.bgmVolume}
-        playStatus={Sound.status.PLAYING}
-        loop={true}
-      />
-    );
+    return <Sound url={this.state.bgm} volume={this.state.bgmVolume} playStatus={Sound.status.PLAYING} loop={true} />;
   }
   playEffect() {
-    return (
-      <Sound
-        url={this.state.effect}
-        volume={this.state.effectVolume}
-        playStatus={Sound.status.PLAYING}
-      />
-    );
+    return <Sound url={this.state.effect} volume={this.state.effectVolume} playStatus={Sound.status.PLAYING} />;
   }
   playVoice() {
-    return (
-      <Sound
-        url={this.state.voice}
-        volume={this.state.voiceVolume}
-        playStatus={Sound.status.PLAYING}
-      />
-    );
+    return <Sound url={this.state.voice} volume={this.state.voiceVolume} playStatus={Sound.status.PLAYING} />;
   }
 
   render() {

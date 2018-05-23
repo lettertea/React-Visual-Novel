@@ -19,11 +19,7 @@ class SaveLoadMenu extends Component {
         style["background-color"] = "gray";
       }
       buttonCache.push(
-        <button
-          className="save-load-btn"
-          onClick={() => this.setState({ slotNumber: i })}
-          style={style}
-        >
+        <button className="save-load-btn" onClick={() => this.setState({ slotNumber: i })} style={style}>
           {i}
         </button>
       );
@@ -47,9 +43,7 @@ class SaveLoadMenu extends Component {
   renderChoiceMenu() {
     return (
       <div className="overlay-choices overlay-choices-slot">
-        {JSON.parse(
-          localStorage.getItem(this.state.slotNumber)
-        ).choiceOptions.map(key => (
+        {JSON.parse(localStorage.getItem(this.state.slotNumber)).choiceOptions.map(key => (
           <button className="choice-button">{key.content}</button>
         ))}
       </div>
@@ -72,68 +66,36 @@ class SaveLoadMenu extends Component {
             }
           }}
         >
-          {JSON.parse(localStorage.getItem(this.state.slotNumber)).choicesExist
-            ? this.renderChoiceMenu()
-            : null}
+          {JSON.parse(localStorage.getItem(this.state.slotNumber)).choicesExist ? this.renderChoiceMenu() : null}
           <a>
+            <img className="slot-bg" src={JSON.parse(localStorage.getItem(this.state.slotNumber)).bg} />
             <img
-              className="slot-bg"
-              src={JSON.parse(localStorage.getItem(this.state.slotNumber)).bg}
-            />
-            <img
-              src={
-                JSON.parse(localStorage.getItem(this.state.slotNumber))
-                  .spriteLeft
-              }
+              src={JSON.parse(localStorage.getItem(this.state.slotNumber)).spriteLeft}
               className="sprite slot-left"
             />
+            <img src={JSON.parse(localStorage.getItem(this.state.slotNumber)).sprite} className="sprite" />
             <img
-              src={
-                JSON.parse(localStorage.getItem(this.state.slotNumber)).sprite
-              }
-              className="sprite"
-            />
-            <img
-              src={
-                JSON.parse(localStorage.getItem(this.state.slotNumber))
-                  .spriteRight
-              }
+              src={JSON.parse(localStorage.getItem(this.state.slotNumber)).spriteRight}
               className="sprite slot-right"
             />
-            {JSON.parse(localStorage.getItem(this.state.slotNumber)).text &&
-            this.props.textBoxShown ? (
+            {JSON.parse(localStorage.getItem(this.state.slotNumber)).text && this.props.textBoxShown ? (
               <div
                 className="text-box"
                 style={{
-                  "font-family": JSON.parse(
-                    localStorage.getItem(this.state.slotNumber)
-                  ).font
+                  "font-family": JSON.parse(localStorage.getItem(this.state.slotNumber)).font
                 }}
               >
-                {JSON.parse(localStorage.getItem(this.state.slotNumber))
-                  .speaker ? (
-                  <div className="speaker">
-                    {
-                      JSON.parse(localStorage.getItem(this.state.slotNumber))
-                        .speaker
-                    }
-                  </div>
+                {JSON.parse(localStorage.getItem(this.state.slotNumber)).speaker ? (
+                  <div className="speaker">{JSON.parse(localStorage.getItem(this.state.slotNumber)).speaker}</div>
                 ) : null}
-                <div className="text">
-                  {JSON.parse(localStorage.getItem(this.state.slotNumber)).text}
-                </div>
+                <div className="text">{JSON.parse(localStorage.getItem(this.state.slotNumber)).text}</div>
               </div>
             ) : null}
           </a>
         </div>
       );
     } else {
-      return (
-        <div
-          className="save-load-slot empty"
-          onClick={() => this.props.executeSlot(this.state.slotNumber)}
-        />
-      );
+      return <div className="save-load-slot empty" onClick={() => this.props.executeSlot(this.state.slotNumber)} />;
     }
   }
 
@@ -149,9 +111,7 @@ class SaveLoadMenu extends Component {
           </li>
         </ul>
         {this.menuSlot(this.state.slotNumber)}
-        <div className="slot-date">
-          {localStorage.getItem("time" + this.state.slotNumber)}
-        </div>
+        <div className="slot-date">{localStorage.getItem("time" + this.state.slotNumber)}</div>
         {this.swapSlotButtons()}
       </div>
     );
