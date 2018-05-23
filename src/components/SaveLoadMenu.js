@@ -69,15 +69,9 @@ class SaveLoadMenu extends Component {
           {JSON.parse(localStorage.getItem(this.state.slotNumber)).choicesExist ? this.renderChoiceMenu() : null}
           <a>
             <img className="slot-bg" src={JSON.parse(localStorage.getItem(this.state.slotNumber)).bg} />
-            <img
-              src={JSON.parse(localStorage.getItem(this.state.slotNumber)).spriteLeft}
-              className="sprite slot-left"
-            />
+            <img src={JSON.parse(localStorage.getItem(this.state.slotNumber)).spriteLeft} className="sprite left" />
             <img src={JSON.parse(localStorage.getItem(this.state.slotNumber)).sprite} className="sprite" />
-            <img
-              src={JSON.parse(localStorage.getItem(this.state.slotNumber)).spriteRight}
-              className="sprite slot-right"
-            />
+            <img src={JSON.parse(localStorage.getItem(this.state.slotNumber)).spriteRight} className="sprite right" />
             {JSON.parse(localStorage.getItem(this.state.slotNumber)).text && this.props.textBoxShown ? (
               <div
                 className="text-box"

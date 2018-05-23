@@ -14,7 +14,6 @@ import RenderFrame from "./components/RenderFrame";
 import MenuButtons from "./components/MenuButtons";
 import SaveLoadMenu from "./components/SaveLoadMenu";
 // CSS
-import "./styles/textbox.css"; // Must import first so saveLoadMenu can use it
 import "./styles/config.css";
 import "./styles/container.css";
 import "./styles/backlog.css";
@@ -23,6 +22,7 @@ import "./styles/effects.css";
 import "./styles/menubuttons.css";
 import "./styles/saveloadmenu.css";
 import "./styles/sprites.css";
+import "./styles/textbox.css";
 import "./styles/titlescreen.css";
 import "./styles/transitions.css";
 
@@ -263,7 +263,6 @@ class App extends Component {
     });
   }
 
-  // Saves and sets current state to local storage
   saveSlot(number) {
     var d = new Date();
     var datestring =
@@ -282,7 +281,6 @@ class App extends Component {
     this.setState(this.state);
   }
 
-  // Loads and sets state from local storage
   loadSlot(number) {
     this.setState(JSON.parse(localStorage.getItem(number)));
     this.setState({
@@ -290,7 +288,6 @@ class App extends Component {
     }); // save menu to false and not load because save is true when saving
   }
 
-  // "Begin" Button for title page.
   beginStory() {
     this.stopSkip();
     this.setState({
@@ -358,7 +355,6 @@ class App extends Component {
     );
   }
 
-  // the GUI interface on the bottom
   renderMenuButtons() {
     return (
       <MenuButtons
