@@ -51,9 +51,9 @@ class App extends Component {
     this.state = INITIAL_STATE;
   }
 
-  setFrameFromChoice(choice, jumpToBecauseChoice) {
+  setFrameFromChoice(choice, routeBegins) {
     for (let i = 0; i < novelFrames.length; i++) {
-      if (jumpToBecauseChoice === novelFrames[i].routeBegins) {
+      if (routeBegins === novelFrames[i].routeBegins) {
         this.setFrame(i);
       }
     }
