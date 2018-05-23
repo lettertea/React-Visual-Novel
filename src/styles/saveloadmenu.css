@@ -50,6 +50,14 @@
   bottom: 0px;
 }
 
+.slot-left {
+  transform: translateX(-350px);
+}
+
+.slot-right {
+  transform: translateX(350px);
+}
+
 .slot-date {
   position: absolute;
   bottom: 110px;

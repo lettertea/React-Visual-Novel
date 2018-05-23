@@ -85,20 +85,20 @@ class SaveLoadMenu extends Component {
                 JSON.parse(localStorage.getItem(this.state.slotNumber))
                   .spriteLeft
               }
-              className="slot-sprite left"
+              className="sprite slot-left"
             />
             <img
               src={
                 JSON.parse(localStorage.getItem(this.state.slotNumber)).sprite
               }
-              className="slot-sprite"
+              className="sprite"
             />
             <img
               src={
                 JSON.parse(localStorage.getItem(this.state.slotNumber))
                   .spriteRight
               }
-              className="slot-sprite right"
+              className="sprite slot-right"
             />
             {JSON.parse(localStorage.getItem(this.state.slotNumber)).text &&
             this.props.textBoxShown ? (
