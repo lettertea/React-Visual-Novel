@@ -92,10 +92,17 @@
 }
 
 .config-container {
-	margin: 15px;
+	margin: 15px 30px;
 	border-radius: 4px;
 	background: white;
-	width: 350px;
+	width: 40%;
+}
+
+@media only screen and (max-width: 800px) {
+	.config-container {
+		width: 90%;
+		margin: 15px auto;
+	}
 }
 
 .slider-container {
