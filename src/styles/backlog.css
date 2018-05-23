@@ -47,6 +47,35 @@
   }
 }
 
+.backlog-jump-container {
+  position: absolute;
+  transform: translate(-80px, 33px);
+  color: #2d5986;
+  cursor: pointer;
+}
+
+.backlog-jump-text {
+  transition: all 0.2s ease-in-out;
+  position: relative;
+}
+
+.backlog-jump-text:after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  width: 0px;
+  height: 2px;
+  transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 1;
+  left: 0px;
+  background-color: #2d5986;
+}
+.backlog-jump-container:hover .backlog-jump-text:before,
+.backlog-jump-container:hover .backlog-jump-text:after {
+  width: 100%;
+  opacity: 1;
+}
+
 .backlog-speaker {
   font-weight: 500;
   color: DarkGreen;

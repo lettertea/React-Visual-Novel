@@ -46,7 +46,8 @@ const INITIAL_STATE = {
 class App extends Component {
   constructor() {
     super(); //constructor init
-
+    this.setFrame = this.setFrame.bind(this);
+    this.toggleBacklog = this.toggleBacklog.bind(this);
     this.state = INITIAL_STATE;
   }
 
@@ -408,6 +409,15 @@ class App extends Component {
     for (let i = 0; i < this.state.index + 1; i++) {
       loggedText.unshift(
         <div className="backlog" key={i}>
+          <div
+            className="backlog-jump-container"
+            onClick={() => {
+              this.setFrame(i);
+              this.toggleBacklog();
+            }}
+          >
+            <span className="backlog-jump-text">Jump</span>
+          </div>
           <div className="backlog-speaker">{novelFrames[i].speaker}</div>
           {novelFrames[i].text}
         </div>
