@@ -405,26 +405,7 @@ class App extends Component {
   }
 
   backlog() {
-    let loggedText = [];
-    for (let i = 0; i < this.state.index + 1; i++) {
-      loggedText.unshift(
-        <div className="backlog" key={i}>
-          <div
-            className="backlog-jump-container"
-            onClick={() => {
-              this.setFrame(i);
-              this.toggleBacklog();
-            }}
-          >
-            <span className="backlog-jump-text">Jump</span>
-          </div>
-          <div className="backlog-speaker">{novelFrames[i].speaker}</div>
-          {novelFrames[i].text}
-        </div>
-      );
-    }
-
-    return <div className="overlay backlog-overlay">{loggedText}</div>;
+    return <Backlog index={this.state.index} setFrame={this.setFrame} toggleBacklog={this.toggleBacklog} />;
   }
   playBGM() {
     return (
