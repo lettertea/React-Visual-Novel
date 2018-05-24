@@ -55,13 +55,7 @@
 	display: block;
 	height: 7px;
 	width: 100%;
-	background-image: repeating-linear-gradient(
-		45deg,
-		#666,
-		#666 1px,
-		transparent 2px,
-		transparent 5px
-	);
+	background-image: repeating-linear-gradient(45deg, #666, #666 1px, transparent 2px, transparent 5px);
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 	border-top: 1px solid #666;
@@ -80,13 +74,7 @@
 
 .config-btn--stripe:hover:after,
 .active:after {
-	background-image: repeating-linear-gradient(
-		45deg,
-		#fff,
-		#fff 1px,
-		transparent 2px,
-		transparent 5px
-	);
+	background-image: repeating-linear-gradient(45deg, #fff, #fff 1px, transparent 2px, transparent 5px);
 	border-top: 1px solid #000;
 	animation: stripe-slide 12s infinite linear forwards;
 }
@@ -95,16 +83,15 @@
 	margin: 15px 30px;
 	border-radius: 4px;
 	background: white;
-	width: 40%;
+	width: 375px;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 768px) {
 	.config-container {
-		width: 90%;
+		width: 70%;
 		margin: 15px auto;
 	}
 }
-
 .slider-container {
 	padding: 8px 12px 2px;
 }
