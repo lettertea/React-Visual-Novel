@@ -392,9 +392,10 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    let choicesHistory = { ...this.state.choicesHistory };
     if (prevState.index !== this.state.index) {
       this.setState({
-        choicesHistory: [...this.state.choicesHistory, prevState.choicesStore]
+        choicesHistory: [choicesHistory || null, prevState.choicesStore]
       });
     }
   }

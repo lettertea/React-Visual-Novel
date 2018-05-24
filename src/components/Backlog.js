@@ -3,32 +3,31 @@ import novelFrames from "../story/novelFrames";
 import Choices from "../story/Choices";
 
 function Backlog(props) {
-  let loggedText = [];
-  let choicesIndex = Choices.length - 1;
-  for (let i = props.index; i >= 0; i--) {
-    if (novelFrames[i].choicesExist) {
-      choicesIndex--;
-    }
-    loggedText.push(
+  function handleJump(i, choicesIndex) {
+    props.setFrame(i);
+    props.toggleBacklog();
+    props.setChoice(choicesIndex);
+    props.setChoicesStore(props.choicesHistory[i]);
+  }
+  let textHistory = [];
+  let choicesIndex = 0;
+  let pastFirstChoice = false;
+  for (let i = 0; i <= props.index; i++) {
+    textHistory.unshift(
       <div className="backlog" key={i}>
-        <div
-          className="backlog-jump-container"
-          onClick={() => {
-            props.setFrame(i);
-            props.toggleBacklog();
-            props.setChoice(choicesIndex);
-            props.setChoicesStore(props.choicesHistory[i]);
-          }}
-        >
+        <div className="backlog-jump-container" onClick={() => handleJump(i, choicesIndex)}>
           <span className="backlog-jump-text">Jump</span>
         </div>
         <div className="backlog-speaker">{novelFrames[i].speaker}</div>
         {novelFrames[i].text}
       </div>
     );
+    if (novelFrames[i].choicesExist && pastFirstChoice) {
+      choicesIndex++;
+    }
   }
 
-  return <div className="overlay backlog-overlay">{loggedText}</div>;
+  return <div className="overlay backlog-overlay">{textHistory}</div>;
 }
 
 export default Backlog;
