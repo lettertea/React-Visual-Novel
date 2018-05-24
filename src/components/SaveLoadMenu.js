@@ -27,18 +27,6 @@ class SaveLoadMenu extends Component {
 
     return <div className="save-load-buttons">{buttonCache}</div>;
   }
-  saveOrLoadSlot() {
-    return (
-      <div className="save-load-slot-container">
-        <div className="save-load-slot" id="save-load-type-slot">
-          <div id="save-load-logo">{this.props.menuType}</div>
-          <button onClick={this.props.toggleMenu} id="leave-save-load">
-            Leave
-          </button>
-        </div>
-      </div>
-    );
-  }
 
   renderChoiceMenu() {
     return (
