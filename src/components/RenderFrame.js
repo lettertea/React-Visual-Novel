@@ -32,11 +32,14 @@ function RenderFrame(props) {
           <img key={props.bg} className="bg" src={props.bg} />
         </ReactCSSTransitionGroup>
         <ReactCSSTransitionGroup
+          className="sprite-center-parent"
           transitionName={props.spriteTransition || "sprite"}
           transitionEnterTimeout={transitionTime("spriteTransition")}
           transitionLeaveTimeout={transitionTime("spriteTransition")}
         >
-          <img key={props.sprite} className={"sprite " + props.spriteEffect} src={props.sprite} />
+          <div>
+            <img key={props.sprite} className={props.spriteEffect} src={props.sprite} />
+          </div>
         </ReactCSSTransitionGroup>
         <ReactCSSTransitionGroup
           transitionName={props.spriteLeftTransition || "sprite"}

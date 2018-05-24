@@ -6,6 +6,17 @@
 	right: 0;
 }
 
+/* Different styling for center so it centers regardless of screen width. */
+.sprite-center-parent {
+	position: fixed;
+	left: 50%;
+	bottom: -4px; /* Prevents center sprite from floating */
+}
+
+.sprite-center-parent div {
+	position: relative;
+	left: -50%;
+}
 .left {
 	left: -350px;
 	right: 350px;
