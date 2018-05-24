@@ -12,13 +12,7 @@
 .backlog {
   box-sizing: border-box;
   background-color: #eee;
-  background-image: linear-gradient(
-      90deg,
-      transparent 79px,
-      #abced4 79px,
-      #abced4 81px,
-      transparent 81px
-    ),
+  background-image: linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
     linear-gradient(#ddd 2px, transparent 2px);
   background-size: 100% 33.33%;
   font-size: 22px;
@@ -29,28 +23,11 @@
   padding-left: 93px;
 }
 
-@media only screen and (max-width: 768px) {
-  .backlog {
-    background-image: linear-gradient(
-        90deg,
-        transparent 45px,
-        #abced4 45px,
-        #abced4 47px,
-        transparent 47px
-      ),
-      linear-gradient(#ddd 2px, transparent 2px); /* shifts blue line margin to left */
-    padding-left: 59px;
-    font-size: 18px;
-    padding-top: 2px;
-    line-height: 1.45;
-    background-size: 100% 25%;
-  }
-}
-
 .backlog-jump-container {
   position: absolute;
   transform: translate(-80px, 33px);
   color: #2d5986;
+  font-style: italic;
   cursor: pointer;
 }
 
@@ -74,6 +51,24 @@
 .backlog-jump-container:hover .backlog-jump-text:after {
   width: 100%;
   opacity: 1;
+}
+
+@media only screen and (max-width: 768px) {
+  .backlog {
+    background-image: linear-gradient(90deg, transparent 50px, #abced4 50px, #abced4 52px, transparent 52px),
+      linear-gradient(#ddd 2px, transparent 2px); /* shifts blue line margin to left */
+    padding-left: 59px;
+    font-size: 18px;
+    padding-top: 2px;
+    line-height: 1.45;
+    background-size: 100% 25%;
+  }
+  .backlog-jump-container {
+    transform: translate(-55px, 26px);
+  }
+  .backlog-jump-text:after {
+    bottom: -2.5px;
+  }
 }
 
 .backlog-speaker {
