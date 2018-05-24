@@ -59,7 +59,7 @@ class App extends Component {
       }
     }
 
-    let choicesStore = Object.assign({}, this.state.choicesStore);
+    let choicesStore = { ...this.state.choicesStore };
     choicesStore[choice]++ || (choicesStore[choice] = 1);
     this.setState({ choicesStore });
   }
@@ -67,9 +67,9 @@ class App extends Component {
   setNextFrame() {
     const currentIndex = this.state.index;
     // Jumps indexes because choices store
-    if (this.state.choicesStore.pickedObject === 1 && novelFrames[currentIndex].jumpBecauseStoreTo === "haveKey") {
+    if (this.state.choicesStore.pickedObject === 1 && novelFrames[currentIndex].jumpToBecauseStore === "haveKey") {
       for (let i = 0; i < novelFrames.length; i++) {
-        if (novelFrames[currentIndex].jumpBecauseStoreTo === novelFrames[i].receiveJumpBecauseStore) {
+        if (novelFrames[currentIndex].jumpToBecauseStore === novelFrames[i].receiveJumpBecauseStore) {
           this.setFrame(i);
         }
       }
