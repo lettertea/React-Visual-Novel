@@ -21,6 +21,18 @@
   box-shadow: 0px 2px 3px 2px #222;
 }
 
+@media only screen and (max-width: 880px) {
+  .save-load-slot {
+    transform: translateY(-80px) scale(0.45);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .save-load-slot {
+    transform: translateY(-80px) scale(0.275);
+  }
+}
+
 .save-load-slot:hover {
   box-shadow: 0px 4px 5px 3px #222;
 }
