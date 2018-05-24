@@ -47,7 +47,7 @@ const INITIAL_STATE = {
 
 class App extends Component {
   constructor() {
-    super(); //constructor init
+    super();
     this.setFrame = this.setFrame.bind(this);
     this.toggleBacklog = this.toggleBacklog.bind(this);
     this.state = INITIAL_STATE;
@@ -418,7 +418,7 @@ class App extends Component {
           className="container"
           transitionName="menu"
           transitionEnterTimeout={400}
-          transitionLeaveTimeout={600}
+          transitionLeaveTimeout={400}
         >
           {this.state.titleScreenShown ? this.titleScreen() : null}
           {this.state.frameIsRendering ? this.renderFrame() : null}
