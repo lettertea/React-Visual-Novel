@@ -32,6 +32,7 @@ const INITIAL_STATE = {
   voiceVolume: 100,
   font: "Trebuchet MS",
   choicesStore: {},
+  choicesHistory: [],
   index: 0,
   choicesExist: false,
   configMenuShown: false,
@@ -152,9 +153,7 @@ class App extends Component {
     );
   }
 
-  setNextChoice() {
-    let choicesIndex = this.state.choicesIndex + 1;
-
+  setChoice(choicesIndex) {
     // Makes sure the index is within the Choices array
     if (choicesIndex >= Choices.length) {
       choicesIndex = Choices.length - 1;
@@ -171,7 +170,7 @@ class App extends Component {
   handleChoiceSelected(event) {
     this.stopSkip();
     this.setFrameFromChoice(event.currentTarget.name, event.currentTarget.id);
-    this.setNextChoice();
+    this.setChoice(this.state.choicesIndex + 1);
   }
 
   renderChoiceMenu() {
@@ -379,7 +378,25 @@ class App extends Component {
   }
 
   backlog() {
-    return <Backlog index={this.state.index} setFrame={this.setFrame} toggleBacklog={this.toggleBacklog} />;
+    return (
+      <Backlog
+        index={this.state.index}
+        setFrame={this.setFrame}
+        setChoice={this.setChoice.bind(this)}
+        toggleBacklog={this.toggleBacklog}
+        choicesStore={this.state.choicesStore}
+        choicesHistory={this.state.choicesHistory}
+        setChoicesStore={choicesHistory => this.setState({ choicesHistory })}
+      />
+    );
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.index !== this.state.index) {
+      this.setState({
+        choicesHistory: [...this.state.choicesHistory, prevState.choicesStore]
+      });
+    }
   }
 
   playBGM() {

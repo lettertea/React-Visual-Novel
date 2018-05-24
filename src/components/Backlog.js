@@ -1,9 +1,14 @@
 import React from "react";
 import novelFrames from "../story/novelFrames";
+import Choices from "../story/Choices";
 
 function Backlog(props) {
   let loggedText = [];
+  let choicesIndex = Choices.length - 1;
   for (let i = props.index; i >= 0; i--) {
+    if (novelFrames[i].choicesExist) {
+      choicesIndex--;
+    }
     loggedText.push(
       <div className="backlog" key={i}>
         <div
@@ -11,6 +16,8 @@ function Backlog(props) {
           onClick={() => {
             props.setFrame(i);
             props.toggleBacklog();
+            props.setChoice(choicesIndex);
+            props.setChoicesStore(props.choicesHistory[i]);
           }}
         >
           <span className="backlog-jump-text">Jump</span>
