@@ -1,18 +1,32 @@
-var Choices = [
+var choices = [
   {
     choices: [
       {
         store: "pickedObject",
-        jumpToBecauseChoice: "pickedUpObject",
-        content: "Pick up the object on the floor"
+        routeBegins: "pickedUpObject",
+        content: "Pick up the object ooor"
       },
       {
         store: "noObject",
-        jumpToBecauseChoice: "objectIgnored",
+        routeBegins: "objectIgnored",
+        content: "Ignore the object."
+      }
+    ]
+  },
+  {
+    choices: [
+      {
+        store: "pickedObject",
+        routeBegins: "ignoredObject",
+        content: "Pick ufloor"
+      },
+      {
+        store: "noObject",
+        routeBegins: "objectIgnored",
         content: "Ignore the object."
       }
     ]
   }
 ];
 
-export default Choices;
+export default choices;

@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import Sound from "react-sound";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 // API
+import story from "./story/story";
+import choices from "./story/choices";
 // Components
 import TitleScreen from "./components/TitleScreen";
 import Backlog from "./components/Backlog";
@@ -153,15 +155,15 @@ class App extends Component {
 
   setChoice(choicesIndex) {
     // Makes sure the index is within the Choices array
-    if (choicesIndex >= Choices.length) {
-      choicesIndex = Choices.length - 1;
+    if (choicesIndex >= choices.length) {
+      choicesIndex = choices.length - 1;
     } else if (choicesIndex <= -1) {
       choicesIndex = 0;
     }
 
     this.setState({
       choicesIndex: choicesIndex,
-      choiceOptions: Choices[choicesIndex].choices
+      choiceOptions: choices[choicesIndex].choices
     });
   }
 
@@ -294,7 +296,7 @@ class App extends Component {
     this.setFrame(0);
     this.setState({
       choicesIndex: 0,
-      choiceOptions: Choices[0].choices
+      choiceOptions: choices[0].choices
     });
   }
 
