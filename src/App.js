@@ -3,8 +3,6 @@ import React, { Component } from "react";
 import Sound from "react-sound";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 // API
-import novelFrames from "./story/novelFrames";
-import Choices from "./story/Choices";
 // Components
 import TitleScreen from "./components/TitleScreen";
 import Backlog from "./components/Backlog";
@@ -54,8 +52,8 @@ class App extends Component {
   }
 
   setFrameFromChoice(choice, routeBegins) {
-    for (let i = 0; i < novelFrames.length; i++) {
-      if (routeBegins === novelFrames[i].routeBegins) {
+    for (let i = 0; i < story.length; i++) {
+      if (routeBegins === story[i].routeBegins) {
         this.setFrame(i);
       }
     }
@@ -68,20 +66,20 @@ class App extends Component {
   setNextFrame() {
     const currentIndex = this.state.index;
     // Jumps indexes because choices store
-    if (this.state.choicesStore.pickedObject === 1 && novelFrames[currentIndex].jumpToBecauseStore === "haveKey") {
-      for (let i = 0; i < novelFrames.length; i++) {
-        if (novelFrames[currentIndex].jumpToBecauseStore === novelFrames[i].receiveJumpBecauseStore) {
+    if (this.state.choicesStore.pickedObject === 1 && story[currentIndex].jumpToBecauseStore === "haveKey") {
+      for (let i = 0; i < story.length; i++) {
+        if (story[currentIndex].jumpToBecauseStore === story[i].receiveJumpBecauseStore) {
           this.setFrame(i);
         }
       }
-    } else if (novelFrames[currentIndex].jumpTo) {
+    } else if (story[currentIndex].jumpTo) {
       // Jumps indexes normally
-      if (novelFrames[currentIndex].jumpTo === "titleScreen") {
+      if (story[currentIndex].jumpTo === "titleScreen") {
         this.setState(INITIAL_STATE);
-      } else if (novelFrames[currentIndex].jumpTo) {
+      } else if (story[currentIndex].jumpTo) {
         // Resumes to common route
-        for (let i = 0; i < novelFrames.length; i++) {
-          if (novelFrames[currentIndex].jumpTo === novelFrames[i].receiveJump) {
+        for (let i = 0; i < story.length; i++) {
+          if (story[currentIndex].jumpTo === story[i].receiveJump) {
             this.setFrame(i);
           }
         }
@@ -99,33 +97,33 @@ class App extends Component {
   }
 
   setFrame(index) {
-    // Makes sure the index is within the novelFrames array
-    if (index >= novelFrames.length) {
-      index = novelFrames.length - 1;
+    // Makes sure the index is within the story array
+    if (index >= story.length) {
+      index = story.length - 1;
     } else if (index <= -1) {
       index = 0;
     }
-    // Updates novelFrames with new index
+    // Updates story with new index
     this.setState({
       index: index,
-      bg: novelFrames[index].bg,
-      bgm: novelFrames[index].bgm,
-      effect: novelFrames[index].effect,
-      choicesExist: novelFrames[index].choicesExist,
-      sceneChange: novelFrames[index].sceneChange,
-      speaker: novelFrames[index].speaker,
-      sprite: novelFrames[index].sprite,
-      spriteEffect: novelFrames[index].spriteEffect,
-      spriteTransition: novelFrames[index].spriteTransition,
-      spriteLeft: novelFrames[index].spriteLeft,
-      spriteLeftEffect: novelFrames[index].spriteLeftEffect,
-      spriteLeftTransition: novelFrames[index].spriteLeftTransition,
-      spriteRight: novelFrames[index].spriteRight,
-      spriteRightEffect: novelFrames[index].spriteRightEffect,
-      spriteRightTransition: novelFrames[index].spriteRightTransition,
-      text: novelFrames[index].text,
-      bgTransition: novelFrames[index].bgTransition,
-      voice: novelFrames[index].voice
+      bg: story[index].bg,
+      bgm: story[index].bgm,
+      effect: story[index].effect,
+      choicesExist: story[index].choicesExist,
+      sceneChange: story[index].sceneChange,
+      speaker: story[index].speaker,
+      sprite: story[index].sprite,
+      spriteEffect: story[index].spriteEffect,
+      spriteTransition: story[index].spriteTransition,
+      spriteLeft: story[index].spriteLeft,
+      spriteLeftEffect: story[index].spriteLeftEffect,
+      spriteLeftTransition: story[index].spriteLeftTransition,
+      spriteRight: story[index].spriteRight,
+      spriteRightEffect: story[index].spriteRightEffect,
+      spriteRightTransition: story[index].spriteRightTransition,
+      text: story[index].text,
+      bgTransition: story[index].bgTransition,
+      voice: story[index].voice
     });
   }
 
