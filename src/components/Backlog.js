@@ -1,5 +1,5 @@
 import React from "react";
-import novelFrames from "../story/novelFrames";
+import story from "../story/story";
 
 function Backlog(props) {
   function handleJump(i, choicesIndex) {
@@ -12,10 +12,10 @@ function Backlog(props) {
   let choicesIndex = 0;
   let pastFirstChoice = false;
   for (let i = 0; i <= props.index; i++) {
-    if (novelFrames[i].choicesExist && pastFirstChoice) {
+    if (story[i].choicesExist && pastFirstChoice) {
       choicesIndex++;
     }
-    if (novelFrames[i].choicesExist) {
+    if (story[i].choicesExist) {
       pastFirstChoice = true;
     }
     textHistory.unshift(
@@ -23,8 +23,8 @@ function Backlog(props) {
         <div className="backlog-jump-container" onClick={() => handleJump(i, choicesIndex)}>
           <span className="backlog-jump-text">{i === props.index ? null : "Jump"}</span>
         </div>
-        <div className="backlog-speaker">{novelFrames[i].speaker}</div>
-        {novelFrames[i].text}
+        <div className="backlog-speaker">{story[i].speaker}</div>
+        {story[i].text}
       </div>
     );
   }
