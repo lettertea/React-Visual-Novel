@@ -56,10 +56,26 @@ class SaveLoadMenu extends Component {
         >
           {JSON.parse(localStorage.getItem(this.state.slotNumber)).choicesExist ? this.renderChoiceMenu() : null}
           <a>
-            <img className="slot-bg" src={JSON.parse(localStorage.getItem(this.state.slotNumber)).bg} />
-            <img src={JSON.parse(localStorage.getItem(this.state.slotNumber)).spriteLeft} className="sprite left" />
-            <img src={JSON.parse(localStorage.getItem(this.state.slotNumber)).sprite} className="sprite" />
-            <img src={JSON.parse(localStorage.getItem(this.state.slotNumber)).spriteRight} className="sprite right" />
+            <img
+              draggable="false"
+              className="slot-bg"
+              src={JSON.parse(localStorage.getItem(this.state.slotNumber)).bg}
+            />
+            <img
+              draggable="false"
+              src={JSON.parse(localStorage.getItem(this.state.slotNumber)).spriteLeft}
+              className="sprite left"
+            />
+            <img
+              draggable="false"
+              src={JSON.parse(localStorage.getItem(this.state.slotNumber)).sprite}
+              className="sprite"
+            />
+            <img
+              draggable="false"
+              src={JSON.parse(localStorage.getItem(this.state.slotNumber)).spriteRight}
+              className="sprite right"
+            />
             {JSON.parse(localStorage.getItem(this.state.slotNumber)).text && this.props.textBoxShown ? (
               <div
                 className="text-box"
