@@ -6,13 +6,15 @@ function RenderFrame(props) {
     if (props[key] === "scene-change") {
       return 2000;
     } else if (
-      props[key] === "to-left" ||
-      props[key] === "to-left-far" ||
-      props[key] === "to-right" ||
-      props[key] === "to-right-far"
+      props[key] === "move-left" ||
+      props[key] === "move-left-far" ||
+      props[key] === "move-right" ||
+      props[key] === "move-right-far" ||
+      props[key] === "from-left-leave-right" ||
+      props[key] === "from-right-leave-left"
     ) {
       return 1200;
-    } else if (props[key] === "shake" || props[key] === "from-left" || props[key] === "from-right") {
+    } else if (props[key] === "shake") {
       return 700;
     } else if (props[key] === "bounce") {
       return 400;
