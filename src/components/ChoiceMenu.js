@@ -7,9 +7,10 @@ function ChoiceMenu(props) {
         type="button"
         className="choice-button"
         key={key.content}
-        id={key.routeBegins}
+        alt={key.routeBegins}
         name={key.store}
         value={key.content}
+        placeholder={key.nextIndex}
         onClick={props.onChoiceSelected}
       />
     );

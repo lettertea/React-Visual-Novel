@@ -169,8 +169,14 @@ class App extends Component {
 
   handleChoiceSelected(event) {
     this.stopSkip();
-    this.setFrameFromChoice(event.currentTarget.name, event.currentTarget.id);
-    this.setChoice(this.state.choicesIndex + 1);
+    this.setFrameFromChoice(event.currentTarget.name, event.currentTarget.alt);
+    let nextIndex = 0;
+    if (event.currentTarget.placeholder) {
+      nextIndex = event.currentTarget.placeholder;
+    } else {
+      nextIndex = this.state.choicesIndex + 1;
+    }
+    this.setChoice(nextIndex);
   }
 
   renderChoiceMenu() {

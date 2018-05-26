@@ -2,22 +2,30 @@ var choices = [
   {
     choices: [
       {
-        store: "pickedObject",
-        routeBegins: "pickedUpObject",
-        content: "Pick up the object ooor"
+        store: "features",
+        routeBegins: "showEffects",
+        content: "Effects",
+        nextIndex: 0
       },
       {
-        store: "noObject",
-        routeBegins: "objectIgnored",
-        content: "Ignore the object."
+        store: "features",
+        routeBegins: "showTransitions",
+        content: "Transitions",
+        nextIndex: 0
+      },
+
+      {
+        store: "features",
+        routeBegins: "showStoringChoices",
+        content: "Storing choices for future use"
       }
     ]
   },
   {
     choices: [
       {
-        store: "pickedObject",
-        routeBegins: "ignoredObject",
+        store: "seeSavingChoices",
+        routeBegins: "seeSavingChoices",
         content: "Pick ufloor"
       },
       {
