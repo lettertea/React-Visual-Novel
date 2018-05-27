@@ -46,11 +46,6 @@
   transform: translateX(-50%);
 }
 
-.overlay .choice-button:hover {
-  background-color: #1d75a5;
-  color: white;
-} /* override default choices hover */
-
 .save-load-slot > a {
   display: flex;
   justify-content: center;

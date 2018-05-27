@@ -27,7 +27,7 @@
 }
 
 /* Add a background color on hover */
-.overlay .choice-button:hover {
+.overlay-choices input:hover {
   background-color: white;
   color: #1d75a5;
 }
