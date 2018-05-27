@@ -16,6 +16,11 @@
   transform: scale(0.5);
 }
 
+.shrunk {
+  transform-origin: bottom;
+  transform: scale(0.5);
+}
+
 .grow-back {
   animation: grow-back 2s;
   transform-origin: bottom;
@@ -24,6 +29,10 @@
 
 .grow {
   animation: grow 2s;
+  transform-origin: bottom;
+  transform: scale(2);
+}
+.grown {
   transform-origin: bottom;
   transform: scale(2);
 }
