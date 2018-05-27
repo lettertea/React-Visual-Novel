@@ -2,10 +2,11 @@ import React from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 function RenderFrame(props) {
-  function transitionTime(key) {
-    if (props[key] === "scene-change") {
-      return 2000;
-    } else if (
+  function bgTransitionTime(key) {
+    return 2000;
+  }
+  function spriteTransitionTime(key) {
+    if (
       props[key] === "move-left" ||
       props[key] === "move-left-far" ||
       props[key] === "move-right" ||
@@ -25,25 +26,24 @@ function RenderFrame(props) {
 
   return (
     <div onClick={props.setNextFrame}>
-        <ReactCSSTransitionGroup
-          transitionName={props.bgTransition || "scene-change"}
-          transitionEnterTimeout={transitionTime("bgTransition")}
-          transitionLeaveTimeout={transitionTime("bgTransition")}
-        >
-          <img draggable="false" key={props.bg} className="bg" src={props.bg} />
-        </ReactCSSTransitionGroup>
+      <ReactCSSTransitionGroup
+        transitionName={props.bgTransition || "scene-change"}
+        transitionEnterTimeout={bgTransitionTime("bgTransition")}
+        transitionLeaveTimeout={bgTransitionTime("bgTransition")}
+      >
+        <img draggable="false" key={props.bg} className="bg" src={props.bg} />
         <ReactCSSTransitionGroup
           className="sprite-center-parent"
           transitionName={props.spriteTransition || "sprite"}
-          transitionEnterTimeout={transitionTime("spriteTransition")}
-          transitionLeaveTimeout={transitionTime("spriteTransition")}
+          transitionEnterTimeout={spriteTransitionTime("spriteTransition")}
+          transitionLeaveTimeout={spriteTransitionTime("spriteTransition")}
         >
           <img draggable="false" key={props.sprite} className={"sprite " + props.spriteEffect} src={props.sprite} />
         </ReactCSSTransitionGroup>
         <ReactCSSTransitionGroup
           transitionName={props.spriteLeftTransition || "sprite"}
-          transitionEnterTimeout={transitionTime("spriteLeftTransition")}
-          transitionLeaveTimeout={transitionTime("spriteLeftTransition")}
+          transitionEnterTimeout={spriteTransitionTime("spriteLeftTransition")}
+          transitionLeaveTimeout={spriteTransitionTime("spriteLeftTransition")}
         >
           <img
             draggable="false"
@@ -54,8 +54,8 @@ function RenderFrame(props) {
         </ReactCSSTransitionGroup>
         <ReactCSSTransitionGroup
           transitionName={props.spriteRightTransition || "sprite"}
-          transitionEnterTimeout={transitionTime("spriteRightTransition")}
-          transitionLeaveTimeout={transitionTime("spriteRightTransition")}
+          transitionEnterTimeout={spriteTransitionTime("spriteRightTransition")}
+          transitionLeaveTimeout={spriteTransitionTime("spriteRightTransition")}
         >
           <img
             draggable="false"
