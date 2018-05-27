@@ -25,7 +25,6 @@ function RenderFrame(props) {
 
   return (
     <div onClick={props.setNextFrame}>
-      <div className="sprite-container">
         <ReactCSSTransitionGroup
           transitionName={props.bgTransition || "scene-change"}
           transitionEnterTimeout={transitionTime("bgTransition")}
@@ -65,13 +64,13 @@ function RenderFrame(props) {
             src={props.spriteRight}
           />
         </ReactCSSTransitionGroup>
-        {props.text && props.textBoxShown ? (
-          <div className="text-box" style={{ "font-family": props.font }}>
-            {props.speaker ? <div className="speaker"> {props.speaker} </div> : null}
-            <div className="text">{props.speaker ? `"${props.text}"` : props.text}</div>
-          </div>
-        ) : null}
-      </div>
+      </ReactCSSTransitionGroup>
+      {props.text && props.textBoxShown ? (
+        <div className="text-box" style={{ "font-family": props.font }}>
+          {props.speaker ? <div className="speaker"> {props.speaker} </div> : null}
+          <div className="text">{props.speaker ? `"${props.text}"` : props.text}</div>
+        </div>
+      ) : null}
     </div>
   );
 }
