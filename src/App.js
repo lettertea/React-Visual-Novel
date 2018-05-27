@@ -67,16 +67,24 @@ class App extends Component {
 
   setNextFrame() {
     const currentIndex = this.state.index;
+    const jumpToBecauseStore = story[currentIndex].jumpToBecauseStore;
     // Jumps indexes because choices store
-    if (this.state.choicesStore.pickedObject === 1 && story[currentIndex].jumpToBecauseStore === "haveKey") {
+    if (story[currentIndex].jumpToBecauseStore) {
       for (let i = 0; i < story.length; i++) {
-        if (story[currentIndex].jumpToBecauseStore === story[i].receiveJumpBecauseStore) {
-          this.setFrame(i);
+        if (story[i].receiveJumpBecauseStore) {
+          if (
+            jumpToBecauseStore === story[i].receiveJumpBecauseStore[0] &&
+            this.state.choicesStore[jumpToBecauseStore] === story[i].receiveJumpBecauseStore[1]
+          ) {
+            this.setFrame(i);
+          } else {
+            this.setFrame(currentIndex + 1);
+          }
         }
       }
     } else if (story[currentIndex].jumpTo) {
       // Jumps indexes normally
-      if (story[currentIndex].jumpTo === "titleScreen") {
+      if (story[currentIndex].jumpTo === "title-screen") {
         this.setState(INITIAL_STATE);
       } else if (story[currentIndex].jumpTo) {
         // Resumes to common route
@@ -93,8 +101,7 @@ class App extends Component {
       !this.state.titleScreenShown &&
       !this.state.backlogShown
     ) {
-      // Sets to frame one index higher
-      this.setFrame(currentIndex + 1); // Normal functionality; goes to the next frame via index
+      this.setFrame(currentIndex + 1);
     }
   }
 
@@ -112,6 +119,7 @@ class App extends Component {
       bgm: story[index].bgm,
       effect: story[index].effect,
       choicesExist: story[index].choicesExist,
+      choicesStoreCount: story[index].choicesStoreCount,
       sceneChange: story[index].sceneChange,
       speaker: story[index].speaker,
       sprite: story[index].sprite,
