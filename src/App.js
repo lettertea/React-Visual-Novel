@@ -33,7 +33,9 @@ const INITIAL_STATE = {
   font: "Trebuchet MS",
   choicesStore: {},
   choicesHistory: [],
+  choicesIndexHistory: [],
   index: 0,
+  indexHistory: [],
   choicesExist: false,
   configMenuShown: false,
   titleScreenShown: true,
@@ -77,8 +79,6 @@ class App extends Component {
             this.state.choicesStore[jumpToBecauseStore] === story[i].receiveJumpBecauseStore[1]
           ) {
             this.setFrame(i);
-          } else {
-            this.setFrame(currentIndex + 1);
           }
         }
       }
@@ -400,16 +400,23 @@ class App extends Component {
         toggleBacklog={this.toggleBacklog}
         choicesStore={this.state.choicesStore}
         choicesHistory={this.state.choicesHistory}
-        setChoicesStore={choicesHistory => this.setState({ choicesHistory })}
+        choicesIndexHistory={this.state.choicesIndexHistory}
+        indexHistory={this.state.indexHistory}
+        setChoicesHistory={choicesHistory => this.setState({ choicesHistory: choicesHistory })}
+        setIndexHistory={indexHistory => this.setState({ indexHistory: indexHistory })}
+        setChoicesStore={choicesStore => this.setState({ choicesStore: choicesStore })}
+        setChoicesHistory={choicesHistory => this.setState({ choicesHistory: choicesHistory })}
       />
     );
   }
 
   componentDidUpdate(prevProps, prevState) {
-    let choicesHistory = { ...this.state.choicesHistory };
-    if (prevState.index !== this.state.index) {
+    let pastFirstChoice = false;
+    if (prevState.index < this.state.index) {
       this.setState({
-        choicesHistory: [choicesHistory || null, prevState.choicesStore]
+        choicesHistory: [...this.state.choicesHistory, prevState.choicesStore],
+        choicesIndexHistory: [...this.state.choicesIndexHistory, prevState.choicesIndex],
+        indexHistory: [...this.state.indexHistory, prevState.index]
       });
     }
   }

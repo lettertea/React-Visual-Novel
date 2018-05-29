@@ -2,29 +2,35 @@ import React from "react";
 import story from "../story/story";
 
 function Backlog(props) {
-  function handleJump(i, choicesIndex) {
-    props.setFrame(i);
+  function handleJump(index, i, choicesIndex) {
     props.toggleBacklog();
+
     props.setChoice(choicesIndex);
-    props.setChoicesStore(props.choicesHistory[i]);
+    props.setChoicesHistory(props.choicesHistory.slice(0, i));
+
+    props.setFrame(index);
+    props.setIndexHistory(props.indexHistory.slice(0, i));
+    console.log(props.indexHistory.slice(0, i));
+
+    props.setChoicesStore(props.choicesHistory[index]);
+    props.setChoicesHistory(props.choicesHistory.slice(0, i));
   }
+
   let textHistory = [];
-  let choicesIndex = 0;
-  let pastFirstChoice = false;
-  for (let i = 0; i <= props.index; i++) {
-    if (story[i].choicesExist && pastFirstChoice) {
-      choicesIndex++;
-    }
-    if (story[i].choicesExist) {
-      pastFirstChoice = true;
-    }
+  const indexHistory = props.indexHistory;
+  const choicesIndexHistory = props.choicesIndexHistory;
+
+  for (let i = 0; i < indexHistory.length; i++) {
+    const index = indexHistory[i];
+    const choicesIndex = choicesIndexHistory[i];
+
     textHistory.unshift(
       <div className="backlog" key={i}>
-        <div className="backlog-jump-container" onClick={() => handleJump(i, choicesIndex)}>
-          <span className="backlog-jump-text">{i === props.index ? null : "Jump"}</span>
+        <div className="backlog-jump-container" onClick={() => handleJump(index, i, choicesIndex)}>
+          <span className="backlog-jump-text">Jump</span>
         </div>
-        <div className="backlog-speaker">{story[i].speaker}</div>
-        {story[i].text}
+        <div className="backlog-speaker">{story[index].speaker}</div>
+        {story[index].text}
       </div>
     );
   }
