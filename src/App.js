@@ -180,7 +180,7 @@ class App extends Component {
     this.setFrameFromChoice(event.currentTarget.name, event.currentTarget.alt);
     let nextIndex = 0;
     if (event.currentTarget.placeholder) {
-      nextIndex = event.currentTarget.placeholder;
+      nextIndex = parseInt(event.currentTarget.placeholder);
     } else {
       nextIndex = this.state.choicesIndex + 1;
     }
