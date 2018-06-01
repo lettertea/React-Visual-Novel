@@ -25,7 +25,7 @@ function RenderFrame(props) {
   }
 
   return (
-    <div onClick={props.setNextFrame}>
+    <div onClick={props.setNextFrame} className="zoom-frame">
       <ReactCSSTransitionGroup
         transitionName={props.bgTransition || "scene-change"}
         transitionEnterTimeout={bgTransitionTime("bgTransition")}

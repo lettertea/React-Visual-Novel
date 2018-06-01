@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import Sound from "react-sound";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import Fullscreen from "react-full-screen";
 // API
 import story from "./story/story";
 import choices from "./story/choices";
@@ -382,6 +383,7 @@ class App extends Component {
         configMenuShown={this.state.configMenuShown}
         toggleBacklog={this.toggleBacklog.bind(this)}
         toggleTextBox={this.toggleTextBox.bind(this)}
+        toggleFullscreen={() => this.setState({ isFull: true })}
         textBoxShown={this.state.textBoxShown}
         backlogShown={this.state.backlogShown}
         startSkip={this.startSkip.bind(this)}
@@ -432,6 +434,8 @@ class App extends Component {
   }
 
   render() {
+    const zoomMultiplier = window.innerWidth * 1 / 1280;
+
     return (
       <div>
         <ReactCSSTransitionGroup
@@ -451,6 +455,7 @@ class App extends Component {
           {this.state.frameIsRendering ? this.renderFrame() : null}
           {this.state.choicesExist ? this.renderChoiceMenu() : null}
         </ReactCSSTransitionGroup>
+      <div {...WheelReact.events} style={this.state.isFull ? { zoom: zoomMultiplier } : null}>
         {!this.state.titleScreenShown ? this.renderMenuButtons() : null}
         {this.state.bgm ? this.playBGM() : null}
         {this.state.effect ? this.playEffect() : null}

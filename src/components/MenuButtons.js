@@ -15,6 +15,9 @@ function MenuButtons(props) {
         <button onClick={props.toggleSaveMenu}>{props.saveMenuShown ? "Hide Saves" : "Save"}</button>
         <button onClick={props.toggleLoadMenu}>{props.loadMenuShown ? "Hide Loads" : "Load"}</button>
         <button onClick={props.toggleConfigMenu}>{props.configMenuShown ? "Hide Config" : "Config"}</button>
+        <button onClick={props.toggleFullscreen} style={{ float: "right" }}>
+          Fullscreen
+        </button>
       </div>
     </div>
   );
