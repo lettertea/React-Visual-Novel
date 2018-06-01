@@ -2,7 +2,7 @@
 
 The application runs on the web browser and renders sounds and images to provide gameplay via React. The user may also see previous texts through the backlog (scrolling up), hide the text box (space), hit next (left click or enter), or skip (hold control).
 
-![preview](https://imageresize.org/api/v1/images/bca6b400-2e57-4f8e-9c11-e41c8270a613)
+![preview](https://u.imageresize.org/ea2c2f0e-468b-4aad-98d0-90e383b8bf07.png)
 
 [Live Demo](https://rvn.netlify.com)
 
