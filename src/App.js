@@ -31,15 +31,13 @@ import "./styles/transitions.css";
 
 const INITIAL_STATE = {
   bgmVolume: 80,
-  effectVolume: 90,
+  soundEffectVolume: 90,
   voiceVolume: 100,
   font: "Trebuchet MS",
   isFull: false,
   choicesStore: {},
-  choicesHistory: [],
-  choicesIndexHistory: [],
   index: 0,
-  indexHistory: [],
+  stateHistory: [],
   choicesExist: false,
   configMenuShown: false,
   titleScreenShown: true,
@@ -387,6 +385,7 @@ class App extends Component {
     return (
       <MenuButtons
         menuButtonsShown={this.state.menuButtonsShown}
+        setNextFrame={this.setNextFrame.bind(this)}
         toggleSaveMenu={this.toggleSaveMenu.bind(this)}
         toggleLoadMenu={this.toggleLoadMenu.bind(this)}
         saveSlot={this.saveSlot.bind(this)}
@@ -414,25 +413,19 @@ class App extends Component {
         setFrame={this.setFrame}
         setChoice={this.setChoice.bind(this)}
         toggleBacklog={this.toggleBacklog}
-        choicesStore={this.state.choicesStore}
-        choicesHistory={this.state.choicesHistory}
-        choicesIndexHistory={this.state.choicesIndexHistory}
-        indexHistory={this.state.indexHistory}
-        setChoicesHistory={choicesHistory => this.setState({ choicesHistory: choicesHistory })}
-        setIndexHistory={indexHistory => this.setState({ indexHistory: indexHistory })}
-        setChoicesStore={choicesStore => this.setState({ choicesStore: choicesStore })}
-        setChoicesHistory={choicesHistory => this.setState({ choicesHistory: choicesHistory })}
+        backlogShown={this.state.backlogShown}
+        stateHistory={this.state.stateHistory}
+        setState={state => this.setState(state)}
+        setStateHistory={stateHistory => this.setState({ stateHistory: stateHistory })}
       />
     );
   }
 
   componentDidUpdate(prevProps, prevState) {
-    let pastFirstChoice = false;
-    if (prevState.index < this.state.index) {
+    // Second part in parenthesis is to accomodate for backwards jumpTo.
+    if (prevState.index < this.state.index || (this.state.choicesExist && prevState.index != this.state.index)) {
       this.setState({
-        choicesHistory: [...this.state.choicesHistory, prevState.choicesStore],
-        choicesIndexHistory: [...this.state.choicesIndexHistory, prevState.choicesIndex],
-        indexHistory: [...this.state.indexHistory, prevState.index]
+        stateHistory: [...this.state.stateHistory, prevState]
       });
     }
   }
