@@ -9,8 +9,10 @@ The application runs on the web browser and renders sounds and images to provide
 - [Installation](https://github.com/nashkenazy/React-Visual-Novel#installation)
 - [Running the Application](https://github.com/nashkenazy/React-Visual-Novel#running-the-application)
 - [Usage](https://github.com/nashkenazy/React-Visual-Novel#usage)
-  - [`story.js` Properties](https://github.com/nashkenazy/React-Visual-Novel#writing-a-frame)
-  - [`choices.js` Properties](https://github.com/nashkenazy/React-Visual-Novel#example-of-a-typical-frame)
+  - [`story.js` Properties](https://github.com/nashkenazy/React-Visual-Novel#storyjs-properties)
+    - [Effect Properties](https://github.com/nashkenazy/React-Visual-Novel#effect-properties)
+    - [Transition Properties](https://github.com/nashkenazy/React-Visual-Novel#transition-properties)
+  - [`choices.js` Properties](https://github.com/nashkenazy/React-Visual-Novel#choicesjs-properties)
   - [Streamlining the Writing Process](https://github.com/nashkenazy/React-Visual-Novel#streamlining-the-writing-process)
   - [Creating Choices](https://github.com/nashkenazy/React-Visual-Novel#creating-choices)
 - [License](https://github.com/nashkenazy/React-Visual-Novel#license)
@@ -72,6 +74,7 @@ From the root directory, navigate to `./src/story/story.js`. There should be an 
 | text | `String` | Presents string in the textbox on bottom of screen. |
 | voice | `Function` | Plays an audio file once by accepting 'require('path/to/audio')'. |
 
+### Effect Properties
 Values for `spriteEffect`, `spriteLeftEffect`, and `spriteRightEffect` include the following:
 - `"shake"`
 - `"bounce"`
@@ -82,6 +85,7 @@ Values for `spriteEffect`, `spriteLeftEffect`, and `spriteRightEffect` include t
 - `"shrunk"`
 - `"grow-back"`
 
+### Transition Properties
 Values for `spriteTransition`, `spriteLeftTransition`, and `spriteRightTransition` include the following:
 
 - `"from-right-leave-left"`
@@ -124,6 +128,6 @@ When you want the user to make a choice, set `choicesExist: true` in novelFrames
 
 See the sample site, which aligns with the repository's [story.js](https://github.com/nashkenazy/React-Visual-Novel/blob/master/src/story/story.js) and [choices.js](https://github.com/nashkenazy/React-Visual-Novel/blob/master/src/story/choices.js) files, for a working application of these concepts.
 
-## License
+# License
 
 [MIT](./LICENSE)
