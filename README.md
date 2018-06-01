@@ -1,16 +1,16 @@
 # React-Visual-Novel
 
-The application runs on the web browser and renders sounds and images to provide gameplay via React. It uses the Web Storage API to save and load the user's progress. The user may also see previous texts through the backlog or skip ahead using the buttons below.
+The application runs on the web browser and renders sounds and images to provide gameplay via React. The user may also see previous texts through the backlog (scrolling up), hide the text box (space), hit next (left click or enter), or skip (hold control).
 
-![preview](https://u.imageresize.org/b5417b85-66e4-49ca-b167-f3ec5342bee5.png)
+![preview](https://imageresize.org/api/v1/images/bca6b400-2e57-4f8e-9c11-e41c8270a613)
 
 [Live Demo](https://rvn.netlify.com)
 
 - [Installation](https://github.com/nashkenazy/React-Visual-Novel#installation)
 - [Running the Application](https://github.com/nashkenazy/React-Visual-Novel#running-the-application)
 - [Usage](https://github.com/nashkenazy/React-Visual-Novel#usage)
-  - [Writing a "Frame"](https://github.com/nashkenazy/React-Visual-Novel#writing-a-frame)
-  - [Example of a Typical Frame](https://github.com/nashkenazy/React-Visual-Novel#example-of-a-typical-frame)
+  - [`story.js` Properties](https://github.com/nashkenazy/React-Visual-Novel#writing-a-frame)
+  - [`choices.js` Properties](https://github.com/nashkenazy/React-Visual-Novel#example-of-a-typical-frame)
   - [Streamlining the Writing Process](https://github.com/nashkenazy/React-Visual-Novel#streamlining-the-writing-process)
   - [Creating Choices](https://github.com/nashkenazy/React-Visual-Novel#creating-choices)
 - [License](https://github.com/nashkenazy/React-Visual-Novel#license)
@@ -43,59 +43,77 @@ Or
 2.  Open the command line in the root directory and run `$ yarn start` or `$ npm start`.
 
 # Usage
+## 'story.js' Properties
+From the root directory, navigate to `./src/story/story.js`. There should be an array called `story`. Each index represents a frame, and its properties are written in an object. All the available properties are listed below. Assume default value is undefined.
 
-## Writing a "Frame"
-From the root directory, navigate to ./src/api/novelFrames.js. There should be an array of objects called "novelFrames." Each index represents a frame, and its properties are written in an object. All the available properties are listed below.
 
-- `bg`: Displays a 1280x720 background image. Requires a path to an image file.
-- `bgm`: Loops through an audio file. Uses the [react-sound](https://github.com/leoasis/react-sound) component. Requires a path to an audio file.
-- `choicesExist`: Accepts a boolean. If set to true, the choices from the Choices.js api will be presented to the user.
-- `logIndex`: Accepts a boolean. If set to true, the object's index will be logged into the console.
-- `jumpBecauseStoreTo`: The starting point of a jump if its value is equal to `receiveJumpBecauseStore` and the store value from the choice the user made.
-- `jumpTo`: The starting point of a jump if its value is equal to `receiveJump`.
-- `receiveJump`: The end point of a jump if its value is equal to `jumpTo`.
-- `receiveJumpBecauseStore`: The end point of a jump if its value is equal to `jumpBecauseStoreTo` and the store value from the choice the user made.
-- `routeBegins`: The end point of a jump immediately following making a choice. Must equal to the `jumpToBecauseChoice` property in Choices.js.
-- `sceneChange`: Accepts a boolean. If set to true, background and sprite will leave and enter with a fade time of 1700 and 2000 miliseconds respectively. Uses the [ReactCSSTransitionGroup](https://reactjs.org/docs/animation.html) component. Otherwise, fast animation will be used for usual sprite transitions.
-- `sound`: Plays an audio file once. Requires a path to an audio file.
-- `speaker`: Accepts a string and shows the name of the character in a bubble on top of textbox. Also wraps text in quotes as a side effect.
-- `sprite`: Displays a sprite in the center of the frame. Can also accept an array of two sprites like the following: `sprite: [require("./sprites/block-happy.png"), require("./sprites/block-pout.png")]`
-- `testRoutesCompleted`: Accepts a boolean. 
-- `text`: Accepts a string and shows text for story.
-- `voice`: Plays an audio file once. Identical to the sound property.
+| Key | Value Type | Description |
+|:---|:---|:---|
+| bg | `Function` | Displays a 1280x720 background image by accepting 'require('path/to/image')' |
+| bgm | `Function` | Loops through an audio file by accepting 'require('path/to/audio')' |
+| bgTransition | `String` | Uses the value for transition animations for [ReactCSSTransitionGroup](https://reactjs.org/docs/animation.html) for `sprite`. Currently has no options. |
+| choicesExist | `Boolean` | If true, choices from `choices.js` will be presented to the user |
+| jumpTo | `String` | Jumps the user to the index where the `receiveJump` property is if the `jumpTo` and `receiveJump` properties are same value. Often used to return to the common route. |
+| jumpToBecauseStore | `String` | Jumps the user to the index where the `receiveJumpBecauseStore` property is if the `jumpToBecauseStore` and `receiveJumpBecauseStore` properties are same value. Often used to show scenes from making a particular choice(s). |
+| receiveJump | `String` | The receiving point of `jumpTo`'s index jump if they share the same value. |
+| receiveJumpBecauseStore | `Array` | The receiving point of `jumpToBecauseStore`'s index jumps under two conditions: 1. the first index of 'receiveJumpBecauseStore' is the same value as `jumpToBecauseStore` and `choices.js`'s `store`. 2. The second index of 'receiveJumpBecauseStore' is the same value of the choice's store. |
+| routeBegins | `String` | The end point of a jump immediately following making a choice. Must equal to the `routeBegins` property in `choices.js`. |
+| soundEffect | `Function` | Plays an audio file once by accepting 'require('path/to/audio')'.  |
+| speaker | `String` | Presents the string in a bubble on top of the textbox. Also wraps text in quotes. |
+| sprite | `Function` | Displays a sprite in the center of the screen by accepting 'require('path/to/image'). |
+| spriteEffect | `String` | Uses the value as a class for `sprite`. Currently has `"shake"`, `"bounce"`, `"grow"`, `"shrink-back"`, `"shrink"`, `"grow-back"`, `"grown"`, and `"shrunk"`. |
+| spriteTransition | `String` | Uses the value for transition animations for [ReactCSSTransitionGroup](https://reactjs.org/docs/animation.html) for `sprite`. |
+| spriteLeft | `Function` | Displays a sprite in the left of the screen by accepting 'require('path/to/image'). |
+| spriteLeftEffect | `String` | Uses the value as a class for `spriteLeft`. |
+| spriteLeftTransition | `String` | Uses the value for transition animations for [ReactCSSTransitionGroup](https://reactjs.org/docs/animation.html) for `spriteLeft`. |
+| spriteRight | `Function` | Displays a sprite in the right of the frame by accepting 'require('path/to/image'). |
+| spriteRightEffect | `String` | Uses the value as a class for `spriteRight`. |
+| spriteRightTransition | `String` | Uses the value for transition animations for [ReactCSSTransitionGroup](https://reactjs.org/docs/animation.html) for `spriteRight`. |
+| text | `String` | Presents string in the textbox on bottom of screen. |
+| voice | `Function` | Plays an audio file once by accepting 'require('path/to/audio')'. |
 
-## Example of a Typical Frame
+Values for `spriteEffect`, `spriteLeftEffect`, and `spriteRightEffect` include the following:
+- `"shake"`
+- `"bounce"`
+- `"grow"`
+- `"grown"`
+- `"shrink-back"`
+- `"shrink"`
+- `"shrunk"`
+- `"grow-back"`
 
-```
-// ...
-  {
-    bg: require("./bg/microphone.jpeg"),
-    bgm: require("./bgm/city.mp3"),
-    speaker: "Block",
-    text: "I made this project because I enjoy playing visual novels.",
-    sprite: require("./sprites/block-neutral.png")
-  },
-// ... 
-```
+Values for `spriteTransition`, `spriteLeftTransition`, and `spriteRightTransition` include the following:
+
+- `"from-right-leave-left"`
+- `"from-left-leave-right"`
+- `"move-right"`
+- `"move-left"`
+- `"move-right-far"`
+- `"move-left-far"`
+
+## 'choices.js' Properties
+From the root directory, navigate to `./src/story/choices.js`. There should be an array called `choices`. Each index contains an object that contains a single property of `choices`. The `choices` property (different from the `choices` array) accepts a value of an array where each element is an object that represents a single choice. All of the properties of that object follows below:
+
+| Key | Value Type | Default Value | Description |
+|:---|:---|:---|:---|
+| content | `String` | `undefined` | Presents the string as a button that user can choose. |
+| nextIndex | `Integer` | `undefined` | Determines what index will be presented the next time a choice appears to the user. |
+| routeBegins | `String` | `undefined` | Jumps to the index where `routeBegins` is in `story.js` if both properties (one from `choices.js` and one from `story.js`) are the same value. |
+| resetStore | `String` | `undefined` | If a value is detected (doesn't have to be `"true"`), then choicesStore will be set to a clean object. |
+| store | `String` | `undefined` | The value becomes a property of `choiceStore` in `App.js` and increments it by one. |
+
+
 
 ## Streamlining the Writing Process
 
-1. Use for loops for the background and background music. They tend to be the same for consecutive frames. You can use a for loop to prevent excessive copying and pasting the values. Here's an example.
-```
-for (let i = 21; i < 97; i++) {
-  novelFrames[i].bgm = require("./bgm/rain.mp3");
-}
-```
-You may also set `logIndex: true` in an object to find its index in the console.
-
-2. Create variables for speaker and sprite values. Writing the variable name instead of the string or path tends to be quicker and more consistent.
+Create variables for speaker and sprite values. Writing the variable name instead of the string or path tends to be quicker and more consistent.
 ```
 const b = "Block";
 const bn = require("./sprites/block-neutral.png");
 // ...
   {
     speaker: b,
-    text: "I made this project because I enjoy playing visual novels.",
+    text: "I like turtles.",
     sprite: bn
   },
   // ...
@@ -104,9 +122,7 @@ const bn = require("./sprites/block-neutral.png");
 ## Creating Choices
 When you want the user to make a choice, set `choicesExist: true` in novelFrames.js. The app will go through the array of objects in Choices.js and present the current choice. For example, if it is your third time setting `choicesExist: true`, then the second index in choices will be used.
 
-The Choices.js array of objects accepts choices, also an array of object. It accepts three properties in its object: `store`, `jumpToBecauseChoice`, and `content`. The `store` property is used if you would like utilize the user's choice data later. The `jumpToBecauseChoice` property is used to jump to a particular index immediately after a choice. However, it must equal to `routeBegins` in novelFrames.js to work. The `content` property is like the front-end as it shows the user what the choice will do and has no effect on functionality.
-
-See the sample site, which aligns with the repository's [novelFrames.js](https://github.com/nashkenazy/React-Visual-Novel/blob/master/src/api/novelFrames.js) and [Choices.js](https://github.com/nashkenazy/React-Visual-Novel/blob/master/src/api/Choices.js) files, for a working application of these concepts.
+See the sample site, which aligns with the repository's [novelFrames.js](https://github.com/nashkenazy/React-Visual-Novel/blob/master/src/story/story.js) and [choices.js](https://github.com/nashkenazy/React-Visual-Novel/blob/master/src/story/choices.js) files, for a working application of these concepts.
 
 ## License
 
