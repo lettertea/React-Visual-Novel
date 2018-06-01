@@ -122,7 +122,7 @@ const bn = require("./sprites/block-neutral.png");
 ## Creating Choices
 When you want the user to make a choice, set `choicesExist: true` in novelFrames.js. The app will go through the array of objects in Choices.js and present the current choice. For example, if it is your third time setting `choicesExist: true`, then the second index in choices will be used.
 
-See the sample site, which aligns with the repository's [novelFrames.js](https://github.com/nashkenazy/React-Visual-Novel/blob/master/src/story/story.js) and [choices.js](https://github.com/nashkenazy/React-Visual-Novel/blob/master/src/story/choices.js) files, for a working application of these concepts.
+See the sample site, which aligns with the repository's [story.js](https://github.com/nashkenazy/React-Visual-Novel/blob/master/src/story/story.js) and [choices.js](https://github.com/nashkenazy/React-Visual-Novel/blob/master/src/story/choices.js) files, for a working application of these concepts.
 
 ## License
 
