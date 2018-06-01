@@ -339,10 +339,10 @@ class App extends Component {
         changeFont={newFont => this.setState({ font: newFont.label })}
         font={this.state.font}
         bgmVolume={this.state.bgmVolume}
-        effectVolume={this.state.effectVolume}
+        soundEffectVolume={this.state.soundEffectVolume}
         voiceVolume={this.state.voiceVolume}
         bgmVolumeChange={value => this.setState({ bgmVolume: value })}
-        effectVolumeChange={value => this.setState({ effectVolume: value })}
+        soundEffectVolumeChange={value => this.setState({ soundEffectVolume: value })}
         voiceVolumeChange={value => this.setState({ voiceVolume: value })}
         toggleConfigMenu={this.toggleConfigMenu.bind(this)}
       />
