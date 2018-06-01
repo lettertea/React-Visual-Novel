@@ -51,28 +51,28 @@ From the root directory, navigate to `./src/story/story.js`. There should be an 
 
 | Key | Value Type | Description |
 |:---|:---|:---|
-| bg | `Function` | Displays a 1280x720 background image by accepting 'require('path/to/image')' |
-| bgm | `Function` | Loops through an audio file by accepting 'require('path/to/audio')' |
+| bg | `Function` | Displays a 1280x720 background image by accepting `require('path/to/image')`. |
+| bgm | `Function` | Loops through an audio file by accepting `require('path/to/audio')`. |
 | bgTransition | `String` | Uses the value for transition animations for [ReactCSSTransitionGroup](https://reactjs.org/docs/animation.html) for `sprite`. Currently has no options. |
-| choicesExist | `Boolean` | If true, choices from `choices.js` will be presented to the user |
+| choicesExist | `Boolean` | If true, choices from `choices.js` will be presented to the user. |
 | jumpTo | `String` | Jumps the user to the index where the `receiveJump` property is if the `jumpTo` and `receiveJump` properties are same value. Often used to return to the common route. |
 | jumpToBecauseStore | `String` | Jumps the user to the index where the `receiveJumpBecauseStore` property is if the `jumpToBecauseStore` and `receiveJumpBecauseStore` properties are same value. Often used to show scenes from making a particular choice(s). |
 | receiveJump | `String` | The receiving point of `jumpTo`'s index jump if they share the same value. |
 | receiveJumpBecauseStore | `Array` | The receiving point of `jumpToBecauseStore`'s index jumps under two conditions: 1. the first index of 'receiveJumpBecauseStore' is the same value as `jumpToBecauseStore` and `choices.js`'s `store`. 2. The second index of 'receiveJumpBecauseStore' is the same value of the choice's store. |
 | routeBegins | `String` | The end point of a jump immediately following making a choice. Must equal to the `routeBegins` property in `choices.js`. |
-| soundEffect | `Function` | Plays an audio file once by accepting 'require('path/to/audio')'.  |
+| soundEffect | `Function` | Plays an audio file once by accepting `require('path/to/audio')`.  |
 | speaker | `String` | Presents the string in a bubble on top of the textbox. Also wraps text in quotes. |
 | sprite | `Function` | Displays a sprite in the center of the screen by accepting 'require('path/to/image'). |
 | spriteEffect | `String` | Uses the value as a class for `sprite`. Currently has `"shake"`, `"bounce"`, `"grow"`, `"shrink-back"`, `"shrink"`, `"grow-back"`, `"grown"`, and `"shrunk"`. |
 | spriteTransition | `String` | Uses the value for transition animations for [ReactCSSTransitionGroup](https://reactjs.org/docs/animation.html) for `sprite`. |
-| spriteLeft | `Function` | Displays a sprite in the left of the screen by accepting 'require('path/to/image'). |
+| spriteLeft | `Function` | Displays a sprite in the left of the screen by accepting `require('path/to/image')`. |
 | spriteLeftEffect | `String` | Uses the value as a class for `spriteLeft`. |
 | spriteLeftTransition | `String` | Uses the value for transition animations for [ReactCSSTransitionGroup](https://reactjs.org/docs/animation.html) for `spriteLeft`. |
-| spriteRight | `Function` | Displays a sprite in the right of the frame by accepting 'require('path/to/image'). |
+| spriteRight | `Function` | Displays a sprite in the right of the frame by accepting `require('path/to/image')`. |
 | spriteRightEffect | `String` | Uses the value as a class for `spriteRight`. |
 | spriteRightTransition | `String` | Uses the value for transition animations for [ReactCSSTransitionGroup](https://reactjs.org/docs/animation.html) for `spriteRight`. |
 | text | `String` | Presents string in the textbox on bottom of screen. |
-| voice | `Function` | Plays an audio file once by accepting 'require('path/to/audio')'. |
+| voice | `Function` | Plays an audio file once by accepting `require('path/to/audio')`. |
 
 ### Effect Properties
 Values for `spriteEffect`, `spriteLeftEffect`, and `spriteRightEffect` include the following:
@@ -110,7 +110,7 @@ From the root directory, navigate to `./src/story/choices.js`. There should be a
 
 ## Streamlining the Writing Process
 
-Create variables for speaker and sprite values. Writing the variable name instead of the string or path tends to be quicker and more consistent.
+Creating variables for speaker and sprite values tends to be quicker and more consistent.
 ```
 const b = "Block";
 const bn = require("./sprites/block-neutral.png");
