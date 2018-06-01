@@ -45,7 +45,7 @@ Or
 2.  Open the command line in the root directory and run `$ yarn start` or `$ npm start`.
 
 # Usage
-## 'story.js' Properties
+## `story.js` Properties
 From the root directory, navigate to `./src/story/story.js`. There should be an array called `story`. Each index represents a frame, and its properties are written in an object. All the available properties are listed below. Assume default value is undefined.
 
 
@@ -95,7 +95,7 @@ Values for `spriteTransition`, `spriteLeftTransition`, and `spriteRightTransitio
 - `"move-right-far"`
 - `"move-left-far"`
 
-## 'choices.js' Properties
+## `choices.js` Properties
 From the root directory, navigate to `./src/story/choices.js`. There should be an array called `choices`. Each index contains an object that contains a single property of `choices`. The `choices` property (different from the `choices` array) accepts a value of an array where each element is an object that represents a single choice. All of the properties of that object follows below:
 
 | Key | Value Type | Default Value | Description |
