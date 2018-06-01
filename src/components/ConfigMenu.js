@@ -57,8 +57,8 @@ class ConfigMenu extends Component {
       changeFont,
       bgmVolume,
       bgmVolumeChange,
-      effectVolume,
-      effectVolumeChange,
+      soundEffectVolume,
+      soundEffectVolumeChange,
       voiceVolume,
       voiceVolumeChange,
       toggleConfigMenu
@@ -107,7 +107,7 @@ class ConfigMenu extends Component {
             <div>
               {this.slider("BGM", bgmVolume, bgmVolumeChange)}
               {this.slider("Voice", voiceVolume, voiceVolumeChange)}
-              {this.slider("Effect", effectVolume, effectVolumeChange)}
+              {this.slider("Sound Effect", soundEffectVolume, soundEffectVolumeChange)}
             </div>
           ) : null}
           {textShown ? (

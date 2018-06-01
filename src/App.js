@@ -129,10 +129,10 @@ class App extends Component {
       index: index,
       bg: story[index].bg,
       bgm: story[index].bgm,
-      effect: story[index].effect,
       choicesExist: story[index].choicesExist,
       choicesStoreCount: story[index].choicesStoreCount,
       sceneChange: story[index].sceneChange,
+      soundEffect: story[index].soundEffect,
       speaker: story[index].speaker,
       sprite: story[index].sprite,
       spriteEffect: story[index].spriteEffect,
@@ -437,8 +437,10 @@ class App extends Component {
   playBGM() {
     return <Sound url={this.state.bgm} volume={this.state.bgmVolume} playStatus={Sound.status.PLAYING} loop={true} />;
   }
-  playEffect() {
-    return <Sound url={this.state.effect} volume={this.state.effectVolume} playStatus={Sound.status.PLAYING} />;
+  playSoundEffect() {
+    return (
+      <Sound url={this.state.soundEffect} volume={this.state.soundEffectVolume} playStatus={Sound.status.PLAYING} />
+    );
   }
   playVoice() {
     return <Sound url={this.state.voice} volume={this.state.voiceVolume} playStatus={Sound.status.PLAYING} />;
@@ -469,7 +471,7 @@ class App extends Component {
       <div {...WheelReact.events} style={this.state.isFull ? { zoom: zoomMultiplier } : null}>
         {!this.state.titleScreenShown ? this.renderMenuButtons() : null}
         {this.state.bgm ? this.playBGM() : null}
-        {this.state.effect ? this.playEffect() : null}
+        {this.state.soundEffect ? this.playSoundEffect() : null}
         {this.state.voice ? this.playVoice() : null}
       </div>
     );
