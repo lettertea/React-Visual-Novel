@@ -10,6 +10,7 @@ function ChoiceMenu(props) {
         alt={key.routeBegins}
         name={key.store}
         value={key.content}
+        id={key.resetStore}
         placeholder={key.nextIndex}
         onClick={props.onChoiceSelected}
       />

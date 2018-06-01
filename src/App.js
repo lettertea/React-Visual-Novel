@@ -191,6 +191,9 @@ class App extends Component {
     this.stopSkip();
     this.setFrameFromChoice(event.currentTarget.name, event.currentTarget.alt);
     let nextIndex = 0;
+    if (event.currentTarget.id) {
+      this.setState({ choicesStore: {} });
+    }
     if (event.currentTarget.placeholder) {
       nextIndex = parseInt(event.currentTarget.placeholder);
     } else {
