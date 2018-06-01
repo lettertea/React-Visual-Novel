@@ -208,7 +208,7 @@
 
 .scene-change-enter.scene-change-enter-active {
   opacity: 1;
-  transition: opacity 2000ms ease-in;
+  transition: opacity 2000ms ease-out;
 }
 
 .scene-change-leave {
