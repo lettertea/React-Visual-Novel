@@ -1,11 +1,6 @@
 .backlog-overlay {
   overflow: auto;
   margin: auto;
-  height: 95%;
-  width: 90%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   z-index: 5;
 }
 
@@ -16,7 +11,8 @@
     linear-gradient(#ddd 2px, transparent 2px);
   background-size: 100% 33.33%;
   font-size: 22px;
-  width: 100%;
+  width: 90%;
+  margin: auto;
   height: 104px;
   padding-top: 3px;
   line-height: 1.52;
