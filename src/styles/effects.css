@@ -1,12 +1,6 @@
-.move-left {
-  transition: transform 1000ms ease-in-out;
-  transform: translateX(-400px);
-}
+/* Add your CSS classes here */
 
-.move-right {
-  transition: transform 1000ms ease-in-out;
-  transform: translateX(400px);
-}
+/* pre-built effects */
 /* slight edit from source: https://css-tricks.com/snippets/css/shake-css-keyframe-animation/ */
 .shake {
   animation: shake 0.7s;
@@ -14,6 +8,39 @@
 
 .bounce {
   animation: bounce 0.4s;
+}
+
+.shrink {
+  animation: shrink 2s;
+  transform-origin: bottom;
+  transform: scale(0.5);
+}
+
+.shrunk {
+  transform-origin: bottom;
+  transform: scale(0.5);
+}
+
+.grow-back {
+  animation: grow-back 2s;
+  transform-origin: bottom;
+  transform: scale(1);
+}
+
+.grow {
+  animation: grow 2s;
+  transform-origin: bottom;
+  transform: scale(2);
+}
+.grown {
+  transform-origin: bottom;
+  transform: scale(2);
+}
+
+.shrink-back {
+  animation: shrink-back 2s;
+  transform-origin: bottom;
+  transform: scale(1);
 }
 
 @keyframes shake {
@@ -41,5 +68,41 @@
   }
   50% {
     transform: translateY(30px);
+  }
+}
+
+@keyframes shrink {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.5);
+  }
+}
+
+@keyframes grow {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(2);
+  }
+}
+
+@keyframes grow-back {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes shrink-back {
+  from {
+    transform: scale(2);
+  }
+  to {
+    transform: scale(1);
   }
 }

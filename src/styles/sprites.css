@@ -1,18 +1,24 @@
-.sprite-center {
-	display: flex;
-	justify-content: center;
-}
-
 .sprite {
 	position: absolute;
 	bottom: 0;
+	left: 0;
+	right: 0;
 	margin: auto;
-	z-index: 1;
+}
+
+.sprite-center-parent {
+	width: 1280px;
+	height: 720px;
+	position: fixed;
+	left: 50%;
+	margin-left: -640px;
 }
 
 .left {
-	right: 55%;
+	left: -350px;
+	right: 350px;
 }
 .right {
-	left: 55%;
+	left: 350px;
+	right: -350px;
 }

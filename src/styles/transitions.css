@@ -1,6 +1,5 @@
 /* React CSS Transition Groups animations*/
 
-/* Sprite animations*/
 .sprite-enter {
   opacity: 0;
 }
@@ -19,26 +18,142 @@
   transition: opacity 250ms linear;
 }
 
-.sprite-slide-enter {
+.move-left-enter {
+  opacity: 0;
+  transition: transform 1200ms ease-in-out, opacity 400ms ease-out;
+  transform: translate(350px, 0);
+}
+.move-left-enter-active {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.move-left-leave {
+  opacity: 1;
+  transition: transform 1200ms ease-in-out, opacity 400ms ease-in;
+  transform: translate(0, 0);
+}
+.move-left-leave-active {
+  opacity: 0;
+  transform: translate(-350px, 0);
+}
+
+.move-left-far-enter {
+  opacity: 0;
+  transition: transform 1200ms ease-in-out, opacity 400ms ease-out;
+  transform: translate(700px, 0);
+}
+.move-left-far-enter-active {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.move-left-far-leave {
+  opacity: 1;
+  transition: transform 1200ms ease-in-out, opacity 400ms ease-in;
+  transform: translate(0, 0);
+}
+.move-left-far-leave-active {
+  opacity: 0;
+  transform: translate(-700px, 0);
+}
+
+.move-right-enter {
+  opacity: 0;
+  transition: transform 1200ms ease-in-out, opacity 400ms ease-out;
+  transform: translate(-350px, 0);
+}
+.move-right-enter-active {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.move-right-leave {
+  opacity: 1;
+  transition: transform 1200ms ease-in-out, opacity 400ms ease-in;
+  transform: translate(0, 0);
+}
+.move-right-leave-active {
+  opacity: 0;
+  transform: translate(350px, 0);
+}
+
+.move-right-far-enter {
+  opacity: 0;
+  transition: transform 1200ms ease-in-out, opacity 400ms ease-out;
+  transform: translate(-700px, 0);
+}
+.move-right-far-enter-active {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.move-right-far-leave {
+  opacity: 1;
+  transition: transform 1200ms ease-in-out, opacity 400ms ease-in;
+  transform: translate(0, 0);
+}
+.move-right-far-leave-active {
+  opacity: 0;
+  transform: translate(700px, 0);
+}
+
+.from-left-leave-right-enter {
+  opacity: 0;
+  transition: transform 1200ms ease-in-out, opacity 400ms ease-out;
+  transform: translate(-200px, 0);
+}
+.from-left-leave-right-enter-active {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.from-left-leave-right-leave {
+  opacity: 1;
+  transition: transform 1200ms ease-in-out, opacity 400ms ease-in;
+  transform: translate(0, 0);
+}
+.from-left-leave-right-leave-active {
+  opacity: 0;
+  transform: translate(200px, 0);
+}
+
+.from-right-leave-left-enter {
+  opacity: 0;
+  transition: transform 1200ms ease-in-out, opacity 400ms ease-out;
+  transform: translate(200px, 0);
+}
+.from-right-leave-left-enter-active {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.from-right-leave-left-leave {
+  opacity: 1;
+  transition: transform 1200ms ease-in-out, opacity 400ms ease-in;
+  transform: translate(0, 0);
+}
+.from-right-leave-left-leave-active {
+  opacity: 0;
+  transform: translate(-200px, 0);
+}
+
+.bounce-enter {
   opacity: 0;
   animation: bounce 0.4s;
   transition: opacity 250ms ease-in-out;
 }
-.sprite-slide-enter-active {
+.bounce-enter-active {
   opacity: 1;
 }
 
-.sprite-slide-leave {
+.bounce-leave {
   opacity: 1;
   animation: bounce 0.4s;
   transition: opacity 250ms ease-in-out;
 }
-.sprite-slide-leave-active {
+.bounce-leave-active {
   opacity: 0;
-}
-
-.bounce {
-  animation: bounce 0.4s;
 }
 
 @keyframes bounce {
@@ -51,33 +166,67 @@
   }
 }
 
-/* BG & textbox animations for scenery change */
-.scene-enter {
+.shake-enter {
+  opacity: 0;
+  animation: shake 0.7s;
+  transition: opacity 250ms ease-in-out;
+}
+.shake-enter-active {
+  opacity: 1;
+}
+
+.shake-leave {
+  opacity: 1;
+  animation: shake 0.7s;
+  transition: opacity 250ms ease-in-out;
+}
+.shake-leave-active {
   opacity: 0;
 }
 
-.scene-enter.scene-enter-active {
+@keyframes shake {
+  20%,
+  80% {
+    transform: translateX(4px);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translateX(-8px);
+  }
+
+  40%,
+  60% {
+    transform: translateX(8px);
+  }
+}
+
+.scene-change-enter {
+  opacity: 0;
+}
+
+.scene-change-enter.scene-change-enter-active {
   opacity: 1;
+  transition: opacity 2000ms ease-out;
+}
+
+.scene-change-leave {
+  opacity: 1;
+}
+
+.scene-change-leave.scene-change-leave-active {
+  opacity: 0;
   transition: opacity 2000ms ease-in;
 }
 
-.scene-leave {
-  opacity: 1;
-}
-
-.scene-leave.scene-leave-active {
-  opacity: 0;
-  transition: opacity 1700ms ease-in;
-}
-
-/* menu transitions */
 .menu-enter {
   opacity: 0;
 }
 
 .menu-enter.menu-enter-active {
   opacity: 1;
-  transition: opacity 500ms ease-in;
+  transition: opacity 400ms ease-out;
 }
 
 .menu-leave {
@@ -86,5 +235,5 @@
 
 .menu-leave.menu-leave-active {
   opacity: 0;
-  transition: opacity 300ms ease-in;
+  transition: opacity 400ms ease-in;
 }

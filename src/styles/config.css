@@ -1,17 +1,9 @@
 #config-overlay {
-	background-color: #4ea6ca;
 	display: flex;
 	flex-flow: column;
 	z-index: 5;
 }
 
-#config-header {
-	font-size: 34px;
-	text-align: center;
-	margin-top: 15px;
-	padding-bottom: 15px;
-	border-bottom: double #333;
-}
 @keyframes stripe-slide {
 	0% {
 		background-position: 0% 0;
@@ -23,9 +15,8 @@
 
 #config-overlay > ul {
 	list-style-type: none;
-	margin: 0;
+	margin: 0 0 15px 0;
 	padding: 0;
-	margin-top: 15px;
 	text-align: center;
 }
 
@@ -63,13 +54,7 @@
 	display: block;
 	height: 7px;
 	width: 100%;
-	background-image: repeating-linear-gradient(
-		45deg,
-		#666,
-		#666 1px,
-		transparent 2px,
-		transparent 5px
-	);
+	background-image: repeating-linear-gradient(45deg, #666, #666 1px, transparent 2px, transparent 5px);
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 	border-top: 1px solid #666;
@@ -78,32 +63,34 @@
 	bottom: 0;
 	background-size: 7px 7px;
 }
+
 .config-btn--stripe:hover,
 .active {
 	background-color: #666;
 	color: #fff;
 	border-color: #000;
 }
+
 .config-btn--stripe:hover:after,
 .active:after {
-	background-image: repeating-linear-gradient(
-		45deg,
-		#fff,
-		#fff 1px,
-		transparent 2px,
-		transparent 5px
-	);
+	background-image: repeating-linear-gradient(45deg, #fff, #fff 1px, transparent 2px, transparent 5px);
 	border-top: 1px solid #000;
 	animation: stripe-slide 12s infinite linear forwards;
 }
 
 .config-container {
-	margin: 15px;
+	margin: 15px 30px;
 	border-radius: 4px;
 	background: white;
-	width: 350px;
+	width: 375px;
 }
 
+@media only screen and (max-width: 768px) {
+	.config-container {
+		width: 70%;
+		margin: 15px auto;
+	}
+}
 .slider-container {
 	padding: 8px 12px 2px;
 }

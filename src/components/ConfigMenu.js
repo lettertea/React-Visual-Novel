@@ -8,15 +8,17 @@ class ConfigMenu extends Component {
     super(); //constructor init
 
     this.state = {
-      soundShown: true,
+      audioShown: true,
       textShown: false
     };
+    this.toggleAudio = this.toggleAudio.bind(this);
+    this.toggleText = this.toggleText.bind(this);
   }
 
-  toggleSound() {
-    if (!this.state.soundShown) {
+  toggleAudio() {
+    if (!this.state.audioShown) {
       this.setState({
-        soundShown: true,
+        audioShown: true,
         textShown: false
       });
     }
@@ -26,9 +28,17 @@ class ConfigMenu extends Component {
     if (!this.state.textShown) {
       this.setState({
         textShown: true,
-        soundShown: false
+        audioShown: false
       });
     }
+  }
+
+  category(name, shown, handleClick) {
+    return (
+      <button class={"config-btn config-btn--stripe " + (shown ? "active" : null)} onClick={handleClick}>
+        {name}
+      </button>
+    );
   }
 
   slider(type, value, onChangeFunction) {
@@ -41,16 +51,17 @@ class ConfigMenu extends Component {
   }
 
   render() {
-    const { soundShown, textShown } = this.state;
+    const { audioShown, textShown } = this.state;
     const {
       font,
       changeFont,
       bgmVolume,
       bgmVolumeChange,
-      effectVolume,
-      effectVolumeChange,
+      soundEffectVolume,
+      soundEffectVolumeChange,
       voiceVolume,
-      voiceVolumeChange
+      voiceVolumeChange,
+      toggleConfigMenu
     } = this.props;
     const options = [
       { label: "Arial" },
@@ -78,40 +89,27 @@ class ConfigMenu extends Component {
       }
     };
     return (
-      <div
-        className="overlay"
-        id="config-overlay"
-        style={{ "font-family": font }}
-      >
-        <div id="config-header">Config</div>
-        <ul>
-          <button
-            class={
-              "config-btn config-btn--stripe " + (soundShown ? "active" : null)
-            }
-            onClick={() => this.toggleSound()}
-          >
-            Audio
-          </button>
-          <button
-            class={
-              "config-btn config-btn--stripe " + (textShown ? "active" : null)
-            }
-            onClick={() => this.toggleText()}
-          >
-            Text
-          </button>
+      <div className="overlay" id="config-overlay" style={{ "font-family": font }}>
+        <ul className="header">
+          <li>
+            <a>Config</a>
+          </li>
+          <li className="exit-button" onClick={toggleConfigMenu}>
+            <a>&times;</a>
+          </li>
         </ul>
-        <div>
-          {soundShown ? (
+        <ul>
+          {this.category("Audio", audioShown, this.toggleAudio)}
+          {this.category("Text", textShown, this.toggleText)}
+        </ul>
+        <div id="config-body">
+          {audioShown ? (
             <div>
               {this.slider("BGM", bgmVolume, bgmVolumeChange)}
               {this.slider("Voice", voiceVolume, voiceVolumeChange)}
-              {this.slider("Effect", effectVolume, effectVolumeChange)}
+              {this.slider("Sound Effect", soundEffectVolume, soundEffectVolumeChange)}
             </div>
           ) : null}
-        </div>
-        <div>
           {textShown ? (
             <div className="config-container font-container">
               Font Styles
@@ -119,9 +117,7 @@ class ConfigMenu extends Component {
                 options={options}
                 styles={styles}
                 onChange={changeFont}
-                defaultValue={
-                  options[options.findIndex(obj => obj.label === font)]
-                }
+                defaultValue={options[options.findIndex(obj => obj.label === font)]}
               />
             </div>
           ) : null}

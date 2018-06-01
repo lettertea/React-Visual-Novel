@@ -1,24 +1,23 @@
 import React from "react";
-import ChoiceOption from "../components/ChoiceOption";
 
 function ChoiceMenu(props) {
   function renderChoiceOptions(key) {
     return (
-      <ChoiceOption
+      <input
+        type="button"
+        className="choice-button"
         key={key.content}
-        content={key.content}
-        store={key.store}
-        jumpToBecauseChoice={key.jumpToBecauseChoice}
-        onChoiceSelected={props.onChoiceSelected}
+        alt={key.routeBegins}
+        name={key.store}
+        value={key.content}
+        id={key.resetStore}
+        placeholder={key.nextIndex}
+        onClick={props.onChoiceSelected}
       />
     );
   }
 
-  return (
-    <div className="overlay overlay-choices">
-      {props.choiceOptions.map(renderChoiceOptions)}
-    </div>
-  );
+  return <div className="overlay overlay-choices">{props.choiceOptions.map(renderChoiceOptions)}</div>;
 }
 
 export default ChoiceMenu;

@@ -14,11 +14,7 @@ function TitleScreen(props) {
           </li>
           <li>
             <span>
-              <a
-                href="https://github.com/nashkenazy/generic-vn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://github.com/nashkenazy/generic-vn" target="_blank" rel="noopener noreferrer">
                 Github
               </a>
             </span>
