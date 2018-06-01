@@ -46,7 +46,7 @@
   display: block;
   color: white;
   text-align: center;
-  padding: 8px 20px;
+  padding: 8px 22px;
   text-decoration: none;
 }
 
@@ -73,7 +73,7 @@
 
 .overlay {
   position: absolute;
-  z-index: 4;
   width: 100%;
   height: 100%;
+  background-color: #4ea6ca;
 }
