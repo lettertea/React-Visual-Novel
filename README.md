@@ -53,7 +53,7 @@ From the root directory, navigate to `./src/story/story.js`. There should be an 
 |:---|:---|:---|
 | bg | `Function` | Displays a 1280x720 background image by accepting `require('path/to/image')`. |
 | bgm | `Function` | Loops through an audio file by accepting `require('path/to/audio')`. |
-| bgTransition | `String` | Uses the value for transition animations for [ReactCSSTransitionGroup](https://reactjs.org/docs/animation.html) for `sprite`. Currently has no options. |
+| bgTransition | `String` | Uses the value for transition animations for [ReactCSSTransitionGroup](https://reactjs.org/docs/animation.html) for `bg`. Currently has no options. |
 | choicesExist | `Boolean` | If true, choices from `choices.js` will be presented to the user. |
 | jumpTo | `String` | Jumps the user to the index where the `receiveJump` property is if the `jumpTo` and `receiveJump` properties are same value. Often used to return to the common route. |
 | jumpToBecauseStore | `String` | Jumps the user to the index where the `receiveJumpBecauseStore` property is if the `jumpToBecauseStore` and `receiveJumpBecauseStore` properties are same value. Often used to show scenes from making a particular choice(s). |
@@ -64,13 +64,13 @@ From the root directory, navigate to `./src/story/story.js`. There should be an 
 | speaker | `String` | Presents the string in a bubble on top of the textbox. Also wraps text in quotes. |
 | sprite | `Function` | Displays a sprite in the center of the screen by accepting 'require('path/to/image'). |
 | spriteEffect | `String` | Uses the value as a class for `sprite`. Currently has `"shake"`, `"bounce"`, `"grow"`, `"shrink-back"`, `"shrink"`, `"grow-back"`, `"grown"`, and `"shrunk"`. |
-| spriteTransition | `String` | Uses the value for transition animations for [ReactCSSTransitionGroup](https://reactjs.org/docs/animation.html) for `sprite`. |
+| spriteTransition | `String` | Uses the value for transition animations for ReactCSSTransitionGroup for `sprite`. |
 | spriteLeft | `Function` | Displays a sprite in the left of the screen by accepting `require('path/to/image')`. |
 | spriteLeftEffect | `String` | Uses the value as a class for `spriteLeft`. |
-| spriteLeftTransition | `String` | Uses the value for transition animations for [ReactCSSTransitionGroup](https://reactjs.org/docs/animation.html) for `spriteLeft`. |
+| spriteLeftTransition | `String` | Uses the value for transition animations for ReactCSSTransitionGroup for `spriteLeft`. |
 | spriteRight | `Function` | Displays a sprite in the right of the frame by accepting `require('path/to/image')`. |
 | spriteRightEffect | `String` | Uses the value as a class for `spriteRight`. |
-| spriteRightTransition | `String` | Uses the value for transition animations for [ReactCSSTransitionGroup](https://reactjs.org/docs/animation.html) for `spriteRight`. |
+| spriteRightTransition | `String` | Uses the value for transition animations for ReactCSSTransitionGroup for `spriteRight`. |
 | text | `String` | Presents string in the textbox on bottom of screen. |
 | voice | `Function` | Plays an audio file once by accepting `require('path/to/audio')`. |
 
