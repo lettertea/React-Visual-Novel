@@ -453,25 +453,27 @@ class App extends Component {
     const zoomMultiplier = window.innerWidth * 1 / 1280;
 
     return (
-      <div>
-        <ReactCSSTransitionGroup
-          component="div"
-          className="container"
-          transitionName="menu"
-          transitionEnterTimeout={400}
-          transitionLeaveTimeout={400}
-        >
-          {this.state.titleScreenShown ? this.titleScreen() : null}
-          {this.state.frameIsRendering ? this.renderFrame() : null}
-          {/* GUI menu buttons */}
-          {this.state.configMenuShown ? this.configMenu() : null}
-          {this.state.saveMenuShown ? this.saveMenu() : null}
-          {this.state.loadMenuShown ? this.loadMenu() : null}
-          {this.state.backlogShown ? this.backlog() : null}
-          {this.state.frameIsRendering ? this.renderFrame() : null}
-          {this.state.choicesExist ? this.renderChoiceMenu() : null}
-        </ReactCSSTransitionGroup>
       <div {...WheelReact.events} style={this.state.isFull ? { zoom: zoomMultiplier } : null}>
+        <Fullscreen enabled={this.state.isFull} onChange={isFull => this.setState({ isFull })}>
+          <ReactCSSTransitionGroup
+            className="full-screenable-node"
+            component="div"
+            className="container"
+            transitionName="menu"
+            transitionEnterTimeout={400}
+            transitionLeaveTimeout={400}
+          >
+            {this.state.titleScreenShown ? this.titleScreen() : null}
+            {this.state.frameIsRendering ? this.renderFrame() : null}
+            {/* GUI menu buttons */}
+            {this.state.configMenuShown ? this.configMenu() : null}
+            {this.state.saveMenuShown ? this.saveMenu() : null}
+            {this.state.loadMenuShown ? this.loadMenu() : null}
+            {this.state.backlogShown ? this.backlog() : null}
+            {this.state.frameIsRendering ? this.renderFrame() : null}
+            {this.state.choicesExist ? this.renderChoiceMenu() : null}
+          </ReactCSSTransitionGroup>
+        </Fullscreen>
         {!this.state.titleScreenShown ? this.renderMenuButtons() : null}
         {this.state.bgm ? this.playBGM() : null}
         {this.state.soundEffect ? this.playSoundEffect() : null}
