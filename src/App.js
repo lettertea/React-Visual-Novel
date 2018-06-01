@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import Sound from "react-sound";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import Fullscreen from "react-full-screen";
+import WheelReact from "wheel-react";
+
 // API
 import story from "./story/story";
 import choices from "./story/choices";
@@ -32,6 +34,7 @@ const INITIAL_STATE = {
   effectVolume: 90,
   voiceVolume: 100,
   font: "Trebuchet MS",
+  isFull: false,
   choicesStore: {},
   choicesHistory: [],
   choicesIndexHistory: [],
@@ -54,6 +57,14 @@ class App extends Component {
     this.setFrame = this.setFrame.bind(this);
     this.toggleBacklog = this.toggleBacklog.bind(this);
     this.state = INITIAL_STATE;
+
+    WheelReact.config({
+      down: () => {
+        if (!this.state.titleScreenShown) {
+          this.setState({ backlogShown: true });
+        }
+      }
+    });
   }
 
   setFrameFromChoice(choice, routeBegins) {
