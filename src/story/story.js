@@ -200,7 +200,7 @@ let story = [
     text: "But if you want the game to the user's choices, you can use the `store` property in 'choices.js'."
   },
   { text: "For example, let's say the user is friends with a character." },
-  { text: "The user can pick choices that will raise affection points for that character" },
+  { text: "The user can pick choices that will raise affection points for that character." },
   { text: "If the user accumulated enough points by a certain point, the user will jump to a certain scene." },
   { text: "Let's see it in application." },
   {
@@ -269,7 +269,7 @@ let story = [
   { speaker: "", text: "blockAffection score: 1.", jumpTo: "skitDone" },
   {
     receiveJumpBecauseStore: ["blockAffection", 2],
-    text: "He texted back immediately."
+    text: "He texts back immediately."
   },
   {
     speaker: b,
