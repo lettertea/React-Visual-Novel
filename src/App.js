@@ -128,8 +128,6 @@ class App extends Component {
       bg: story[index].bg,
       bgm: story[index].bgm,
       choicesExist: story[index].choicesExist,
-      choicesStoreCount: story[index].choicesStoreCount,
-      sceneChange: story[index].sceneChange,
       soundEffect: story[index].soundEffect,
       speaker: story[index].speaker,
       sprite: story[index].sprite,
@@ -153,7 +151,6 @@ class App extends Component {
         font={this.state.font}
         setNextFrame={this.setNextFrame.bind(this)}
         bg={this.state.bg}
-        sceneChange={this.state.sceneChange}
         sprite={this.state.sprite}
         spriteEffect={this.state.spriteEffect}
         spriteTransition={this.state.spriteTransition}
