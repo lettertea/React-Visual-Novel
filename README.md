@@ -14,6 +14,8 @@ The application runs on the web browser and renders sounds and images to provide
     - [Transition Properties](https://github.com/nashkenazy/React-Visual-Novel#transition-properties)
   - [`choices.js` Properties](https://github.com/nashkenazy/React-Visual-Novel#choicesjs-properties)
   - [Streamlining the Writing Process](https://github.com/nashkenazy/React-Visual-Novel#streamlining-the-writing-process)
+    - [Variables](https://github.com/nashkenazy/React-Visual-Novel#variables)
+    - [Setting Future Properties](https://github.com/nashkenazy/React-Visual-Novel#setting-future-properties)
   - [Creating Choices](https://github.com/nashkenazy/React-Visual-Novel#creating-choices)
 - [License](https://github.com/nashkenazy/React-Visual-Novel#license)
 
@@ -98,19 +100,20 @@ Values for `spriteTransition`, `spriteLeftTransition`, and `spriteRightTransitio
 ## `choices.js` Properties
 From the root directory, navigate to `./src/story/choices.js`. There should be an array called `choices`. Each index contains an object that contains a single property of `choices`. The `choices` property (different from the `choices` array) accepts a value of an array where each element is an object that represents a single choice. All of the properties of that object follows below:
 
-| Key | Value Type | Default Value | Description |
+| Key | Value Type | Necessary | Description |
 |:---|:---|:---|:---|
-| content | `String` | `undefined` | Presents the string as a button that user can choose. |
-| nextIndex | `Integer` | `undefined` | Determines what index will be presented the next time a choice appears to the user. |
-| routeBegins | `String` | `undefined` | Jumps to the index where `routeBegins` is in `story.js` if both properties (one from `choices.js` and one from `story.js`) are the same value. |
-| resetStore | `String` | `undefined` | If a value is detected (doesn't have to be `"true"`), then choicesStore will be set to a clean object. |
-| store | `String` | `undefined` | The value becomes a property of `choiceStore` in `App.js` and increments it by one. |
+| content | `String` | Yes | Presents the string as a button that user can choose. |
+| nextIndex | `Integer` | No | Determines what index will be presented the next time a choice appears to the user. |
+| routeBegins | `String` | Yes | Jumps to the index where `routeBegins` is in `story.js` if both properties (one from `choices.js` and one from `story.js`) are the same value. |
+| resetStore | `String` | No | If a value is detected (doesn't have to be `"true"`), then choicesStore will be set to a clean object. |
+| store | `String` | No | The value becomes a property of `choiceStore` in `App.js` and increments it by one. |
 
 
 
 ## Streamlining the Writing Process
 
-Creating variables for speaker and sprite values tends to be quicker and more consistent.
+### Variables
+Creating variables for properties that reuse values tend to be more consistent, accurate and faster.
 ```
 const b = "Block";
 const bn = require("./sprites/block-neutral.png");
@@ -122,6 +125,11 @@ const bn = require("./sprites/block-neutral.png");
   },
   // ...
 ```
+
+### Setting Future Properties
+On the bottom of `story.js`, there are function calls to the function `setFutureProperties()`. The function takes in a key as an argument and sets all the future undefined properties to the last defined property for the argument. Thus, choosing the correct keys your project is important to speeding up the writing process. It is very much a case-by-case type of decision.
+
+For example, the sample site calls `setFutureProperties()` for `speaker` as well as some other properties. It is advantageous to call the function for `speaker` because the story is set up so that a sprite is talking most of the time. In some visual novels, it would be very awkward if a character talks that long. It would be best to remove the function call for `speaker` in that case.
 
 ## Creating Choices
 When you want the user to make a choice, set `choicesExist: true` in novelFrames.js. The app will go through the array of objects in Choices.js and present the current choice. For example, if it is your third time setting `choicesExist: true`, then the second index in choices will be used.
