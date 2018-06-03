@@ -38,6 +38,9 @@ const INITIAL_STATE = {
   choicesStore: {},
   index: 0,
   stateHistory: [],
+  choicesHistory: [],
+  choicesIndexHistory: [],
+  indexHistory: [],
   choicesExist: false,
   configMenuShown: false,
   titleScreenShown: true,
@@ -410,19 +413,23 @@ class App extends Component {
         setFrame={this.setFrame}
         setChoice={this.setChoice.bind(this)}
         toggleBacklog={this.toggleBacklog}
-        backlogShown={this.state.backlogShown}
-        stateHistory={this.state.stateHistory}
-        setState={state => this.setState(state)}
-        setStateHistory={stateHistory => this.setState({ stateHistory: stateHistory })}
+        choicesStore={this.state.choicesStore}
+        choicesHistory={this.state.choicesHistory}
+        choicesIndexHistory={this.state.choicesIndexHistory}
+        indexHistory={this.state.indexHistory}
+        setChoicesHistory={choicesHistory => this.setState({ choicesHistory: choicesHistory })}
+        setIndexHistory={indexHistory => this.setState({ indexHistory: indexHistory })}
+        setChoicesStore={choicesStore => this.setState({ choicesStore: choicesStore })}
       />
     );
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // Second part in parenthesis is to accomodate for backwards jumpTo.
-    if (prevState.index < this.state.index || (this.state.choicesExist && prevState.index != this.state.index)) {
+    if (prevState.index < this.state.index) {
       this.setState({
-        stateHistory: [...this.state.stateHistory, prevState]
+        choicesHistory: [...this.state.choicesHistory, prevState.choicesStore],
+        choicesIndexHistory: [...this.state.choicesIndexHistory, prevState.choicesIndex],
+        indexHistory: [...this.state.indexHistory, prevState.index]
       });
     }
   }

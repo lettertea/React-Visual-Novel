@@ -8,10 +8,17 @@ class Backlog extends Component {
   componentDidMount() {
     this.scrollToBottom();
   }
-  handleJump(i) {
+  handleJump(index, i, choicesIndex) {
     this.props.toggleBacklog();
-    this.props.setState(this.props.stateHistory[i]);
-    this.props.setStateHistory(this.props.stateHistory.slice(0, i));
+
+    this.props.setChoice(choicesIndex);
+    this.props.setChoicesHistory(this.props.choicesHistory.slice(0, i));
+
+    this.props.setFrame(index);
+    this.props.setIndexHistory(this.props.indexHistory.slice(0, i));
+
+    this.props.setChoicesStore(this.props.choicesHistory[i]);
+    this.props.setChoicesHistory(this.props.choicesHistory.slice(0, i));
   }
 
   scrollToBottom() {
@@ -20,14 +27,16 @@ class Backlog extends Component {
 
   render() {
     let textHistory = [];
-    const stateHistory = this.props.stateHistory;
+    const indexHistory = this.props.indexHistory;
+    const choicesIndexHistory = this.props.choicesIndexHistory;
 
-    for (let i = 0; i < stateHistory.length; i++) {
-      const index = stateHistory[i].index;
+    for (let i = 0; i < indexHistory.length; i++) {
+      const index = indexHistory[i];
+      const choicesIndex = choicesIndexHistory[i];
 
       textHistory.push(
         <div className="backlog" key={i}>
-          <div className="backlog-jump-container" onClick={() => this.handleJump(i)}>
+          <div className="backlog-jump-container" onClick={() => this.handleJump(index, i, choicesIndex)}>
             <span className="backlog-jump-text">Jump</span>
           </div>
           <div className="backlog-speaker">{story[index].speaker}</div>
