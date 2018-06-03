@@ -18,7 +18,7 @@ function MenuButtons(props) {
           <button onClick={props.startSkip}>Skip</button>
         )}
 
-        <button onWheel={props.toggleBacklog}>{props.saveMenuShown ? "Hide Saves" : "Save"}</button>
+        <button onClick={props.toggleSaveMenu}>{props.saveMenuShown ? "Hide Saves" : "Save"}</button>
         <button onClick={props.toggleLoadMenu}>{props.loadMenuShown ? "Hide Loads" : "Load"}</button>
         <button onClick={props.toggleConfigMenu}>{props.configMenuShown ? "Hide Config" : "Config"}</button>
         <button onClick={props.toggleFullscreen} style={{ float: "right" }}>
