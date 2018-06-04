@@ -61,8 +61,8 @@ class App extends Component {
 
     WheelReact.config({
       down: () => {
-        if (!this.state.titleScreenShown) {
-          this.setState({ backlogShown: true });
+        if (!this.state.titleScreenShown && !this.state.backlogShown) {
+          this.toggleBacklog();
         }
       }
     });
