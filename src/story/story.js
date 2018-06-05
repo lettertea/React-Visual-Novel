@@ -3,7 +3,6 @@ const microphone = require("./bg/microphone.jpeg");
 const entrance = require("./bg/entrance.jpeg");
 // bgm
 const take = require("./bgm/take.mp3");
-const silence = require("./bgm/silence.mp3");
 // speakers
 const b = "Block";
 // sprites
