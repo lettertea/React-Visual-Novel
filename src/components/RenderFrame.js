@@ -66,7 +66,7 @@ function RenderFrame(props) {
         </ReactCSSTransitionGroup>
       </ReactCSSTransitionGroup>
       {props.text && props.textBoxShown ? (
-        <div className="text-box" style={{ "font-family": props.font }}>
+        <div className="text-box" style={{ fontFamily: props.font }}>
           {props.speaker ? <div className="speaker"> {props.speaker} </div> : null}
           <div className="text">{props.speaker ? `"${props.text}"` : props.text}</div>
         </div>

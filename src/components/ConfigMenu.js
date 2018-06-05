@@ -84,12 +84,12 @@ class ConfigMenu extends Component {
       option: (styles, { data }) => {
         return {
           ...styles,
-          "font-family": data.label
+          fontFamily: data.label
         };
       }
     };
     return (
-      <div className="overlay" id="config-overlay" style={{ "font-family": font }}>
+      <div className="overlay" id="config-overlay" style={{ fontFamily: font }}>
         <ul className="header">
           <li>
             <a>Config</a>

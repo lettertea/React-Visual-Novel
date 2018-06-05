@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import story from "../story/story";
 
 class Backlog extends Component {
-  constructor() {
-    super();
-  }
   componentDidMount() {
     this.scrollToBottom();
   }

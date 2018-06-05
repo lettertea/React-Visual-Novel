@@ -80,7 +80,7 @@ class SaveLoadMenu extends Component {
               <div
                 className="text-box"
                 style={{
-                  "font-family": JSON.parse(localStorage.getItem(this.state.slotNumber)).font
+                  fontFamily: JSON.parse(localStorage.getItem(this.state.slotNumber)).font
                 }}
               >
                 {JSON.parse(localStorage.getItem(this.state.slotNumber)).speaker ? (

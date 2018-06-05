@@ -193,7 +193,7 @@ class App extends Component {
       this.setState({ choicesStore: {} });
     }
     if (event.currentTarget.placeholder) {
-      nextIndex = parseInt(event.currentTarget.placeholder);
+      nextIndex = parseInt(event.currentTarget.placeholder, 10);
     } else {
       nextIndex = this.state.choicesIndex + 1;
     }
@@ -453,9 +453,8 @@ class App extends Component {
       <div {...WheelReact.events} style={this.state.isFull ? { zoom: zoomMultiplier } : null}>
         <Fullscreen enabled={this.state.isFull} onChange={isFull => this.setState({ isFull })}>
           <ReactCSSTransitionGroup
-            className="full-screenable-node"
-            component="div"
             className="container"
+            component="div"
             transitionName="menu"
             transitionEnterTimeout={400}
             transitionLeaveTimeout={400}

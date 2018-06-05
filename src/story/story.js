@@ -304,7 +304,7 @@ setFutureProperties("spriteRight");
 function setFutureProperties(key) {
   let cache = "";
   for (let obj of story) {
-    if (obj[key] || obj[key] == "") {
+    if (obj[key] || obj[key] === "") {
       cache = obj[key];
     } else {
       obj[key] = cache;
