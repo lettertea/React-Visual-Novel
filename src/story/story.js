@@ -250,12 +250,12 @@ let story = [
     text: "(Back to common route) I haven't seen Block for a few years now."
   },
   { text: "I text him to see how he's doing.", jumpToBecauseStore: "blockAffection" },
+  // Goes to next index if the user's choices do not fulfill any `receiveJumpBecauseStore` requirements.
   {
-    text: "I put my phone down and continue with life.",
-    receiveJumpBecauseStore: ["blockAffection", undefined]
+    text: "I put my phone down and continue with life."
   },
   { text: "He never texted back." },
-  { text: "blockAffection score: 0.", jumpTo: "skitDone" },
+  { text: "blockAffection score: 0. (Technically anything not 1 or 2)", jumpTo: "skitDone" },
   {
     receiveJumpBecauseStore: ["blockAffection", 1],
     text: "A few hours later, he texts back."

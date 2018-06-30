@@ -4,7 +4,6 @@ import Sound from "react-sound";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import Fullscreen from "react-full-screen";
 import WheelReact from "wheel-react";
-
 // API
 import story from "./story/story";
 import choices from "./story/choices";
@@ -93,6 +92,9 @@ class App extends Component {
           ) {
             this.setFrame(i);
           }
+        } else if (i === story.length - 1) {
+          // Goes to next index if the user's choices do not fulfill any `receiveJumpBecauseStore` requirements.
+          this.setFrame(currentIndex + 1);
         }
       }
     } else if (story[currentIndex].jumpTo) {
