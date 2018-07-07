@@ -91,6 +91,7 @@ class App extends Component {
             this.state.choicesStore[jumpToBecauseStore] === story[i].receiveJumpBecauseStore[1]
           ) {
             this.setFrame(i);
+            return true;
           }
         } else if (i === story.length - 1) {
           // Goes to next index if the user's choices do not fulfill any `receiveJumpBecauseStore` requirements.
