@@ -90,24 +90,26 @@ class App extends Component {
             this.state.choicesStore[jumpToBecauseStore] === story[i].receiveJumpBecauseStore[1]
           ) {
             this.setFrame(i);
-        	return;
+            return;
           }
         }
       }
       // Goes to next index if the user's choices do not fulfill any `receiveJumpBecauseStore` requirements.
-    } if (story[currentIndex].jumpTo) {
+    }
+    if (story[currentIndex].jumpTo) {
       if (story[currentIndex].jumpTo === "title-screen") {
         this.setState(INITIAL_STATE);
         return;
-      } 
-        // Resumes to common route
-        for (let i = 0; i < story.length; i++) {
-          if (story[currentIndex].jumpTo === story[i].receiveJump) {
-            this.setFrame(i);
-            return;
-          }
+      }
+      // Resumes to common route
+      for (let i = 0; i < story.length; i++) {
+        if (story[currentIndex].jumpTo === story[i].receiveJump) {
+          this.setFrame(i);
+          return;
         }
-    } if (
+      }
+    }
+    if (
       !this.state.choicesExist &&
       !this.state.loadMenuShown &&
       !this.state.saveMenuShown &&
@@ -447,7 +449,12 @@ class App extends Component {
   }
 
   render() {
-    const zoomMultiplier = window.innerWidth * 1 / 1280;
+    let zoomMultiplier = 0;
+    if (window.innerWidth * 1 / window.innerHeight <= 1280 * 1 / 720) {
+      zoomMultiplier = window.innerWidth * 1 / 1280;
+    } else {
+      zoomMultiplier = window.innerHeight * 1 / 720;
+    }
 
     return (
       <div {...WheelReact.events} style={this.state.isFull ? { zoom: zoomMultiplier } : null}>
