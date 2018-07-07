@@ -1,9 +1,30 @@
-import React from "react";
+import React, { Component } from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import spinner from "./spinner.svg";
 
 function RenderFrame(props) {
   function bgTransitionTime(key) {
+  renderImage(parentCssClass, transitionName, transitionTimeout, childCssClass, imageSrc) {
+    return (
+      <ReactCSSTransitionGroup
+        className={parentCssClass}
+        transitionName={transitionName}
+        transitionEnterTimeout={transitionTimeout}
+        transitionLeaveTimeout={transitionTimeout}
+      >
+        <img
+          draggable="false"
+          key={imageSrc}
+          className={childCssClass}
+          src={imageSrc}
+          style={this.state.loading ? { display: "none" } : null}
+          onLoad={this.handleImageChange}
+          onError={this.handleImageChange}
+        />
+      </ReactCSSTransitionGroup>
+    );
+  }
+
     return 2000;
   }
   function spriteTransitionTime(key) {
@@ -32,48 +53,45 @@ function RenderFrame(props) {
         transitionEnterTimeout={bgTransitionTime("bgTransition")}
         transitionLeaveTimeout={bgTransitionTime("bgTransition")}
       >
-        <img draggable="false" key={props.bg} className="bg" src={props.bg} />
-        <ReactCSSTransitionGroup
-          className="sprite-center-parent"
-          transitionName={props.spriteTransition || "sprite"}
-          transitionEnterTimeout={spriteTransitionTime("spriteTransition")}
-          transitionLeaveTimeout={spriteTransitionTime("spriteTransition")}
-        >
-          <img draggable="false" key={props.sprite} className={"sprite " + props.spriteEffect} src={props.sprite} />
-        </ReactCSSTransitionGroup>
-        <ReactCSSTransitionGroup
-          transitionName={props.spriteLeftTransition || "sprite"}
-          transitionEnterTimeout={spriteTransitionTime("spriteLeftTransition")}
-          transitionLeaveTimeout={spriteTransitionTime("spriteLeftTransition")}
-        >
-          <img
-            draggable="false"
-            key={props.spriteLeft + "left"}
-            className={"sprite left " + props.spriteLeftEffect}
-            src={props.spriteLeft}
-          />
-        </ReactCSSTransitionGroup>
-        <ReactCSSTransitionGroup
-          transitionName={props.spriteRightTransition || "sprite"}
-          transitionEnterTimeout={spriteTransitionTime("spriteRightTransition")}
-          transitionLeaveTimeout={spriteTransitionTime("spriteRightTransition")}
-        >
-          <img
-            draggable="false"
-            key={props.spriteRight + "right"}
-            className={"sprite right " + props.spriteRightEffect}
-            src={props.spriteRight}
-          />
-        </ReactCSSTransitionGroup>
-      </ReactCSSTransitionGroup>
-      {props.text && props.textBoxShown ? (
-        <div className="text-box" style={{ fontFamily: props.font }}>
-          {props.speaker ? <div className="speaker"> {props.speaker} </div> : null}
-          <div className="text">{props.speaker ? `"${props.text}"` : props.text}</div>
-        </div>
-      ) : null}
-    </div>
-  );
+        {this.renderSpinner()}
+        {this.renderImage(
+          "",
+          this.props.bgTransition || "scene-change",
+          this.bgTransitionTime("bgTransition"),
+          "bg",
+          this.props.bg
+        )}
+        {this.renderImage(
+          "sprite-center-parent",
+          this.props.spriteTransition || "sprite",
+          this.spriteTransitionTime("spriteTransition"),
+          "sprite " + this.props.spriteEffect,
+          this.props.sprite
+        )}
+        {this.renderImage(
+          "",
+          this.props.spriteLeftTransition || "sprite",
+          this.spriteTransitionTime("spriteLeftTransition"),
+          "sprite left " + this.props.spriteLeftEffect,
+          this.props.spriteLeft
+        )}
+        {this.renderImage(
+          "",
+          this.props.spriteRightTransition || "sprite",
+          this.spriteTransitionTime("spriteRightTransition"),
+          "sprite right " + this.props.spriteRightEffect,
+          this.props.spriteRight
+        )}
+
+        {this.props.text && this.props.textBoxShown && !this.state.loading ? (
+          <div className="text-box" style={{ fontFamily: this.props.font }}>
+            {this.props.speaker ? <div className="speaker"> {this.props.speaker} </div> : null}
+            <div className="text">{this.props.speaker ? `"${this.props.text}"` : this.props.text}</div>
+          </div>
+        ) : null}
+      </div>
+    );
+  }
 }
 
 export default RenderFrame;
