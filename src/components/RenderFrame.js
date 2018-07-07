@@ -1,5 +1,6 @@
 import React from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import spinner from "./spinner.svg";
 
 function RenderFrame(props) {
   function bgTransitionTime(key) {
