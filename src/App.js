@@ -82,7 +82,6 @@ class App extends Component {
   setNextFrame() {
     const currentIndex = this.state.index;
     const jumpToBecauseStore = story[currentIndex].jumpToBecauseStore;
-    // Jumps indexes because choices store
     if (story[currentIndex].jumpToBecauseStore) {
       for (let i = 0; i < story.length; i++) {
         if (story[i].receiveJumpBecauseStore) {
@@ -91,26 +90,24 @@ class App extends Component {
             this.state.choicesStore[jumpToBecauseStore] === story[i].receiveJumpBecauseStore[1]
           ) {
             this.setFrame(i);
-            return true;
+        	return;
           }
-        } else if (i === story.length - 1) {
-          // Goes to next index if the user's choices do not fulfill any `receiveJumpBecauseStore` requirements.
-          this.setFrame(currentIndex + 1);
         }
       }
-    } else if (story[currentIndex].jumpTo) {
-      // Jumps indexes normally
+      // Goes to next index if the user's choices do not fulfill any `receiveJumpBecauseStore` requirements.
+    } if (story[currentIndex].jumpTo) {
       if (story[currentIndex].jumpTo === "title-screen") {
         this.setState(INITIAL_STATE);
-      } else if (story[currentIndex].jumpTo) {
+        return;
+      } 
         // Resumes to common route
         for (let i = 0; i < story.length; i++) {
           if (story[currentIndex].jumpTo === story[i].receiveJump) {
             this.setFrame(i);
+            return;
           }
         }
-      }
-    } else if (
+    } if (
       !this.state.choicesExist &&
       !this.state.loadMenuShown &&
       !this.state.saveMenuShown &&
