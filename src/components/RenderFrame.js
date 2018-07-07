@@ -2,8 +2,37 @@ import React, { Component } from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import spinner from "./spinner.svg";
 
-function RenderFrame(props) {
-  function bgTransitionTime(key) {
+function imagesLoaded(parentNode) {
+  const imgElements = [...parentNode.querySelectorAll("img")];
+  for (let i = 0; i < imgElements.length; i += 1) {
+    const img = imgElements[i];
+    if (!img.complete) {
+      return false;
+    }
+  }
+  return true;
+}
+
+class RenderFrame extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { loading: true };
+    this.handleImageChange = this.handleImageChange.bind(this);
+  }
+
+  handleImageChange() {
+    this.setState({
+      loading: !imagesLoaded(this.frame)
+    });
+  }
+
+  renderSpinner() {
+    if (!this.state.loading) {
+      return null;
+    }
+    return <img src={spinner} id="spinner" />;
+  }
+
   renderImage(parentCssClass, transitionName, transitionTimeout, childCssClass, imageSrc) {
     return (
       <ReactCSSTransitionGroup
@@ -25,33 +54,36 @@ function RenderFrame(props) {
     );
   }
 
+  bgTransitionTime(key) {
     return 2000;
   }
-  function spriteTransitionTime(key) {
+  spriteTransitionTime(key) {
     if (
-      props[key] === "move-left" ||
-      props[key] === "move-left-far" ||
-      props[key] === "move-right" ||
-      props[key] === "move-right-far" ||
-      props[key] === "from-left-leave-right" ||
-      props[key] === "from-right-leave-left"
+      this.props[key] === "move-left" ||
+      this.props[key] === "move-left-far" ||
+      this.props[key] === "move-right" ||
+      this.props[key] === "move-right-far" ||
+      this.props[key] === "from-left-leave-right" ||
+      this.props[key] === "from-right-leave-left"
     ) {
       return 1200;
-    } else if (props[key] === "shake") {
+    } else if (this.props[key] === "shake") {
       return 700;
-    } else if (props[key] === "bounce") {
+    } else if (this.props[key] === "bounce") {
       return 400;
     } else {
       return 250;
     }
   }
 
-  return (
-    <div onClick={props.setNextFrame} className="zoom-frame">
-      <ReactCSSTransitionGroup
-        transitionName={props.bgTransition || "scene-change"}
-        transitionEnterTimeout={bgTransitionTime("bgTransition")}
-        transitionLeaveTimeout={bgTransitionTime("bgTransition")}
+  render() {
+    return (
+      <div
+        onClick={this.props.setNextFrame}
+        className="zoom-frame"
+        ref={element => {
+          this.frame = element;
+        }}
       >
         {this.renderSpinner()}
         {this.renderImage(
