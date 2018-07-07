@@ -6,7 +6,7 @@
 
 .sprite-enter.sprite-enter-active {
   opacity: 1;
-  transition: opacity 250ms linear;
+  transition: opacity 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 .sprite-leave {
@@ -15,7 +15,7 @@
 
 .sprite-leave.sprite-leave-active {
   opacity: 0;
-  transition: opacity 250ms linear;
+  transition: opacity 250ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
 .move-left-enter {
@@ -136,70 +136,6 @@
 .from-right-leave-left-leave-active {
   opacity: 0;
   transform: translate(-200px, 0);
-}
-
-.bounce-enter {
-  opacity: 0;
-  animation: bounce 0.4s;
-  transition: opacity 250ms ease-in-out;
-}
-.bounce-enter-active {
-  opacity: 1;
-}
-
-.bounce-leave {
-  opacity: 1;
-  animation: bounce 0.4s;
-  transition: opacity 250ms ease-in-out;
-}
-.bounce-leave-active {
-  opacity: 0;
-}
-
-@keyframes bounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(30px);
-  }
-}
-
-.shake-enter {
-  opacity: 0;
-  animation: shake 0.7s;
-  transition: opacity 250ms ease-in-out;
-}
-.shake-enter-active {
-  opacity: 1;
-}
-
-.shake-leave {
-  opacity: 1;
-  animation: shake 0.7s;
-  transition: opacity 250ms ease-in-out;
-}
-.shake-leave-active {
-  opacity: 0;
-}
-
-@keyframes shake {
-  20%,
-  80% {
-    transform: translateX(4px);
-  }
-
-  30%,
-  50%,
-  70% {
-    transform: translateX(-8px);
-  }
-
-  40%,
-  60% {
-    transform: translateX(8px);
-  }
 }
 
 .scene-change-enter {
