@@ -60,7 +60,14 @@ class App extends Component {
 
     WheelReact.config({
       down: () => {
-        if (!this.state.titleScreenShown && !this.state.backlogShown) {
+        if (
+          !this.state.backlogShown &&
+          !this.state.choicesExist &&
+          !this.state.loadMenuShown &&
+          !this.state.saveMenuShown &&
+          !this.state.titleScreenShown &&
+          !this.state.configMenuShown
+        ) {
           this.toggleBacklog();
         }
       }
@@ -112,7 +119,8 @@ class App extends Component {
       !this.state.loadMenuShown &&
       !this.state.saveMenuShown &&
       !this.state.titleScreenShown &&
-      !this.state.backlogShown
+      !this.state.backlogShown &&
+      !this.state.configMenuShown
     ) {
       this.setFrame(currentIndex + 1);
     }
