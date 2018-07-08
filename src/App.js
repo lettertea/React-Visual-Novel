@@ -94,14 +94,12 @@ class App extends Component {
           }
         }
       }
-      // Goes to next index if the user's choices do not fulfill any `receiveJumpBecauseStore` requirements.
     }
     if (story[currentIndex].jumpTo) {
       if (story[currentIndex].jumpTo === "title-screen") {
         this.setState(INITIAL_STATE);
         return;
       }
-      // Resumes to common route
       for (let i = 0; i < story.length; i++) {
         if (story[currentIndex].jumpTo === story[i].receiveJump) {
           this.setFrame(i);
