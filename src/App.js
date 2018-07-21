@@ -74,6 +74,10 @@ class App extends Component {
     });
   }
 
+  componentDidMount() {
+    window.addEventListener("beforeunload", e => (e.returnValue = "Unsaved changes will be lost."));
+  }
+
   setFrameFromChoice(choice, routeBegins) {
     for (let i = 0; i < story.length; i++) {
       if (routeBegins === story[i].routeBegins) {
