@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import settings from "../story/settings";
 
 class SaveLoadMenu extends Component {
   constructor() {
@@ -30,7 +31,7 @@ class SaveLoadMenu extends Component {
 
   renderChoiceMenu() {
     return (
-      <div className="overlay-choices overlay-choices-slot">
+      <div className="overlay-choices overlay-choices-slot" style={settings.resolution}>
         {JSON.parse(localStorage.getItem(this.state.slotNumber)).choiceOptions.map(key => (
           <button className="choice-button">{key.content}</button>
         ))}
@@ -93,7 +94,7 @@ class SaveLoadMenu extends Component {
         </div>
       );
     } else {
-      return <div className="save-load-slot empty" onClick={() => this.props.executeSlot(this.state.slotNumber)} />;
+      return <div className="save-load-slot empty" style={{minWidth: settings.resolution.width, minHeight: settings.resolution.height}} onClick={() => this.props.executeSlot(this.state.slotNumber)} />;
     }
   }
 

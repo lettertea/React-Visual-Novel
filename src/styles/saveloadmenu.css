@@ -12,8 +12,6 @@
 
 .save-load-slot {
   overflow: hidden;
-  min-width: 1280px;
-  min-height: 720px;
   transform: translateY(-80px) scale(0.625);
   background: #333;
   cursor: pointer;
@@ -38,8 +36,6 @@
 
 .overlay-choices-slot {
   z-index: 9;
-  width: 1280px;
-  height: 720px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);

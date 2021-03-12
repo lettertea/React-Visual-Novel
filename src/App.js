@@ -27,6 +27,7 @@ import "./styles/sprites.css";
 import "./styles/textbox.css";
 import "./styles/titlescreen.css";
 import "./styles/transitions.css";
+import settings from "./story/settings";
 
 const INITIAL_STATE = {
   bgmVolume: 80,
@@ -459,18 +460,19 @@ class App extends Component {
   }
 
   render() {
-    let zoomMultiplier = 0;
-    if (window.innerWidth * 1 / window.innerHeight <= 1280 * 1 / 720) {
-      zoomMultiplier = window.innerWidth * 1 / 1280;
-    } else {
-      zoomMultiplier = window.innerHeight * 1 / 720;
-    }
+    const gameHeight = settings.resolution.height;
+    const gameWidth = settings.resolution.width;
+    const windowAspectRatio = window.innerWidth / window.innerHeight;
+    const gameAspectRatio = gameWidth / gameHeight;
+    // Ternary expression is used to accommodate different aspect ratios so the frame doesn't clip out of screen
+    const zoomMultiplier = windowAspectRatio <= gameAspectRatio ? window.innerWidth / gameWidth : window.innerHeight / gameHeight;
 
     return (
       <div {...WheelReact.events} style={this.state.isFull ? { zoom: zoomMultiplier } : null}>
         <Fullscreen enabled={this.state.isFull} onChange={isFull => this.setState({ isFull })}>
           <ReactCSSTransitionGroup
             className="container"
+            style={settings.resolution}
             component="div"
             transitionName="menu"
             transitionEnterTimeout={400}

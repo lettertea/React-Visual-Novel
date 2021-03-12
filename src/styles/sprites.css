@@ -7,8 +7,6 @@
 }
 
 .sprite-center-parent {
-	width: 1280px;
-	height: 720px;
 	position: fixed;
 	left: 50%;
 	margin-left: -640px;

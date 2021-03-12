@@ -1,8 +1,6 @@
 .container {
   overflow-x: hidden;
   position: absolute;
-  width: 1280px;
-  height: 720px;
   margin: auto;
   top: 50%;
   left: 50%;
@@ -68,7 +66,6 @@
 .bg {
   position: fixed;
   left: 50%;
-  margin-left: -640px;
 }
 
 .overlay {

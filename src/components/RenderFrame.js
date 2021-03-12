@@ -1,5 +1,6 @@
 import React from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import settings from "../story/settings";
 
 function RenderFrame(props) {
   function bgTransitionTime(key) {
@@ -31,9 +32,10 @@ function RenderFrame(props) {
         transitionEnterTimeout={bgTransitionTime("bgTransition")}
         transitionLeaveTimeout={bgTransitionTime("bgTransition")}
       >
-        <img draggable="false" key={props.bg} className="bg" src={props.bg} />
+        <img draggable="false" key={props.bg} className="bg" style={{marginLeft: -settings.resolution.width/2}} src={props.bg} />
         <ReactCSSTransitionGroup
           className="sprite-center-parent"
+          styles={settings.resolution}
           transitionName={props.spriteTransition || "sprite"}
           transitionEnterTimeout={spriteTransitionTime("spriteTransition")}
           transitionLeaveTimeout={spriteTransitionTime("spriteTransition")}
