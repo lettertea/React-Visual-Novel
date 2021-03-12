@@ -1,3 +1,3 @@
-start cmd /k "yarn start"
+start cmd /k "npm run start"
 
 
