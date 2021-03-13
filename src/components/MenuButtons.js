@@ -1,5 +1,6 @@
 import React from "react";
 import KeyHandler, { KEYDOWN, KEYUP } from "react-key-handler";
+import settings from "../story/settings";
 
 function MenuButtons(props) {
   function handleToggles(event, value, toggle) {
@@ -8,7 +9,7 @@ function MenuButtons(props) {
 
   return (
     <div className="container menu-buttons-container">
-      <div className="menu-buttons">
+      <div className="menu-buttons" style={{top:settings.resolution.height / 2 + 50, width:settings.resolution.width}}>
         {handleToggles(KEYDOWN, " ", props.toggleTextBox)}
         {handleToggles(KEYDOWN, "Control", props.setNextFrame)}
         {handleToggles(KEYUP, "Enter", props.setNextFrame)}

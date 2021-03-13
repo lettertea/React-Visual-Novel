@@ -1,13 +1,9 @@
 .menu-buttons-container {
-  z-index: -1;
   overflow: visible;
 }
 
 .menu-buttons {
   position: relative;
-  top: 740px;
-  width: 100%;
-  float: left;
 }
 
 .menu-buttons button {
