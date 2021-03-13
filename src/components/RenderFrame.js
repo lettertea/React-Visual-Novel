@@ -25,6 +25,8 @@ function RenderFrame(props) {
     }
   }
 
+  const gameWidth = settings.resolution.width;
+
   return (
     <div onClick={props.setNextFrame} className="zoom-frame">
       <ReactCSSTransitionGroup
@@ -32,9 +34,8 @@ function RenderFrame(props) {
         transitionEnterTimeout={bgTransitionTime("bgTransition")}
         transitionLeaveTimeout={bgTransitionTime("bgTransition")}
       >
-        <img draggable="false" key={props.bg} className="bg" style={{marginLeft: -settings.resolution.width/2}} src={props.bg} />
+        <img draggable="false" key={props.bg} className="bg" style={{marginLeft: -gameWidth/2}} src={props.bg} />
         <ReactCSSTransitionGroup
-          className="sprite-center-parent"
           styles={settings.resolution}
           transitionName={props.spriteTransition || "sprite"}
           transitionEnterTimeout={spriteTransitionTime("spriteTransition")}
@@ -50,7 +51,8 @@ function RenderFrame(props) {
           <img
             draggable="false"
             key={props.spriteLeft + "left"}
-            className={"sprite left " + props.spriteLeftEffect}
+            className={"sprite " + props.spriteLeftEffect}
+            style={{right:gameWidth/2}}
             src={props.spriteLeft}
           />
         </ReactCSSTransitionGroup>
@@ -62,7 +64,8 @@ function RenderFrame(props) {
           <img
             draggable="false"
             key={props.spriteRight + "right"}
-            className={"sprite right " + props.spriteRightEffect}
+            className={"sprite " + props.spriteRightEffect}
+            style={{left:gameWidth/2}}
             src={props.spriteRight}
           />
         </ReactCSSTransitionGroup>

@@ -5,18 +5,3 @@
 	right: 0;
 	margin: auto;
 }
-
-.sprite-center-parent {
-	position: fixed;
-	left: 50%;
-	margin-left: -640px;
-}
-
-.left {
-	left: -350px;
-	right: 350px;
-}
-.right {
-	left: 350px;
-	right: -350px;
-}
