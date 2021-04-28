@@ -1,7 +1,7 @@
-import React, {Component, useState} from "react";
+import React, {useState} from "react";
 import ReactSlider from "react-rangeslider";
-import Select from "react-select";
 import "react-rangeslider/lib/index.css";
+import Text from "./Text";
 
 
 export default props => {
@@ -22,54 +22,18 @@ export default props => {
     toggleConfigMenu
   } = props;
 
-  const options = [
-    { label: "Arial" },
-    { label: "Arial Black" },
-    { label: "Courier New" },
-    { label: "Georgia" },
-    { label: "Helvetica" },
-    { label: "Impact" },
-    { label: "Lucida Sans Unicode" },
-    { label: "Times" },
-    { label: "Trebuchet MS" },
-    { label: "Verdana" }
-  ];
 
-  for (let i = 0; i < options.length; i++) {
-    options[i].value = options[i].label;
-  }
-
-  const styles = {
-    option: (styles, { data }) => {
-      return {
-        ...styles,
-        fontFamily: data.label
-      };
-    }
-  };
-
-
-  const Audio = () => <div>
+  const Sound = () => <div>
     {Slider("BGM", bgmVolume, bgmVolumeChange)}
     {Slider("Voice", voiceVolume, voiceVolumeChange)}
     {Slider("Sound Effect", soundEffectVolume, soundEffectVolumeChange)}
   </div>
 
-  const Text = () =>
-    <div className="config-container font-container">
-      Font Styles
-      <Select
-        options={options}
-        styles={styles}
-        onChange={changeFont}
-        defaultValue={options[options.findIndex(obj => obj.label === font)]}
-      />
-    </div>
 
 
   const COMPONENTS = [
-    {component:<Audio/>, text: "Audio"},
-    {component:<Text/>, text: "Text"}
+    {component:<Sound/>, text: "Sound"},
+    {component:<Text font={font} changeFont={changeFont}/>, text: "Text"}
   ];
   const [shownComponentIndex, setShownComponentIndex] = useState(0);
   const shownComponent = COMPONENTS[shownComponentIndex].component;
@@ -91,11 +55,7 @@ export default props => {
           </button>
         )}
         </ul>
-        <div id="config-body">
-          {shownComponent}
-
-
-        </div>
+        <div id="config-body">{shownComponent}</div>
       </div>
     );
 
