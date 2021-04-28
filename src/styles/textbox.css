@@ -1,6 +1,6 @@
 .text-box {
   position: absolute;
-  bottom: 20px;
+  bottom: 40px;
   margin: auto;
   left: 50%;
   z-index: 2;
@@ -8,19 +8,12 @@
   border-radius: 10px;
   color: black;
   transform: translate(-50%, 0);
-  background-color: rgba(250, 250, 250, 0.9);
-  background-image: linear-gradient(#61d1d1 1px, transparent 1px);
-  background-size: 100% 33.33%;
-  width: 880px;
-  height: 130px;
+  background-color: rgba(250, 250, 250, 0.8);
+  max-width:1200px;
+  width: 80%;
+  max-height: 200px;
 }
 
-/* 1100px for smooth transition from 880px to 80% width */
-@media only screen and (max-width: 1100px) {
-  .text-box {
-    width: 80%;
-  }
-}
 
 .text {
   margin-top: 6px;
@@ -53,7 +46,7 @@
   background: linear-gradient(to right, #4c9ea9, #429494);
   border-radius: 30px;
   position: absolute;
-  bottom: 129px;
+  bottom: 194px;
   color: white;
   text-align: center;
   padding-top: 8px;

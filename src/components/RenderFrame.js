@@ -26,6 +26,7 @@ function RenderFrame(props) {
   }
 
   const gameWidth = settings.resolution.width;
+  const gameHeight = settings.resolution.height;
 
   return (
     <div onClick={props.setNextFrame} className="zoom-frame">
@@ -71,7 +72,7 @@ function RenderFrame(props) {
         </ReactCSSTransitionGroup>
       </ReactCSSTransitionGroup>
       {props.text && props.textBoxShown ? (
-        <div className="text-box" style={{ fontFamily: props.font }}>
+        <div className="text-box" style={{ fontFamily: props.font, height: gameHeight*.18}}>
           {props.speaker ? <div className="speaker"> {props.speaker} </div> : null}
           <div className="text">{props.speaker ? `"${props.text}"` : props.text}</div>
         </div>
