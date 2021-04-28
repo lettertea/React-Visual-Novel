@@ -11,7 +11,7 @@ import choices from "./story/choices";
 import TitleScreen from "./components/TitleScreen";
 import Backlog from "./components/Backlog";
 import ChoiceMenu from "./components/ChoiceMenu";
-import ConfigMenu from "./components/ConfigMenu";
+import ConfigMenu from "./components/config";
 import RenderFrame from "./components/RenderFrame";
 import MenuButtons from "./components/MenuButtons";
 import SaveLoadMenu from "./components/SaveLoadMenu";
